@@ -1,0 +1,103 @@
+/* שקמה דגרי — הדרכת הורים לצמודים */
+:root{
+  --paper:#FDFAF5;
+  --card:#FFFFFF;
+  --ink:#33291F;
+  --soft:#6F6353;
+  --line:#EADFCE;
+  --warm:#C96F3B;      /* חמרה חמה */
+  --warm-soft:#F9E9DC;
+  --green:#5C7A5A;     /* ירוק עלה */
+  --green-soft:#EAF0E7;
+  --wa:#25805E;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Assistant',-apple-system,'Segoe UI',sans-serif;
+  font-size:17.5px;line-height:1.75;
+}
+h1,h2,h3{font-family:'Frank Ruhl Libre','Assistant',serif;line-height:1.28;text-wrap:balance;margin:0 0 10px}
+h1{font-size:clamp(1.7rem,5.5vw,2.5rem);font-weight:900}
+h2{font-size:clamp(1.3rem,4vw,1.7rem);font-weight:700}
+h3{font-size:1.12rem;font-weight:700}
+p{margin:10px 0}
+img{max-width:100%}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+header.top{
+  padding:14px 0;border-bottom:1px solid var(--line);background:var(--paper);
+  position:sticky;top:0;z-index:10;
+}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-family:'Frank Ruhl Libre',serif;font-weight:900;font-size:1.05rem;color:var(--ink);text-decoration:none}
+.logo span{color:var(--warm)}
+nav a{color:var(--soft);text-decoration:none;font-size:.92rem;margin-inline-start:16px}
+nav a:hover{color:var(--warm)}
+.hero{padding:56px 0 40px;text-align:center}
+.hero .kicker{
+  display:inline-block;background:var(--green-soft);color:var(--green);
+  border-radius:99px;padding:3px 16px;font-weight:700;font-size:.88rem;margin-bottom:14px;
+}
+.hero p.lead{font-size:1.1rem;color:var(--soft);max-width:54ch;margin:12px auto}
+.btn{
+  display:inline-block;background:var(--warm);color:#fff;border-radius:12px;
+  padding:13px 30px;font-weight:700;font-size:1.05rem;text-decoration:none;
+  box-shadow:0 2px 10px rgba(160,90,40,.25);
+}
+.btn:hover{filter:brightness(1.06)}
+.btn.green{background:var(--green)}
+.btn.ghost{background:transparent;color:var(--warm);border:2px solid var(--warm);box-shadow:none}
+.btn-note{font-size:.82rem;color:var(--soft);margin-top:8px}
+section{padding:44px 0;border-top:1px solid var(--line)}
+section.tint{background:var(--warm-soft);border-top:none}
+section.tintg{background:var(--green-soft);border-top:none}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:22px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:20px;text-align:center;text-decoration:none;color:var(--ink);
+  transition:transform .15s;
+}
+a.card:hover{transform:translateY(-3px)}
+.card .emo{font-size:1.6rem}
+.card h3{margin:8px 0 6px}
+.card p{font-size:.92rem;color:var(--soft);margin:0}
+.card .go{display:inline-block;margin-top:10px;color:var(--warm);font-weight:700;font-size:.9rem}
+.steps{display:grid;grid-template-columns:1fr;gap:12px;margin-top:20px}
+@media(min-width:640px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.step .n{
+  background:var(--green);color:#fff;border-radius:50%;width:30px;height:30px;
+  display:inline-flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:8px;
+}
+.quotes{display:grid;grid-template-columns:1fr;gap:14px;margin-top:20px}
+@media(min-width:640px){.quotes{grid-template-columns:1fr 1fr}}
+.quote{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;font-size:.97rem}
+.quote .who{color:var(--soft);font-size:.85rem;margin-top:8px}
+.bio{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;margin-top:14px}
+.bio .ph{
+  flex:none;width:120px;height:120px;border-radius:50%;background:var(--warm-soft);
+  display:flex;align-items:center;justify-content:center;font-size:2.4rem;border:1px solid var(--line);
+}
+.bio .txt{flex:1;min-width:240px}
+.creds{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.cred{background:var(--green-soft);color:var(--green);border-radius:99px;padding:2px 14px;font-size:.85rem;font-weight:600}
+.center{text-align:center}
+footer{padding:34px 0 50px;border-top:1px solid var(--line);color:var(--soft);font-size:.88rem}
+footer .wrap{display:flex;flex-direction:column;gap:6px}
+footer a{color:var(--green)}
+/* דפי מכירה */
+.sales .hero{text-align:right;padding:46px 0 30px}
+.pain{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0}
+ul.get{list-style:none;padding:0;margin:16px 0}
+ul.get li{padding-inline-start:30px;position:relative;margin:12px 0}
+ul.get li::before{content:"✓";position:absolute;inset-inline-start:0;color:var(--green);font-weight:900}
+.pricebox{
+  background:var(--card);border:2px solid var(--warm);border-radius:16px;
+  padding:26px 22px;text-align:center;margin:26px 0;
+}
+.pricebox .price{font-family:'Frank Ruhl Libre',serif;font-size:2.4rem;font-weight:900;color:var(--warm)}
+.pricebox .terms{color:var(--soft);font-size:.9rem;margin:6px 0 16px}
+.ps{background:var(--green-soft);border-radius:12px;padding:14px 18px;font-size:.95rem;margin:20px 0}
+.crumb{font-size:.85rem;color:var(--soft);padding-top:18px}
+.crumb a{color:var(--green);text-decoration:none}
