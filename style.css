@@ -108,6 +108,10 @@ a.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(58,49,40,.08
 footer{padding:36px 0 54px;border-top:1px solid var(--line);color:var(--soft);font-size:.88rem}
 footer .wrap{display:flex;flex-direction:column;gap:6px}
 footer a{color:var(--green)}
+.contact{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+.contact a{border:1px solid var(--line);border-radius:99px;padding:2px 14px;font-size:.84rem;color:var(--soft);text-decoration:none;background:var(--card)}
+.contact a:hover{color:var(--warm);border-color:var(--warm)}
+
 /* דפי מכירה */
 .sales .hero{text-align:right;padding:50px 0 30px}
 .sales .hero p.lead{margin:14px 0 0;max-width:none}
