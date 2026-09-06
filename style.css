@@ -265,3 +265,5 @@ ul.get li::before{
 .wa-bubble{background:#fff;border-radius:12px;border-top-right-radius:3px;padding:10px 14px 6px;box-shadow:0 1px 1.5px rgba(0,0,0,.1);font-size:.92rem;line-height:1.7}
 .wa-time{color:#8696A0;font-size:.7rem;margin-top:2px;text-align:left}
 .wa-cap{background:var(--card);border-top:1px solid var(--line);padding:9px 16px;font-size:.83rem;color:var(--soft)}
+
+.f-seal{width:86px;height:86px;border-radius:50%;display:block;margin-bottom:12px;border:1px solid var(--line)}
