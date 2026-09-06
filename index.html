@@ -183,5 +183,21 @@ gtag('config', 'G-XQ1HEQR5HK');
   </div>
 </footer>
 
+<script>
+document.addEventListener('click', function(e){
+  var a = e.target.closest('a');
+  if(!a || typeof gtag !== 'function') return;
+  var h = a.href || '';
+  if(h.indexOf('pay360.isracard') > -1){
+    gtag('event', 'click_payment', {product: (document.title.split('|')[0]||'').trim(), page_path: location.pathname});
+  } else if(h.indexOf('chat.whatsapp.com') > -1){
+    gtag('event', 'join_community', {page_path: location.pathname});
+  } else if(h.indexOf('ravpage.co.il') > -1 || h.indexOf('zite.so') > -1){
+    gtag('event', 'click_magnet', {page_path: location.pathname});
+  } else if(a.closest('.contact')){
+    gtag('event', 'contact_click', {channel: (a.textContent||'').trim()});
+  }
+});
+</script>
 </body>
 </html>
