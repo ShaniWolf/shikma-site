@@ -37,7 +37,17 @@ header.top .wrap{display:flex;align-items:center;justify-content:space-between;g
 .logo svg{width:15px;height:15px;color:var(--warm)}
 nav a{color:var(--soft);text-decoration:none;font-size:.92rem;margin-inline-start:18px}
 nav a:hover{color:var(--warm)}
-.hero{padding:64px 0 46px;text-align:center}
+.ribbon{
+  background:linear-gradient(90deg,var(--warm) 0%,var(--warm-deep) 100%);
+  color:#fff;text-align:center;padding:9px 18px;font-size:.92rem;
+}
+.ribbon a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.hero{
+  padding:64px 0 46px;text-align:center;position:relative;
+  background:
+    radial-gradient(400px 240px at 10% 0%, var(--warm-soft) 0%, transparent 70%),
+    radial-gradient(360px 220px at 92% 100%, var(--green-soft) 0%, transparent 70%);
+}
 .hero .kicker{
   display:inline-block;background:var(--green-soft);color:#5C6B52;
   border-radius:99px;padding:4px 18px;font-size:.88rem;margin-bottom:16px;font-weight:500;
@@ -63,6 +73,13 @@ section.tintg{background:var(--green-soft);border-top:none}
   transition:transform .15s, box-shadow .15s;
 }
 a.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(58,49,40,.08)}
+a.card:hover .ic{transform:scale(1.08)}
+.card .ic{transition:transform .2s}
+@media (prefers-reduced-motion: no-preference){
+  .hero .kicker,.hero h1,.hero p.lead,.hero .btn{animation:rise .7s ease both}
+  .hero h1{animation-delay:.08s}.hero p.lead{animation-delay:.16s}.hero .btn{animation-delay:.24s}
+  @keyframes rise{from{opacity:.01;transform:translateY(12px)}to{opacity:1;transform:none}}
+}
 .card .ic{
   width:52px;height:52px;border-radius:50%;background:var(--warm-soft);
   display:inline-flex;align-items:center;justify-content:center;color:var(--warm);
