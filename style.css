@@ -140,21 +140,40 @@ a.card:hover .go::after{transform:translateX(-4px)}
 }
 .faq details p{margin:0 0 14px;color:var(--soft);font-size:.95rem}
 footer{
-  margin-top:44px;padding:52px 0 36px;text-align:center;
+  margin-top:44px;padding:56px 0 26px;
   color:#8A7A6B;font-size:.9rem;
   background:linear-gradient(180deg,var(--warm-soft) 0%,#F1DFD3 100%);
   border-radius:36px 36px 0 0;
 }
-footer .wrap{display:flex;flex-direction:column;gap:16px;align-items:center}
-footer a{color:#6E5D4E}
+footer .wrap{max-width:980px}
+.f-grid{display:grid;grid-template-columns:1.15fr .95fr .9fr;gap:44px}
+.f-h{font-family:'Varela Round','Rubik',sans-serif;font-size:1.02rem;color:var(--ink);margin:0 0 14px}
 .f-logo{font-family:'Varela Round',sans-serif;font-size:1.3rem;color:var(--ink) !important;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
 .f-logo svg{width:19px;height:19px;color:var(--warm)}
-.f-tag{margin:-9px 0 0;color:#8A7A6B;font-size:.92rem}
-.f-links{display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:center;font-size:.92rem}
-.f-links a{color:#6E5D4E;text-decoration:none;font-weight:500}
-.f-links a:hover{color:var(--warm-deep)}
-.contact-cta{text-align:center;font-family:'Varela Round','Rubik',sans-serif;font-size:.92rem;color:#6E5D4E;margin:14px 0 10px}
-.contact{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:2px 0}
+.f-tag{margin:2px 0 12px;color:#8A7A6B;font-size:.88rem}
+.f-bio{margin:0 0 14px;font-size:.88rem;line-height:1.8;color:#6E5D4E}
+.f-certs{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.f-certs>span{font-size:.78rem;color:#8A7A6B;width:100%;margin-bottom:2px}
+.f-certs em{font-style:normal;background:rgba(255,255,255,.75);border-radius:99px;padding:3px 12px;font-size:.76rem;color:#6E5D4E;white-space:nowrap}
+.journey{list-style:none;margin:0;padding:0}
+.journey li{position:relative;padding-inline-start:26px;padding-bottom:15px}
+.journey li::before{content:"";position:absolute;inset-inline-start:4px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--warm)}
+.journey li::after{content:"";position:absolute;inset-inline-start:7.5px;top:23px;bottom:-1px;width:2px;background:rgba(180,105,78,.25)}
+.journey li:last-child{padding-bottom:0}
+.journey li:last-child::after{display:none}
+.journey a{text-decoration:none;display:block}
+.journey b{display:block;font-weight:500;color:var(--ink);font-size:.92rem;line-height:1.5}
+.journey a:hover b{color:var(--warm-deep)}
+.journey span{display:block;font-size:.8rem;color:#8A7A6B;line-height:1.55}
+.free-pill{font-style:normal;font-weight:500;background:var(--green);color:#fff;border-radius:99px;padding:1px 10px;font-size:.68rem;margin-inline-start:7px;vertical-align:2px}
+.f-community{
+  display:inline-block;background:var(--warm);color:#fff !important;text-decoration:none;
+  border-radius:12px;padding:10px 20px;font-size:.9rem;font-weight:500;
+  box-shadow:0 6px 16px rgba(180,105,78,.25);transition:background .2s, transform .18s ease;
+}
+.f-community:hover{background:var(--warm-deep);transform:translateY(-2px)}
+.contact-cta{font-family:'Varela Round','Rubik',sans-serif;font-size:.92rem;color:#6E5D4E;margin:22px 0 10px}
+.contact{display:flex;flex-wrap:wrap;gap:10px;margin:2px 0}
 .contact a{
   background:#fff;border-radius:50%;width:42px;height:42px;
   display:inline-flex;align-items:center;justify-content:center;
@@ -163,7 +182,15 @@ footer a{color:#6E5D4E}
 }
 .contact a svg{width:20px;height:20px;fill:currentColor;display:block}
 .contact a:hover{color:var(--warm-deep);transform:translateY(-2px);box-shadow:0 7px 16px rgba(58,49,40,.1)}
+.f-bottom{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-top:1px solid rgba(180,105,78,.18);margin-top:40px;padding-top:16px}
+.f-legal{display:flex;gap:18px}
+.f-legal a{color:#8A7A6B;text-decoration:none}
+.f-legal a:hover{color:var(--warm-deep)}
 .f-copy{font-size:.8rem;color:#A5937F}
+@media (max-width:760px){
+  .f-grid{grid-template-columns:1fr;gap:36px}
+  .f-bottom{justify-content:center;text-align:center}
+}
 
 /* דפי מכירה */
 .sales .hero{text-align:right;padding:50px 0 30px}
