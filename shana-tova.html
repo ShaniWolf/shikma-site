@@ -23,6 +23,7 @@ gtag('config', 'G-XQ1HEQR5HK');
 <link rel="canonical" href="https://imale.co/shana-tova.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath fill=%22%23B4694E%22 d=%22M12 21c-.4 0-.8-.15-1.1-.44C6.7 16.9 3 13.6 3 9.9 3 6.9 5.3 4.6 8.2 4.6c1.5 0 2.9.66 3.8 1.72.9-1.06 2.3-1.72 3.8-1.72 2.9 0 5.2 2.3 5.2 5.3 0 3.7-3.7 7-7.9 10.66-.3.29-.7.44-1.1.44z%22/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
+<script defer src="ui.js"></script>
 <style>
 .festive-hero{
   position:relative;overflow:hidden;text-align:center;padding:60px 0 48px;
@@ -30,23 +31,45 @@ gtag('config', 'G-XQ1HEQR5HK');
     radial-gradient(420px 260px at 12% 8%, var(--warm-soft) 0%, transparent 70%),
     radial-gradient(380px 240px at 88% 92%, var(--green-soft) 0%, transparent 70%);
 }
-.festive-hero .pom{position:absolute;width:60px;height:72px;opacity:.85}
-.festive-hero .pom.a{top:26px;inset-inline-start:8%}
-.festive-hero .pom.b{bottom:20px;inset-inline-end:7%;transform:rotate(14deg) scale(.8)}
-@media(max-width:640px){.festive-hero .pom.a{inset-inline-start:3%;transform:scale(.7)}.festive-hero .pom.b{inset-inline-end:2%;transform:rotate(14deg) scale(.6)}}
+.festive-hero .pom{position:absolute;width:64px;height:84px;--r:0deg;--s:1;transform:rotate(var(--r)) scale(var(--s))}
+.festive-hero .pom.a{top:30px;inset-inline-start:8%}
+.festive-hero .pom.b{bottom:24px;inset-inline-end:7%;--r:12deg;--s:.76}
+@media(max-width:640px){.festive-hero .pom.a{inset-inline-start:2%;--s:.6}.festive-hero .pom.b{inset-inline-end:1%;--s:.48}}
+.seed{position:absolute;border-radius:50%;pointer-events:none}
+.seed.s1{width:10px;height:10px;background:var(--warm);opacity:.28;top:22%;inset-inline-start:22%}
+.seed.s2{width:7px;height:7px;background:var(--green);opacity:.3;top:64%;inset-inline-start:13%}
+.seed.s3{width:8px;height:8px;background:var(--warm-deep);opacity:.2;top:30%;inset-inline-end:20%}
+.seed.s4{width:6px;height:6px;background:var(--green);opacity:.28;top:72%;inset-inline-end:15%}
 .count{display:flex;gap:12px;justify-content:center;margin:22px 0 6px}
 .count .cbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 0;width:76px;box-shadow:0 6px 18px rgba(58,49,40,.06)}
-.count .cnum{font-family:'Varela Round',sans-serif;font-size:1.7rem;color:var(--warm-deep);font-variant-numeric:tabular-nums}
+.count .cnum{font-family:'Varela Round',sans-serif;font-size:1.7rem;color:var(--warm-deep);font-variant-numeric:tabular-nums;display:inline-block}
 .count .clab{font-size:.75rem;color:var(--soft)}
 .tips3{display:grid;grid-template-columns:1fr;gap:14px;margin-top:20px;text-align:right}
 @media(min-width:640px){.tips3{grid-template-columns:repeat(3,1fr)}}
-.tip{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px}
-.tip h3{margin-bottom:6px}
-.tip p{font-size:.93rem;color:var(--soft);margin:0;line-height:1.65}
+.tip{
+  background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.tip:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(58,49,40,.08)}
+.tip h3{margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.tip h3::before{content:"";width:9px;height:9px;flex:none;border-radius:50% 50% 50% 0;background:var(--warm);transform:rotate(45deg)}
+.tip p{font-size:.93rem;color:var(--soft);margin:0;line-height:1.65;text-wrap:pretty}
+#offer .pricebox{border:1px solid #E5D2C4;background:linear-gradient(180deg,#FFFFFF 0%,var(--warm-soft) 170%)}
+#offer .price{font-size:1.5rem;line-height:1.5}
 @media (prefers-reduced-motion: no-preference){
   .festive-hero .kicker,.festive-hero h1,.festive-hero .lead,.festive-hero .count,.festive-hero .btn{animation:rise .7s ease both}
   .festive-hero h1{animation-delay:.08s}.festive-hero .lead{animation-delay:.16s}.festive-hero .count{animation-delay:.24s}.festive-hero .btn{animation-delay:.3s}
   @keyframes rise{from{opacity:.01;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .festive-hero .pom{animation:pomfloat 7s ease-in-out infinite}
+  .festive-hero .pom.b{animation-duration:8.5s;animation-delay:.8s}
+  @keyframes pomfloat{50%{transform:translateY(-9px) rotate(var(--r)) scale(var(--s))}}
+  .seed{animation:seedfloat 6s ease-in-out infinite}
+  .seed.s2{animation-duration:7s;animation-delay:.5s}
+  .seed.s3{animation-duration:8s;animation-delay:1s}
+  .seed.s4{animation-duration:6.5s;animation-delay:1.6s}
+  @keyframes seedfloat{50%{transform:translateY(-12px)}}
+  .cnum.pop{animation:npop .45s ease}
+  @keyframes npop{40%{transform:scale(1.18)}}
 }
 </style>
 </head>
@@ -63,8 +86,21 @@ gtag('config', 'G-XQ1HEQR5HK');
 </header>
 
 <div class="festive-hero">
-  <svg class="pom a" viewBox="0 0 60 72" aria-hidden="true"><path d="M30 16 L24 6 M30 16 L36 8" stroke="#7A8B6F" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M36 8 C44 4 50 8 48 14 C42 16 37 13 36 8" fill="#7A8B6F"/><path d="M24 14 L30 8 L36 14 L33 19 L27 19 Z" fill="#9A5540"/><circle cx="30" cy="42" r="24" fill="#B4694E"/><circle cx="23" cy="36" r="4" fill="#F6E9E1" opacity=".55"/></svg>
-  <svg class="pom b" viewBox="0 0 60 72" aria-hidden="true"><path d="M30 16 L24 6 M30 16 L36 8" stroke="#7A8B6F" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M36 8 C44 4 50 8 48 14 C42 16 37 13 36 8" fill="#7A8B6F"/><path d="M24 14 L30 8 L36 14 L33 19 L27 19 Z" fill="#9A5540"/><circle cx="30" cy="42" r="24" fill="#B4694E"/><circle cx="23" cy="36" r="4" fill="#F6E9E1" opacity=".55"/></svg>
+  <svg class="pom a" viewBox="0 0 64 84" aria-hidden="true">
+    <defs><radialGradient id="pg1" cx="35%" cy="32%" r="85%"><stop offset="0%" stop-color="#CB8266"/><stop offset="55%" stop-color="#B4694E"/><stop offset="100%" stop-color="#96513C"/></radialGradient></defs>
+    <path d="M40 18 C44 8 55 6 59 12 C55 20 45 22 40 18 Z" fill="#7A8B6F"/>
+    <path d="M32 26 C18 26 9 36 9 49 C9 63 19 74 32 74 C45 74 55 63 55 49 C55 36 46 26 32 26 Z" fill="url(#pg1)"/>
+    <path d="M24 28 L26 16 L30 22 L33 12 L36 21 L40 15 L41 28 C36 31 28 31 24 28 Z" fill="#8A4A37"/>
+    <ellipse cx="23" cy="44" rx="6.5" ry="10" fill="#FBF7F0" opacity=".26" transform="rotate(-20 23 44)"/>
+  </svg>
+  <svg class="pom b" viewBox="0 0 64 84" aria-hidden="true">
+    <defs><radialGradient id="pg2" cx="35%" cy="32%" r="85%"><stop offset="0%" stop-color="#CB8266"/><stop offset="55%" stop-color="#B4694E"/><stop offset="100%" stop-color="#96513C"/></radialGradient></defs>
+    <path d="M40 18 C44 8 55 6 59 12 C55 20 45 22 40 18 Z" fill="#7A8B6F"/>
+    <path d="M32 26 C18 26 9 36 9 49 C9 63 19 74 32 74 C45 74 55 63 55 49 C55 36 46 26 32 26 Z" fill="url(#pg2)"/>
+    <path d="M24 28 L26 16 L30 22 L33 12 L36 21 L40 15 L41 28 C36 31 28 31 24 28 Z" fill="#8A4A37"/>
+    <ellipse cx="23" cy="44" rx="6.5" ry="10" fill="#FBF7F0" opacity=".26" transform="rotate(-20 23 44)"/>
+  </svg>
+  <span class="seed s1"></span><span class="seed s2"></span><span class="seed s3"></span><span class="seed s4"></span>
   <div class="wrap">
     <span class="kicker">ראש השנה · וחגיגת בית חדש</span>
     <h1>שנה חדשה, בית רגוע יותר</h1>
@@ -81,11 +117,11 @@ gtag('config', 'G-XQ1HEQR5HK');
 
 <section>
   <div class="wrap">
-    <h2>שלושה רגעים של חג, ושלושה רעיונות</h2>
+    <h2 class="hl">שלושה רגעים של חג, ושלושה רעיונות</h2>
     <div class="tips3">
-      <div class="tip"><h3>הארוחה אצל סבתא</h3><p>שעה של ישיבה זה המון בשביל פעוטות. ערכת שולחן קטנה (דפים, מדבקות) והסכמה מראש בין המבוגרים מי קם עם מי, משנות את כל הערב.</p></div>
-      <div class="tip"><h3>שינה במקום חדש</h3><p>חפץ מעבר מהבית ורבע שעה של היכרות עם החדר לפני שכולם עייפים. חוסר ודאות הוא הדלק של רוב ההתפרצויות.</p></div>
-      <div class="tip"><h3>כל הדודים רוצים חיבוק</h3><p>מותר לילדות ולילדים לומר לא לחיבוק, גם בחג. אפשר לתת להם מראש את המילים: ״אפשר כיף במקום חיבוק״.</p></div>
+      <div class="tip rv"><h3>הארוחה אצל סבתא</h3><p>שעה של ישיבה זה המון בשביל פעוטות. ערכת שולחן קטנה (דפים, מדבקות) והסכמה מראש בין המבוגרים מי קם עם מי, משנות את כל הערב.</p></div>
+      <div class="tip rv" style="--d:.12s"><h3>שינה במקום חדש</h3><p>חפץ מעבר מהבית ורבע שעה של היכרות עם החדר לפני שכולם עייפים. חוסר ודאות הוא הדלק של רוב ההתפרצויות.</p></div>
+      <div class="tip rv" style="--d:.24s"><h3>כל הדודים רוצים חיבוק</h3><p>מותר לילדות ולילדים לומר לא לחיבוק, גם בחג. אפשר לתת להם מראש את המילים: ״אפשר כיף במקום חיבוק״.</p></div>
     </div>
     <p class="center" style="margin-top:20px"><a href="chag.html">לכל הרעיונות לחג עם צמודים ‹</a></p>
   </div>
@@ -100,8 +136,8 @@ gtag('config', 'G-XQ1HEQR5HK');
 
 <section id="offer" class="center">
   <div class="wrap">
-    <h2>הצעת החג</h2>
-    <div class="pricebox">
+    <h2 class="hl">הצעת החג</h2>
+    <div class="pricebox rv">
       <div class="price">״כשהבית מתפוצץ״ ב-49₪</div>
       <div class="terms">במקום 99₪ · המדריך המלא לטנטרומים אצל צמודים · ההצעה נפתחת ביום רביעי בערב ותקפה עד מוצאי החג</div>
       <a class="btn" id="offerbtn" href="https://chat.whatsapp.com/Fju9PGJPgFhL8h99M1mnX0" target="_blank" rel="noopener">רוצות תזכורת? ההצעה תיפתח קודם בקהילה</a>
@@ -130,13 +166,20 @@ gtag('config', 'G-XQ1HEQR5HK');
 (function(){
   var open = new Date('2026-09-09T20:30:00+03:00').getTime();
   var box = document.getElementById('count'), note = document.getElementById('countnote');
+  function set(id, v){
+    var el = document.getElementById(id), t = String(v);
+    if(el.textContent !== t){
+      el.textContent = t;
+      el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
+    }
+  }
   function tick(){
     var d = open - Date.now();
     if(d <= 0){ box.hidden = true; note.hidden = true; return; }
     box.hidden = false; note.hidden = false;
-    document.getElementById('cd').textContent = Math.floor(d/86400000);
-    document.getElementById('ch').textContent = Math.floor(d%86400000/3600000);
-    document.getElementById('cm').textContent = Math.floor(d%3600000/60000);
+    set('cd', Math.floor(d/86400000));
+    set('ch', Math.floor(d%86400000/3600000));
+    set('cm', Math.floor(d%3600000/60000));
   }
   tick(); setInterval(tick, 30000);
 })();
