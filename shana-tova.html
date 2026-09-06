@@ -74,14 +74,14 @@ body.festive{background:linear-gradient(180deg,#FCF4E7 0%,var(--paper) 420px)}
   background:#fff;border:1px solid #F0E2CC;border-radius:22px;
   box-shadow:0 18px 44px rgba(154,85,64,.13);padding:18px 8px;
 }
-.count .cbox{width:88px;padding:0 6px}
+.count .cbox{width:80px;padding:0 6px}
 .count .cbox + .cbox{border-inline-start:1px solid #F1E8DA}
 .count .cnum{
   font-family:'Varela Round',sans-serif;font-size:2.15rem;line-height:1.15;
   color:var(--warm-deep);font-variant-numeric:tabular-nums;display:inline-block;
 }
 .count .clab{font-size:.76rem;color:#A5937F;letter-spacing:.04em;margin-top:2px}
-@media(max-width:420px){.count .cbox{width:74px}.count .cnum{font-size:1.8rem}}
+@media(max-width:420px){.count .cbox{width:62px}.count .cnum{font-size:1.55rem}}
 .fhero .btn-note{margin:0 0 22px;color:#A5937F}
 .fhero .btn{padding:15px 38px;font-size:1.05rem}
 
@@ -236,6 +236,7 @@ body.festive{background:linear-gradient(180deg,#FCF4E7 0%,var(--paper) 420px)}
       <div class="cbox"><div class="cnum" id="cd">0</div><div class="clab">ימים</div></div>
       <div class="cbox"><div class="cnum" id="ch">0</div><div class="clab">שעות</div></div>
       <div class="cbox"><div class="cnum" id="cm">0</div><div class="clab">דקות</div></div>
+      <div class="cbox"><div class="cnum" id="cs">0</div><div class="clab">שניות</div></div>
     </div>
     <p class="btn-note" id="countnote" hidden>עד שהצעת החג נפתחת כאן</p>
     <div><a class="btn" href="#offer">מה מחכה לכם למטה</a></div>
@@ -316,22 +317,28 @@ body.festive{background:linear-gradient(180deg,#FCF4E7 0%,var(--paper) 420px)}
 (function(){
   var open = new Date('2026-09-09T20:30:00+03:00').getTime();
   var box = document.getElementById('count'), note = document.getElementById('countnote');
-  function set(id, v){
+  function set(id, v, pop){
     var el = document.getElementById(id), t = String(v);
     if(el.textContent !== t){
       el.textContent = t;
-      el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
+      if(pop){ el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); }
     }
   }
   function tick(){
     var d = open - Date.now();
-    if(d <= 0){ box.hidden = true; note.hidden = true; return; }
+    if(d <= 0){
+      box.hidden = true; note.hidden = true;
+      var b = document.querySelector('.obadge');
+      if(b) b.textContent = 'ההצעה פתוחה · בתוקף עד מוצאי החג';
+      return;
+    }
     box.hidden = false; note.hidden = false;
-    set('cd', Math.floor(d/86400000));
-    set('ch', Math.floor(d%86400000/3600000));
-    set('cm', Math.floor(d%3600000/60000));
+    set('cd', Math.floor(d/86400000), true);
+    set('ch', Math.floor(d%86400000/3600000), true);
+    set('cm', Math.floor(d%3600000/60000), true);
+    set('cs', Math.floor(d%60000/1000), false);
   }
-  tick(); setInterval(tick, 30000);
+  tick(); setInterval(tick, 1000);
 })();
 document.addEventListener('click', function(e){
   var a = e.target.closest('a');
