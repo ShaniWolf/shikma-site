@@ -250,3 +250,6 @@ ul.get li::before{
 @media (prefers-reduced-motion:reduce){.cookiebar{transition:none;transform:none}}
 .f-copy a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .f-copy a:hover{color:var(--warm)}
+
+.quote img.wa{width:100%;height:auto;border-radius:12px;display:block}
+.quote .wa+.who{margin-top:10px}
