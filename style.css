@@ -83,10 +83,10 @@ a.card:hover .ic{transform:scale(1.08)}
   @keyframes rise{from{opacity:.01;transform:translateY(12px)}to{opacity:1;transform:none}}
 }
 .card .ic{
-  width:52px;height:52px;border-radius:50%;background:var(--warm-soft);
-  display:inline-flex;align-items:center;justify-content:center;color:var(--warm);
+  width:58px;height:58px;border-radius:50%;background:var(--warm-soft);
+  display:inline-flex;align-items:center;justify-content:center;
 }
-.card .ic svg{width:26px;height:26px}
+.card .ic svg{width:32px;height:32px}
 .card h3{margin:12px 0 6px}
 @media(min-width:640px){
   .card h3{min-height:2.75em;display:flex;align-items:center;justify-content:center}
@@ -139,12 +139,32 @@ a.card:hover .go::after{transform:translateX(-4px)}
   padding:12px 0;list-style-position:inside;
 }
 .faq details p{margin:0 0 14px;color:var(--soft);font-size:.95rem}
-footer{padding:36px 0 54px;border-top:1px solid var(--line);color:var(--soft);font-size:.88rem}
-footer .wrap{display:flex;flex-direction:column;gap:6px}
-footer a{color:var(--green)}
-.contact{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
-.contact a{border:1px solid var(--line);border-radius:99px;padding:2px 14px;font-size:.84rem;color:var(--soft);text-decoration:none;background:var(--card)}
-.contact a:hover{color:var(--warm);border-color:var(--warm)}
+footer{
+  margin-top:44px;padding:52px 0 36px;text-align:center;
+  color:#8A7A6B;font-size:.9rem;
+  background:linear-gradient(180deg,var(--warm-soft) 0%,#F1DFD3 100%);
+  border-radius:36px 36px 0 0;
+}
+footer .wrap{display:flex;flex-direction:column;gap:16px;align-items:center}
+footer a{color:#6E5D4E}
+.f-logo{font-family:'Varela Round',sans-serif;font-size:1.3rem;color:var(--ink) !important;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.f-logo svg{width:19px;height:19px;color:var(--warm)}
+.f-tag{margin:-9px 0 0;color:#8A7A6B;font-size:.92rem}
+.f-links{display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:center;font-size:.92rem}
+.f-links a{color:#6E5D4E;text-decoration:none;font-weight:500}
+.f-links a:hover{color:var(--warm-deep)}
+.contact{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:2px 0}
+.contact a{
+  background:#fff;border-radius:99px;padding:7px 18px;font-size:.86rem;
+  color:#6E5D4E;text-decoration:none;box-shadow:0 3px 10px rgba(58,49,40,.06);
+  transition:transform .18s ease, color .18s ease, box-shadow .18s ease;
+}
+.contact a:hover{color:var(--warm-deep);transform:translateY(-2px);box-shadow:0 7px 16px rgba(58,49,40,.1)}
+.f-div{
+  width:54px;height:8px;opacity:.6;margin-top:4px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 66 9'%3E%3Cpath d='M2 6.5 C 18 1.5, 44 1.5, 64 5' stroke='%23B4694E' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/contain;
+}
+.f-copy{font-size:.8rem;color:#A5937F}
 
 /* דפי מכירה */
 .sales .hero{text-align:right;padding:50px 0 30px}
