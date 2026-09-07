@@ -308,3 +308,22 @@ ul.get li::before{
 .cnext h2{margin-top:0}
 .cnext .cprice{font-family:'Varela Round',sans-serif;font-size:1.9rem;color:var(--warm-deep);display:block;margin:6px 0 16px}
 .cnext .btn{max-width:360px}
+
+/* טופס המגנט */
+.mform{max-width:420px;margin:18px auto 0;text-align:right}
+.mform label{display:block;font-size:.86rem;color:var(--soft);margin:0 0 4px}
+.mform input[type="text"],.mform input[type="email"]{
+  width:100%;font-family:'Rubik',sans-serif;font-size:1rem;color:var(--ink);
+  background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:12px;
+}
+.mform input:focus{outline:none;border-color:var(--warm);box-shadow:0 0 0 3px var(--warm-soft)}
+.mform button{
+  font-family:'Rubik',sans-serif;cursor:pointer;width:100%;
+  background:var(--warm);color:#fff;border:none;border-radius:99px;
+  padding:14px 28px;font-size:1.02rem;font-weight:500;
+  box-shadow:0 6px 18px rgba(154,85,64,.18);transition:background .15s, transform .2s ease;
+}
+.mform button:hover{background:var(--warm-deep);transform:translateY(-2px)}
+.mform button[disabled]{opacity:.6;cursor:default;transform:none}
+.mform .consent{font-size:.8rem;color:var(--soft);line-height:1.6;margin:12px 0 0}
+.mform .err{color:#A33C2B;font-size:.86rem;margin:10px 0 0;min-height:1px}
