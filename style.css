@@ -267,3 +267,44 @@ ul.get li::before{
 .wa-cap{background:var(--card);border-top:1px solid var(--line);padding:9px 16px;font-size:.83rem;color:var(--soft)}
 
 .f-seal{width:86px;height:86px;border-radius:50%;display:block;margin-bottom:12px;border:1px solid var(--line)}
+
+/* עמודי תוכן פתוח */
+.cpage .hero{padding:52px 0 30px;text-align:right}
+.cpage .hero h1{margin-bottom:14px}
+.cpage .hero p.lead{margin-inline:0}
+.csec{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px 26px;margin:18px 0}
+.csec h2{margin-top:0}
+.csec .eyeb{font-size:.78rem;color:var(--soft);letter-spacing:.06em;margin:0 0 8px}
+.clist{margin:12px 0 0;padding:0;list-style:none}
+.clist li{padding:8px 0;padding-inline-start:28px;position:relative}
+.clist li::before{content:"";position:absolute;inset-inline-start:2px;top:17px;width:11px;height:11px;border-radius:50%;background:var(--warm-soft);border:3px solid var(--warm);box-sizing:border-box}
+.clist b{font-weight:500}
+.cmiss{margin:12px 0 0;padding:0;list-style:none}
+.cmiss li{padding:10px 0;padding-inline-start:30px;position:relative}
+.cmiss li::before{
+  content:"";position:absolute;inset-inline-start:3px;top:19px;width:13px;height:2px;
+  background:var(--warm);border-radius:2px;
+}
+.cmiss b{font-weight:500;display:block}
+.ctool{background:var(--green-soft);border-radius:20px;padding:24px 26px;margin:22px 0}
+.ctool h2{color:var(--green);margin-top:0}
+.csteps{margin:14px 0 0;padding:0;list-style:none;counter-reset:cs}
+.csteps li{position:relative;padding-inline-start:40px;padding-bottom:14px;counter-increment:cs}
+.csteps li::before{
+  content:counter(cs);position:absolute;inset-inline-start:0;top:2px;
+  width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;
+  font-family:'Varela Round',sans-serif;font-size:.85rem;display:flex;align-items:center;justify-content:center;
+}
+.csteps li:last-child{padding-bottom:0}
+.csteps b{font-weight:500}
+.cex{border-inline-start:3px solid var(--warm-soft);padding-inline-start:18px;margin:14px 0}
+.cex p{margin:6px 0}
+.cex .say{font-family:'Varela Round','Rubik',sans-serif;color:var(--warm-deep);font-size:1.02rem}
+.cex .was{color:var(--soft);font-size:.9rem}
+.cnext{
+  background:linear-gradient(180deg,#FFFFFF 0%,#FDF6EC 100%);border:1px solid #EFDFC5;border-radius:24px;
+  padding:30px 28px;text-align:center;margin:32px 0 10px;box-shadow:0 18px 48px rgba(154,85,64,.1);
+}
+.cnext h2{margin-top:0}
+.cnext .cprice{font-family:'Varela Round',sans-serif;font-size:1.9rem;color:var(--warm-deep);display:block;margin:6px 0 16px}
+.cnext .btn{max-width:360px}
