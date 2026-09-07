@@ -46,7 +46,7 @@ gtag('event', 'purchase', {
     <span class="kicker">ההזמנה התקבלה</span>
     <h1>תודה! ״החגים עם צמודים״ שלכם מוכן</h1>
     <p class="lead">הקובץ נפתח בטלפון ובמחשב, והוא שלכם לתמיד. שווה לשמור אותו במקום נגיש, הרגעים שבשבילם הוא נכתב לא מתאמים מראש.</p>
-    <a class="btn" href="#TODO-קובץ-PDF-טנטרומים">להורדת המדריך (PDF)</a>
+    <a class="btn" href="assets/d/d66ca34652049b85/chagim-full.pdf" download="החגים עם צמודים - שקמה דגרי.pdf">להורדת המדריך (PDF)</a>
   </div>
 </div>
 <section>
@@ -122,6 +122,7 @@ document.addEventListener('click', function(e){
   var a = e.target.closest('a');
   if(!a || typeof gtag !== 'function') return;
   var h = a.href || '';
+  if(h.indexOf('chagim-full.pdf') > -1 && typeof gtag === 'function'){ gtag('event','guide_download',{guide:'chagim-full',page_path:location.pathname}); }
   if(h.indexOf('calendar.app.google') > -1 && typeof gtag === 'function'){ gtag('event','book_call',{page_path: location.pathname}); }
   if(h.indexOf('chat.whatsapp.com') > -1){ gtag('event', 'join_community', {page_path: location.pathname}); }
 });
