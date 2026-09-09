@@ -216,20 +216,15 @@ document.addEventListener('click', function(e){
     var name=document.getElementById('mf-name').value.trim();
     if(!email || email.indexOf('@')<1 || email.indexOf('.')<0){ err.textContent='צריך כתובת מייל תקינה כדי לשלוח את המדריך'; return; }
     err.textContent=''; btn.disabled=true; btn.textContent='רגע, שולחת...';
-    var cb='mlcb'+Date.now();
     var done=false;
     function finish(){
       if(done) return; done=true;
       if(typeof gtag==='function'){ gtag('event','magnet_signup',{magnet:'lev',page_path:location.pathname}); }
       location.href='thanks-lev.html';
     }
-    window[cb]=function(){ finish(); };
-    var s=document.createElement('script');
-    s.src=EP+'?callback='+cb+'&fields%5Bemail%5D='+encodeURIComponent(email)+
-          (name?'&fields%5Bname%5D='+encodeURIComponent(name):'')+'&ml-submit=1&anticsrf=true';
-    s.onerror=function(){ finish(); };
-    document.body.appendChild(s);
-    setTimeout(finish, 4000);
+    var body='fields%5Bemail%5D='+encodeURIComponent(email)+(name?'&fields%5Bname%5D='+encodeURIComponent(name):'')+'&ml-submit=1&anticsrf=true';
+    fetch(EP,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(function(){ finish(); }).catch(function(){ finish(); });
+    setTimeout(finish, 6000);
   });
 })();
 </script>

@@ -82,7 +82,7 @@ html += '''
   polaroid('pola-gvulot', 'שני ילדים קטנים שוכבים על המיטה', cls='r'),
   polaroid('pola-siblings', 'פעוט שותה מבקבוק לצד אחותו התינוקת', cls=''),
   polaroid_cover('assets/covers/chagim.png', 'כריכת המדריך חגים עם צמודים'),
-  polaroid('pola-livuy', 'אמא מחזיקה תינוק ופעוט נשען עליה', cls='r'),
+  polaroid('shk-sofa', 'שקמה על הספה בסלון עם יובל ותום', cls='r'),
 )
 html += footer() + CLICK_JS
 write('guides.html', html)
