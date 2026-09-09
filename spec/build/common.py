@@ -3,7 +3,7 @@
 import json, os, re
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-CSS_V = '23'
+CSS_V = '24'
 JS_V = '10'
 SITE = 'https://imale.co/'
 WA_GROUP = 'https://chat.whatsapp.com/Fju9PGJPgFhL8h99M1mnX0'
@@ -210,13 +210,16 @@ def photo(name, alt='', cls='', eager=False, sizes='(max-width:760px) 170px, 230
     who, src, url = CREDITS[name]
     ws = (1400,) if name.startswith('tex-') else (420, 800)
     srcset = lambda ext: ', '.join('assets/photos/%s-%d.%s %dw' % (name, w, ext, w) for w in ws)
-    return ('<picture class="%s" data-credit="%s / %s" data-credit-url="%s"><source type="image/webp" srcset="%s" sizes="%s">'
-            '<img src="assets/photos/%s-%d.jpg" srcset="%s" sizes="%s" alt="%s" title="%s / %s"%s></picture>'
-            ) % (cls, who, src, url, srcset('webp'), sizes, name, ws[-1], srcset('jpg'), sizes, esc(alt), who, src, '' if eager else ' loading="lazy"')
+    return ('<picture class="%s"><source type="image/webp" srcset="%s" sizes="%s">'
+            '<img src="assets/photos/%s-%d.jpg" srcset="%s" sizes="%s" alt="%s"%s></picture>'
+            ) % (cls, srcset('webp'), sizes, name, ws[-1], srcset('jpg'), sizes, esc(alt), '' if eager else ' loading="lazy"')
 
 def polaroid(name, alt='', cap=None, cls='', eager=False):
     capx = ('<p class="cap">%s</p>' % cap) if cap else ''
     return '<div class="polaroid %s">%s%s</div>' % (cls, photo(name, alt, eager=eager), capx)
+
+def polaroid_cover(src, alt='', cls='r', width=140):
+    return '<div class="polaroid tall %s"><img src="%s" alt="%s" loading="lazy" width="%d" height="%d"></div>' % (cls, src, esc(alt), width, int(width*1.42))
 
 def pola_side(name, alt=''):
     return '    <div class="pola-side rv">%s</div>\n' % polaroid(name, alt)

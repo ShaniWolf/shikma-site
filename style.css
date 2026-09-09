@@ -608,3 +608,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 .photo-sec .sec-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--green-soft) 0%,rgba(237,240,231,.2) 50%,var(--green-soft) 100%)}
 .f-credit{font-size:.76rem;color:#A5937F;margin:8px 0 0;line-height:1.6}
 .f-credit a{color:inherit}
+/* ── v24: פולרואידים בכל האתר ── */
+.polaroid.tall{padding-bottom:16px}
+.polaroid.tall img{aspect-ratio:3/4.25}
+.polaroid.tall::before{width:56px}
+.cover{transform:none;box-shadow:none;border-radius:0}
+.gcard{display:grid;grid-template-columns:150px 1fr;gap:26px;align-items:center}
+.gcard .polaroid{width:140px;margin:6px auto}
+.gcard .tx{min-width:0}
+.gcard .tx h2{margin:0 0 6px}
+.gcard .tx .eyeb{margin:0 0 2px}
+@media(max-width:560px){.gcard{grid-template-columns:1fr}.gcard .polaroid{margin:0 auto 6px}}
+.csec.gcard:hover .polaroid{transform:rotate(0) translateY(-3px)}
+.hero-cover .cv .polaroid{width:220px;margin:0 auto}
+.thanks-cover{display:flex;justify-content:center;margin:0 0 22px}
+.thanks-cover .polaroid{width:170px}
+.chag-side{float:left;width:160px;margin:4px 0 8px;margin-inline-end:20px}
+.chag-side .polaroid{width:100%}
+@media(max-width:520px){.chag-side{width:120px;margin-inline-end:12px}}
+.btn-note a{color:var(--warm-deep)}

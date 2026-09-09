@@ -52,6 +52,17 @@ for name in ['lev.html', 'chag.html', 'shana-tova.html', 'taima.html', 'privacy.
     for k, v in LINKMAP.items():
         s = s.replace('href="%s"' % k, 'href="%s"' % v)
     s = s.replace('380+ הורים לצמודים', 'יותר מ־300 הורים לצמודים').replace('קהילה של 380+ הורים', 'קהילה של יותר מ־300 הורים')
+    def _cov(m):
+        alt = re.search(r'alt="([^"]*)"', m.group(0)); alt = alt.group(1) if alt else ''
+        src = re.search(r'src="([^"]*)"', m.group(0)).group(1)
+        cls = 'r' if 'thanks' in name or 'shana' in name else ''
+        wrap = ('<div class="thanks-cover">%s</div>' if 'thanks' in name else '%s')
+        return wrap % polaroid_cover(src, alt, cls=cls, width=170 if 'thanks' in name else 220)
+    s = re.sub(r'<img class="cover[^"]*" src="assets/covers/[^"]+"[^>]*>', _cov, s)
+    if name == 'chag.html' and 'chag-side' not in s:
+        s = s.replace('  <div class="hero">\n    <h1>ראש השנה עם צמודים', '  <div class="hero">\n    <div class="chag-side rv">%s</div>\n    <h1>ראש השנה עם צמודים' % polaroid('pola-rug', 'פעוט ותינוק יושבים יחד על שטיח', cls='r'), 1)
+    if name == 'accessibility.html':
+        s = re.sub(r'  <p class="btn-note">צילומים באתר:.*?</p>\n', '', s, flags=re.S)
     s = re.sub(r'style\.css\?v=\d+', 'style.css?v=' + CSS_V, s)
     s = re.sub(r'ui\.js\?v=\d+', 'ui.js?v=' + JS_V, s)
     # legal/404/thanks pages: make sure the click tracker exists once, harmless if not
