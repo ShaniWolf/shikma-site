@@ -64,28 +64,28 @@ gtag('event', 'purchase', {
   <div class="wrap">
     <span class="kicker">ההזמנה התקבלה</span>
     <h1>תודה! ״כשהבית מתפוצץ״ שלכם מוכן</h1>
-    <p class="lead">הקובץ נפתח בטלפון ובמחשב, והוא שלכם לתמיד. השאירו כאן את הכתובת שאיתה תרצו לפתוח אותו.</p>
+    <p class="lead">המדריך בנוי לפי הרגעים עצמם: מה מצטבר לפני ההתפרצות, מה עושים ומה אומרים בזמנה, למי ניגשים קודם כששניהם צריכים אתכם, ואיך חוזרים לחיבור אחרי שזה עבר.</p>
+    <a class="btn" href="assets/d/39a91ab01572795b/kshehabait-full.pdf" download="כשהבית מתפוצץ - שקמה דגרי.pdf">להורדת המדריך (PDF)</a>
     <form class="mform tform" id="mform" novalidate data-fid="198150224188802244" data-product="tantrums">
-      <label for="mf-email">לאן לשלוח את המדריך?</label>
+      <label for="mf-email">רוצים שהמדריך יחכה לכם גם במייל?</label>
       <input type="email" id="mf-email" name="email" autocomplete="email" required placeholder="הכתובת שאיתה תפתחו את המדריך">
-      <button type="submit" id="mf-btn">שלחו לי את המדריך</button>
+      <button type="submit" id="mf-btn">שלחו לי אותו למייל</button>
       <p class="err" id="mf-err" role="alert"></p>
     </form>
     <div class="mf-done" id="mf-done" hidden>
       <p class="lead">קיבלתי. ״כשהבית מתפוצץ״ בדרך ל<span id="mf-to"></span>.</p>
     </div>
-    <p class="btn-note">הגישה ל״כשהבית מתפוצץ״ נפתחת לכתובת הזו ומגיעה למייל תוך דקות. אם היא לא הגיעה, בדקו בקידומי מכירות, ואם עדיין לא, <a href="https://wa.me/972528594469?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%A7%D7%9E%D7%94%2C%20%D7%A8%D7%9B%D7%A9%D7%AA%D7%99%20%D7%9E%D7%93%D7%A8%D7%99%D7%9A%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%90%D7%95%D7%AA%D7%95" target="_blank" rel="noopener">כתבו לי בוואטסאפ</a> ואני פותחת ידנית.</p>
+    <p class="btn-note">הקובץ שלכם לתמיד, והקישור לא פג.</p>
   </div>
 </div>
 <section>
   <div class="wrap">
-    <h2>שלוש נקודות לדרך</h2>
+    <h2>מאיפה להתחיל</h2>
     <ul class="get">
-      <li>אפשר לפתוח בפרק שהכי מעסיק אתכם עכשיו. אין חובה לקרוא לפי הסדר</li>
-      <li>את הצ׳ק־ליסט שבפנים שווה להדפיס ולתלות על המקרר, בשביל הרגעים שאין כוח לחשוב</li>
-      <li>שני ההורים מוזמנים לקרוא. הכלים עובדים הכי טוב כשמדברים בשפה אחת</li>
+      <li>אם הייתה התפרצות היום, פתחו בפרק ״בזמן״. יש שם מה לעשות ומה לומר כשהילד כבר מוצף ולא מצליח לשמוע הסבר</li>
+      <li>המשפטים הקצרים שבמדריך נכתבו גם לרגעים שבהם לכם כבר נגמרו המילים. בחרו שניים ונסו אותם השבוע</li>
+      <li>הפרק ״כששניהם צריכים אתכם״ נותן סדר פעולות לרגע שאחד מתפרץ והשני מצטרף, כולל מה לומר לילד שמחכה</li>
     </ul>
-    <div class="ps">נ.ב. בעמוד האחרון של המדריך מחכה לכם הטבה לליווי האישי שלי (קוד RELAX10).</div>
     <p class="center" style="margin-top:26px"><a class="btn green" href="https://chat.whatsapp.com/Fju9PGJPgFhL8h99M1mnX0">להצטרפות לקהילה: יותר מ־300 הורים לצמודים</a></p>
   
     <div class="readmore rv">
@@ -151,6 +151,7 @@ document.addEventListener('click', function(e){
   var a = e.target.closest('a');
   if(!a || typeof gtag !== 'function') return;
   var h = a.href || '';
+  if(h.indexOf('kshehabait-full.pdf') > -1){ gtag('event','guide_download',{guide:'tantrums',page_path:location.pathname}); }
   if(h.indexOf('calendar.app.google') > -1 && typeof gtag === 'function'){ gtag('event','book_call',{page_path: location.pathname}); }
   if(h.indexOf('chat.whatsapp.com') > -1){ gtag('event', 'join_community', {page_path: location.pathname}); }
 });

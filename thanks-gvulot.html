@@ -64,28 +64,28 @@ gtag('event', 'purchase', {
   <div class="wrap">
     <span class="kicker">ההזמנה התקבלה</span>
     <h1>תודה! ״גבולות מתוך חיבור״ שלכם מוכן</h1>
-    <p class="lead">הקובץ נפתח בטלפון ובמחשב, והוא שלכם לתמיד. השאירו כאן את הכתובת שאיתה תרצו לפתוח אותו.</p>
+    <p class="lead">המדריך ממשיך מהניסוח של הגבול למה שקורה אחריו: כשהילד עונה ״לא״, כשהוא בוכה, וכשהאח השני מצטרף להתנגדות.</p>
+    <a class="btn" href="assets/d/2dd2e209919cf00f/gvulot-full.pdf" download="גבולות מתוך חיבור - שקמה דגרי.pdf">להורדת המדריך (PDF)</a>
     <form class="mform tform" id="mform" novalidate data-fid="198150249549661394" data-product="gvulot">
-      <label for="mf-email">לאן לשלוח את המדריך?</label>
+      <label for="mf-email">רוצים שהמדריך יחכה לכם גם במייל?</label>
       <input type="email" id="mf-email" name="email" autocomplete="email" required placeholder="הכתובת שאיתה תפתחו את המדריך">
-      <button type="submit" id="mf-btn">שלחו לי את המדריך</button>
+      <button type="submit" id="mf-btn">שלחו לי אותו למייל</button>
       <p class="err" id="mf-err" role="alert"></p>
     </form>
     <div class="mf-done" id="mf-done" hidden>
       <p class="lead">קיבלתי. ״גבולות מתוך חיבור״ בדרך ל<span id="mf-to"></span>.</p>
     </div>
-    <p class="btn-note">הגישה ל״גבולות מתוך חיבור״ נפתחת לכתובת הזו ומגיעה למייל תוך דקות. אם היא לא הגיעה, בדקו בקידומי מכירות, ואם עדיין לא, <a href="https://wa.me/972528594469?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%A7%D7%9E%D7%94%2C%20%D7%A8%D7%9B%D7%A9%D7%AA%D7%99%20%D7%9E%D7%93%D7%A8%D7%99%D7%9A%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%90%D7%95%D7%AA%D7%95" target="_blank" rel="noopener">כתבו לי בוואטסאפ</a> ואני פותחת ידנית.</p>
+    <p class="btn-note">הקובץ שלכם לתמיד, והקישור לא פג.</p>
   </div>
 </div>
 <section>
   <div class="wrap">
-    <h2>שלוש נקודות לדרך</h2>
+    <h2>מאיפה להתחיל</h2>
     <ul class="get">
-      <li>אפשר לפתוח בפרק שהכי מעסיק אתכם עכשיו. אין חובה לקרוא לפי הסדר</li>
-      <li>את הצ׳ק־ליסט שבפנים שווה להדפיס ולתלות על המקרר, בשביל הרגעים שאין כוח לחשוב</li>
-      <li>שני ההורים מוזמנים לקרוא. הכלים עובדים הכי טוב כשמדברים בשפה אחת</li>
+      <li>התחילו במערכת הרמזור. היא עוזרת לבחור אילו גבולות באמת חשובים לכם עכשיו ואיפה אפשר להתגמש</li>
+      <li>הפרק על בחירות מראה איך לתת לילד להשפיע על הדרך בזמן שההחלטה נשארת אצלכם. שם יורדים חלק ממאבקי המקלחת והמסך</li>
+      <li>במדריך יש משפטים קצרים למצבים שחוזרים כל יום: כיבוי מסך, יציאה מהבית, שעת הערב. בחרו אחד להערב</li>
     </ul>
-    <div class="ps">נ.ב. בעמוד האחרון של המדריך מחכה לכם הטבה לליווי האישי שלי (קוד RELAX10).</div>
     <p class="center" style="margin-top:26px"><a class="btn green" href="https://chat.whatsapp.com/Fju9PGJPgFhL8h99M1mnX0">להצטרפות לקהילה: יותר מ־300 הורים לצמודים</a></p>
   
     <div class="readmore rv">
@@ -151,6 +151,7 @@ document.addEventListener('click', function(e){
   var a = e.target.closest('a');
   if(!a || typeof gtag !== 'function') return;
   var h = a.href || '';
+  if(h.indexOf('gvulot-full.pdf') > -1){ gtag('event','guide_download',{guide:'gvulot',page_path:location.pathname}); }
   if(h.indexOf('calendar.app.google') > -1 && typeof gtag === 'function'){ gtag('event','book_call',{page_path: location.pathname}); }
   if(h.indexOf('chat.whatsapp.com') > -1){ gtag('event', 'join_community', {page_path: location.pathname}); }
 });
