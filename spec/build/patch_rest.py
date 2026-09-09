@@ -67,6 +67,7 @@ for name in ['lev.html', 'chag.html', 'taima.html', 'privacy.html', 'terms.html'
         s = s.replace('pola-rug', 'shk-kitchen').replace('פעוט ותינוק יושבים יחד על שטיח', 'שקמה עם שני הילדים ליד שולחן ארוחת הבוקר')
     if name == 'accessibility.html':
         s = re.sub(r'  <p class="btn-note">צילומים באתר:.*?</p>\n', '', s, flags=re.S)
+    s = s.replace('https://imale.co/assets/og.png', 'https://imale.co/assets/og.jpg')
     s = re.sub(r'style\.css\?v=\d+', 'style.css?v=' + CSS_V, s)
     s = re.sub(r'ui\.js\?v=\d+', 'ui.js?v=' + JS_V, s)
     # legal/404/thanks pages: make sure the click tracker exists once, harmless if not
