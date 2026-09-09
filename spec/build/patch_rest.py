@@ -30,6 +30,7 @@ for name, to, canon, title in [
     ('ligdol-beyachad.html', 'siblings.html#guide', 'siblings.html', 'לגדול ביחד'),
     ('together.html', 'siblings.html#guide', 'siblings.html', 'לגדול ביחד'),
     ('liyuy.html', 'livuy.html', 'livuy.html', 'צמודים בדרך שלכם'),
+    ('shana-tova.html', 'chagim.html', 'chagim.html', 'חגים עם צמודים'),
 ]:
     write(name, STUB % dict(to=to, canon=canon, title=title, v=CSS_V))
 
@@ -42,13 +43,14 @@ LINKMAP = {
 HDR_RE = re.compile(r'<a class="skip" href="#main">דילוג לתוכן</a>\s*<header class="top">.*?</header>', re.S)
 FTR_RE = re.compile(r'<footer>.*?</footer>', re.S)
 
-for name in ['lev.html', 'chag.html', 'shana-tova.html', 'taima.html', 'privacy.html', 'terms.html', 'accessibility.html', '404.html',
+for name in ['lev.html', 'chag.html', 'taima.html', 'privacy.html', 'terms.html', 'accessibility.html', '404.html',
              'thanks-lev.html', 'thanks-tantrums.html', 'thanks-gvulot.html', 'thanks-together.html', 'thanks-chagim.html']:
     path = os.path.join(ROOT, name)
     s = open(path, encoding='utf-8').read()
     orig = s
     s = HDR_RE.sub(lambda m: header().strip('\n'), s, count=1)
     s = FTR_RE.sub(lambda m: footer().strip('\n'), s, count=1)
+    s = s.replace('href="shana-tova.html#offer"', 'href="chagim.html#buy"').replace('href="shana-tova.html"', 'href="chagim.html"')
     for k, v in LINKMAP.items():
         s = s.replace('href="%s"' % k, 'href="%s"' % v)
     s = s.replace('380+ הורים לצמודים', 'יותר מ־300 הורים לצמודים').replace('קהילה של 380+ הורים', 'קהילה של יותר מ־300 הורים')
@@ -73,7 +75,7 @@ for name in ['lev.html', 'chag.html', 'shana-tova.html', 'taima.html', 'privacy.
         print('unchanged', name)
 
 # 3) sitemap
-pages = ['', 'tantrums.html', 'gvulot.html', 'siblings.html', 'guides.html', 'livuy.html', 'chagim.html', 'chag.html', 'lev.html', 'taima.html', 'shana-tova.html', 'privacy.html', 'terms.html', 'accessibility.html']
+pages = ['', 'tantrums.html', 'gvulot.html', 'siblings.html', 'guides.html', 'livuy.html', 'chagim.html', 'chag.html', 'lev.html', 'taima.html', 'privacy.html', 'terms.html', 'accessibility.html']
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join('  <url><loc>%s%s</loc></url>\n' % (SITE, p) for p in pages) + '</urlset>\n'
 open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write(sm)
 print('sitemap', len(pages), 'urls')

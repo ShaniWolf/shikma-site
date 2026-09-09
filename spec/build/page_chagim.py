@@ -19,6 +19,7 @@ PROD = {"@context": "https://schema.org", "@type": "Product", "name": "חגים 
         "image": SITE + "assets/covers/chagim.png",
         "offers": {"@type": "Offer", "price": "36", "priceCurrency": "ILS", "availability": "https://schema.org/InStock", "url": SITE + "chagim.html#buy"}}
 
+OFFER_OPEN = False  # flip to True on launch day: pay button replaces the reminder
 html = head(TITLE, DESC, 'chagim.html', ld=[PROD, faq_ld(FAQ), crumbs_ld(('המדריכים', SITE + 'guides.html'), ('חגים עם צמודים', SITE + 'chagim.html'))], og_title=OG_T, body_class='cpage')
 html += header()
 html += '<div class="wrap" id="main">\n' + crumb('<a href="guides.html">המדריכים</a> › חגים עם צמודים')
@@ -63,17 +64,28 @@ html += csec('two', 'למי המדריך מתאים?', ul([
   '    <p class="note-small">*חלק מהכלים יתאימו גם למשפחות עם כמה ילדים קטנים שאינם צמודים.</p>\n')
 html += bio_box()
 html += faq(FAQ, 'שאלות שאולי עלו לכם')
-html += '''
+BUY_OPEN = '''
   <div class="cnext rv" id="buy">
     <h2>״חגים עם צמודים״</h2>
-    <p>מדריך דיגיטלי קצר ומעשי להיערכות לחגים עם שני ילדים קטנים.</p>
+    <p>מדריך דיגיטלי קצר ומעשי להיערכות לחגים עם שני ילדים קטנים. מתאים לראש השנה, לסוכות ולכל אירוח או נסיעה בתשרי.</p>
     <span class="cprice">36 ₪</span>
-    <p class="note-small" style="margin-top:-10px">פעמיים ח״י לשנה החדשה</p>
+    <p class="note-small" style="margin-top:-10px">פעמיים ח״י לשנה החדשה · מחיר השקה עד מוצאי שמחת תורה, 3.10</p>
     <a class="btn" href="%s">אני רוצה את המדריך</a>
     <p class="btn-note">תשלום מאובטח בכרטיס אשראי. המדריך נשלח לכתובת הדוא״ל שמסרתם.</p>
     <p class="btn-note">בלחיצה על כפתור הרכישה אתם מאשרים שקראתם והסכמתם ל<a href="terms.html">תנאי השימוש, הרכישה, האספקה והביטולים</a> ול<a href="privacy.html">מדיניות הפרטיות</a>.</p>
   </div>
 ''' % PAY['chagim']
+BUY_SOON = '''
+  <div class="cnext rv" id="buy">
+    <h2>״חגים עם צמודים״</h2>
+    <p>מדריך דיגיטלי קצר ומעשי להיערכות לחגים עם שני ילדים קטנים. מתאים לראש השנה, לסוכות ולכל אירוח או נסיעה בתשרי.</p>
+    <span class="cprice">36 ₪</span>
+    <p class="note-small" style="margin-top:-10px">פעמיים ח״י לשנה החדשה · מחיר השקה עד מוצאי שמחת תורה, 3.10</p>
+    <a class="btn green" href="%s" target="_blank" rel="noopener">רוצים תזכורת? ההצעה תיפתח קודם בקהילה</a>
+    <p class="btn-note">עד אז, <a href="taima.html">הגרסה המקוצרת</a> פתוחה לכולם.</p>
+  </div>
+''' % WA_GROUP
+html += BUY_OPEN if OFFER_OPEN else BUY_SOON
 html += readmore([
   ('chag.html', 'sun', 'ראש השנה עם צמודים: חמישה דברים שמכינים מראש', 'תוכן פתוח: חמשת הדברים ששווה לסגור עוד לפני שיוצאים מהבית.', 'לקרוא עכשיו'),
   ('tantrums.html', 'storm', 'טנטרומים והתפרצויות', 'ואם בכל זאת יהיה פיצוץ באמצע הארוחה: מה קורה לילד ומה עושים.', 'מה עושים ברגע הזה?'),

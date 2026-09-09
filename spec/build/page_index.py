@@ -40,7 +40,7 @@ cards = [
 ]
 
 html = head(TITLE, DESC, '', ld=[PERSON_LD, faq_ld(FAQ)], og_desc=OG_DESC)
-html += '\n<div class="ribbon">חגיגת השקה: הבית החדש עלה לאוויר, ולכבוד ראש השנה מחכה כאן משהו מיוחד · <a href="shana-tova.html">לעמוד החג</a></div>\n'
+html += '\n<div class="ribbon">חגיגת השקה: הבית החדש עלה לאוויר, ולכבוד החגים מחכה כאן משהו מיוחד · <a href="chagim.html">לעמוד החגים</a></div>\n'
 html += header(home=True)
 html += '''
 <div class="hero home" id="main">
