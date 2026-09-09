@@ -3,7 +3,7 @@
 import json, os, re
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-CSS_V = '22'
+CSS_V = '23'
 JS_V = '10'
 SITE = 'https://imale.co/'
 WA_GROUP = 'https://chat.whatsapp.com/Fju9PGJPgFhL8h99M1mnX0'
@@ -158,7 +158,7 @@ def footer(home=False):
       </div>
     </div>
     <div class="f-bottom">
-      <div class="f-copy">© 2026 שקמה דגרי · כל הזכויות שמורות<p class="f-credit">%s</p></div>
+      <div class="f-copy">© 2026 שקמה דגרי · כל הזכויות שמורות</div>
       <div class="f-legal">
         <a href="terms.html">תנאי השימוש, הרכישה, האספקה והביטולים</a>
         <a href="privacy.html">מדיניות הפרטיות</a>
@@ -167,7 +167,7 @@ def footer(home=False):
     </div>
   </div>
 </footer>
-''' % (HEART.replace('width="15" height="15"', 'width="19" height="19"'), c, c, WA_GROUP, icons, CREDIT_LINE)
+''' % (HEART.replace('width="15" height="15"', 'width="19" height="19"'), c, c, WA_GROUP, icons)
 
 CLICK_JS = '''
 <script>
