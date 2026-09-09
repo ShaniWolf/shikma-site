@@ -222,7 +222,7 @@ document.addEventListener('click', function(e){
       if(typeof gtag==='function'){ gtag('event','magnet_signup',{magnet:'lev',page_path:location.pathname}); }
       location.href='thanks-lev.html';
     }
-    var body='fields%5Bemail%5D='+encodeURIComponent(email)+(name?'&fields%5Bname%5D='+encodeURIComponent(name):'')+'&ml-submit=1&anticsrf=true';
+    var body='fields%5Bemail%5D='+encodeURIComponent(email)+(name?'&fields%5Bname%5D='+encodeURIComponent(name)+'&fields%5Bfirst_name%5D='+encodeURIComponent(name.split(' ')[0]):'')+'&ml-submit=1&anticsrf=true';
     fetch(EP,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(function(){ finish(); }).catch(function(){ finish(); });
     setTimeout(finish, 6000);
   });
