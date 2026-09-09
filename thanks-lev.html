@@ -67,7 +67,7 @@ gtag('config', 'G-XQ1HEQR5HK');
 
   <div class="rv" style="text-align:center;margin:26px 0">
     <div class="thanks-cover"><div class="polaroid tall r"><img src="assets/covers/lev.png" alt="" loading="lazy" width="170" height="241"></div></div>
-    <a class="btn" href="assets/lev.pdf" download="להכין את הלב - שקמה דגרי.pdf">להורדת המדריך (PDF)</a>
+    <a class="btn" href="assets/d/11103785b16fa692/lev-full.pdf" download="להכין את הלב - שקמה דגרי.pdf">להורדת המדריך (PDF)</a>
     <p class="btn-note">בימים הקרובים אשלח לכם עוד שני דברים קצרים: למה הבכור חוזר פתאום להתנהג כמו תינוק, ומה קורה בשבועות הראשונים אחרי שהתינוק כבר בבית.</p>
   </div>
 
@@ -167,7 +167,7 @@ document.addEventListener('click', function(e){
   if(!a || typeof gtag !== 'function') return;
   var h = a.href || '';
   if(h.indexOf('calendar.app.google') > -1 && typeof gtag === 'function'){ gtag('event','book_call',{page_path: location.pathname}); }
-  if(h.indexOf('lev.pdf') > -1){
+  if(h.indexOf('lev-full.pdf') > -1){
     gtag('event', 'guide_download', {guide: 'lev', page_path: location.pathname});
   } else if(h.indexOf('chat.whatsapp.com') > -1){
     gtag('event', 'join_community', {page_path: location.pathname});
