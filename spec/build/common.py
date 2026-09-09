@@ -3,7 +3,7 @@
 import json, os, re
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-CSS_V = '25'
+CSS_V = '26'
 JS_V = '10'
 SITE = 'https://imale.co/'
 WA_GROUP = 'https://chat.whatsapp.com/Fju9PGJPgFhL8h99M1mnX0'
@@ -203,6 +203,7 @@ CREDITS = {
  'pola-tantrums': ('Luiza Braun', 'Unsplash', 'https://unsplash.com/photos/qaOrl2G-T1M'),
  'pola-gvulot': ('Keira Burton', 'Pexels', 'https://www.pexels.com/photo/6624423/'),
  'pola-siblings': ('Jonathan Borba', 'Pexels', 'https://www.pexels.com/photo/19773887/'),
+ 'shk-sunset': ('שקמה דגרי', '', ''), 'shk-kitchen': ('שקמה דגרי', '', ''), 'shk-bench': ('שקמה דגרי', '', ''), 'shk-grass': ('שקמה דגרי', '', ''), 'shk-sofa': ('שקמה דגרי', '', ''),
 }
 CREDIT_LINE = 'צילומים: Helena Lopes, Vika Glitter, Keira Burton, Jonathan Borba (<a href="https://www.pexels.com/license/" target="_blank" rel="noopener">Pexels</a>) · Marisa Howenstine, Luiza Braun (<a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash</a>)'
 

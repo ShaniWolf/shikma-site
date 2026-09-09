@@ -33,10 +33,10 @@ PERSON_LD = {
 }
 
 cards = [
-  wa_card('על ״כשהבית מתפוצץ״', 'אמא לצמודים בני שלוש ושנתיים', img='assets/wa/tan-c.jpg', alt='הודעת וואטסאפ: פתאום אני ובעלי מדברים באותה שפה מול הילדים וזה הוריד המון מתח בבית, תודה'),
+  wa_card('על ״כשהבית מתפוצץ״', 'אמא לצמודים', img='assets/wa/tan-f.jpg', alt='הודעת וואטסאפ: רק רציתי להגיד שהמדריך שלך כשהבית מתפוצץ הוא פשוט גאוני. אני בדרך כלל לא קונה דברים כאלה, אבל זו ההשקעה הכי טובה שעשיתי השנה. ממליצה לכל אמא לצמודים שאני מכירה'),
   wa_card('על ״גבולות מתוך חיבור״', 'אמא לשני קטנים בהפרש שנה וחצי', img='assets/wa/gvu-e.jpg', alt='הודעת וואטסאפ: שקמה אני רוצה להגיד לך שקראתי את המדריך הזה והרגשתי כאילו ישבת בסלון שלנו וראית מה קורה כל ערב', delay='.08s'),
-  wa_card('על ״לגדול ביחד״', 'אמא לילדים צמודים', text='ישבתי לקרוא ופתאום מצאתי את עצמי אומרת: אוקיי, זה בדיוק מה שקורה אצלנו בבית. החלק על המריבות בין האחים והתגובה שלנו כהורים הרגיש כאילו צילמת אצלנו בסלון. הם עדיין רבים? כן. אבל לפחות אני כבר לא מרגישה שאני מאבדת את זה.', time='22:41', delay='.16s'),
-  wa_card('על הליווי האישי ״צמודים בדרך שלכם״', 'אמא לצמודים בפער של שנה וחמישה חודשים', text='בדרך כלל השעות האלה עם שניהם לבד הן הזמן שאני הכי חוששת ממנו, אבל פעלתי בדיוק לפי מה שדיברנו עליו. במקום צעקות היה פשוט רגוע. הם שיחקו, אני הייתי נוכחת והרגשתי שאני באמת מנהלת את האירוע ולא נגררת אחריו. הכלים שנתת לי לגבי הצמודים הם פשוט הצלת חיים.', time='18:07', delay='.24s'),
+  wa_card('על ״לגדול ביחד״', 'אמא לילדים צמודים', img='assets/wa/lig-a.jpg', alt='הודעת וואטסאפ: אני באמצע לגדול ביחד ואמרתי לעצמי שאני רוצה לכתוב לך לפני שאני ממשיכה. זה בדיוק מה שקורה אצלנו בבית. החלק על המריבות בין האחים והתגובה שלנו כהורים פשוט הרגיש כאילו צילמת אצלנו בסלון', delay='.16s'),
+  wa_card('על הליווי האישי', 'אמא לצמודים בפער של שנה וחמישה חודשים', img='assets/wa/liv-a.jpg', alt='הודעת וואטסאפ: פעלתי בדיוק לפי מה שדיברנו על חלוקת הקשב ביניהם. פתאום במקום צעקות היה פשוט רגע. הם שיחקו, אני הייתי נוכחת והרגשתי שאני באמת מנהלת את האירוע ולא נגררת אחריו. הכלים שנתת לי לגבי הצמודים הם פשוט הצלת חיים', delay='.24s'),
 ]
 
 html = head(TITLE, DESC, '', ld=[PERSON_LD, faq_ld(FAQ)], og_desc=OG_DESC)
@@ -134,6 +134,18 @@ html += '''
   </div>
 </section>
 
+<section class="tint" style="border-top:none">
+  <div class="wrap center">
+    <h2>רגע מהבית, מהאינסטגרם של שקמה</h2>
+    <p>ככה זה נראה כשאחד בלי נעליים והשני החליט שעכשיו הזמן להוריד את החיתול.</p>
+    <div class="ig-wrap">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DcysDidspyl/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:16px;box-shadow:0 10px 30px rgba(58,49,40,.08);margin:0 auto;max-width:420px;min-width:280px;padding:0;width:100%%"><a href="https://www.instagram.com/reel/DcysDidspyl/" target="_blank" rel="noopener">לצפייה בסרטון באינסטגרם</a></blockquote>
+    </div>
+    <p class="btn-note"><a href="https://www.instagram.com/shikma_dagary" target="_blank" rel="noopener">עוד רגעים כאלה אצל שקמה באינסטגרם</a></p>
+  </div>
+</section>
+<script async src="https://www.instagram.com/embed.js"></script>
+
 <section>
   <div class="wrap">
 %s  </div>
@@ -154,7 +166,7 @@ html += '''
     <p class="btn-note">ההצטרפות ללא עלות, ואפשר לבחור לאילו מהקבוצות להצטרף.</p>
   </div>
 </section>
-''' % (polaroid('pola-home', 'אמא על הספה עם תינוק על הברכיים ופעוט לצידה', cls='p1', eager=True), polaroid('pola-blocks', 'ידיים של שני פעוטות משחקות בקוביות אותיות', cls='p2', eager=True), ICON['storm'], ICON['frame'], ICON['hearts'], polaroid('pola-rug', 'פעוט ותינוק יושבים יחד על שטיח', cls='r'), carousel(cards), faq(FAQ, section=False), photo('tex-blocks', '', cls='sec-bg', sizes='100vw'), WA_GROUP)
+''' % (polaroid('shk-sunset', 'שקמה מחזיקה את יובל ותום על הידיים בפארק', cls='p1', eager=True), polaroid('shk-kitchen', 'שקמה עם שני הילדים ליד שולחן ארוחת הבוקר', cls='p2', eager=True), ICON['storm'], ICON['frame'], ICON['hearts'], polaroid('shk-bench', 'שקמה על ספסל בפארק עם שני הילדים', cls='r'), carousel(cards), faq(FAQ, section=False), photo('tex-blocks', '', cls='sec-bg', sizes='100vw'), WA_GROUP)
 
 html += footer(home=True) + CLICK_JS
 write('index.html', html)

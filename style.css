@@ -643,3 +643,4 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 .buybox .bnote{font-size:.84rem;color:var(--soft);margin:14px 0 0;line-height:1.6}
 .buybox .bnote a{color:inherit}
 @media(min-width:640px){.buybox{grid-template-columns:200px 1fr;text-align:right;padding:32px 34px}.buybox .btn{width:auto}}
+.ig-wrap{display:flex;justify-content:center;margin:18px 0 6px}

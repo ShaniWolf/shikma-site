@@ -63,6 +63,8 @@ for name in ['lev.html', 'chag.html', 'taima.html', 'privacy.html', 'terms.html'
     s = re.sub(r'<img class="cover[^"]*" src="assets/covers/[^"]+"[^>]*>', _cov, s)
     if name == 'chag.html' and 'chag-side' not in s:
         s = s.replace('  <div class="hero">\n    <h1>ראש השנה עם צמודים', '  <div class="hero">\n    <div class="chag-side rv">%s</div>\n    <h1>ראש השנה עם צמודים' % polaroid('pola-rug', 'פעוט ותינוק יושבים יחד על שטיח', cls='r'), 1)
+    if name == 'chag.html':
+        s = s.replace('pola-rug', 'shk-kitchen').replace('פעוט ותינוק יושבים יחד על שטיח', 'שקמה עם שני הילדים ליד שולחן ארוחת הבוקר')
     if name == 'accessibility.html':
         s = re.sub(r'  <p class="btn-note">צילומים באתר:.*?</p>\n', '', s, flags=re.S)
     s = re.sub(r'style\.css\?v=\d+', 'style.css?v=' + CSS_V, s)

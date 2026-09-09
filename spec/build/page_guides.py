@@ -76,7 +76,7 @@ html += '''
 
 </div>
 ''' % (
-  pola_side('pola-blocks', 'ידיים של שני פעוטות משחקות בקוביות אותיות'),
+  pola_side('shk-grass', 'יובל ותום עומדים זה מול זה על הדשא'),
   polaroid_cover('assets/covers/lev.png', 'כריכת המדריך להכין את הלב'),
   polaroid('pola-tantrums', 'אמא מחבקת שני ילדים קטנים במיטה', cls=''),
   polaroid('pola-gvulot', 'שני ילדים קטנים שוכבים על המיטה', cls='r'),
