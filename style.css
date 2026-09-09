@@ -644,3 +644,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 .buybox .bnote a{color:inherit}
 @media(min-width:640px){.buybox{grid-template-columns:200px 1fr;text-align:right;padding:32px 34px}.buybox .btn{width:auto}}
 .ig-wrap{display:flex;justify-content:center;margin:18px 0 6px}
+
+/* ── v27 (9.9): מובייל — תפריט בשורה אחת נגללת, כפתורים ברוחב מלא ── */
+@media(max-width:640px){
+  header.top{padding:10px 0}
+  header.top .wrap{flex-wrap:wrap;row-gap:4px}
+  .logo{font-size:1rem}
+  nav{flex:1 0 100%;display:flex;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:2px 0}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin:0 0 0 16px;font-size:.86rem;flex:none}
+  nav a:last-child{margin-inline-start:0}
+  .btn{display:block;width:100%;max-width:420px;margin-inline:auto;box-sizing:border-box;text-align:center;padding:14px 18px;font-size:1rem;line-height:1.35;white-space:normal}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn{width:100%;max-width:none}
+  .btn:hover{transform:none}
+  .mform button{width:100%}
+}
