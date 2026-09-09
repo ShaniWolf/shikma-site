@@ -3,7 +3,7 @@
 import json, os, re
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-CSS_V = '21'
+CSS_V = '22'
 JS_V = '10'
 SITE = 'https://imale.co/'
 WA_GROUP = 'https://chat.whatsapp.com/Fju9PGJPgFhL8h99M1mnX0'
@@ -195,28 +195,31 @@ document.addEventListener('click', function(e){
 '''
 
 CREDITS = {
- 'home-hero': ('Helena Lopes', 'Pexels', 'https://www.pexels.com/photo/27176460/'),
- 'home-band': ('Marisa Howenstine', 'Unsplash', 'https://unsplash.com/photos/Cq9slNxV8YU'),
- 'home-community': ('Jep Gambardella', 'Pexels', 'https://www.pexels.com/photo/6222761/'),
- 'tantrums': ('Luiza Braun', 'Unsplash', 'https://unsplash.com/photos/qaOrl2G-T1M'),
- 'gvulot': ('Jep Gambardella', 'Pexels', 'https://www.pexels.com/photo/6212573/'),
- 'siblings': ('Jonathan Borba', 'Pexels', 'https://www.pexels.com/photo/19773887/'),
- 'livuy': ('Helena Lopes', 'Pexels', 'https://www.pexels.com/photo/27176495/'),
- 'chagim': ('Arina Krasnikova', 'Pexels', 'https://www.pexels.com/photo/5103413/'),
- 'guides': ('Ekaterina Bolovtsova', 'Pexels', 'https://www.pexels.com/photo/4868382/'),
+ 'pola-home': ('Helena Lopes', 'Pexels', 'https://www.pexels.com/photo/27176460/'),
+ 'pola-livuy': ('Helena Lopes', 'Pexels', 'https://www.pexels.com/photo/27176495/'),
+ 'pola-blocks': ('Marisa Howenstine', 'Unsplash', 'https://unsplash.com/photos/Cq9slNxV8YU'),
+ 'tex-blocks': ('Marisa Howenstine', 'Unsplash', 'https://unsplash.com/photos/Cq9slNxV8YU'),
+ 'pola-rug': ('Vika Glitter', 'Pexels', 'https://www.pexels.com/photo/1648389/'),
+ 'pola-tantrums': ('Luiza Braun', 'Unsplash', 'https://unsplash.com/photos/qaOrl2G-T1M'),
+ 'pola-gvulot': ('Keira Burton', 'Pexels', 'https://www.pexels.com/photo/6624423/'),
+ 'pola-siblings': ('Jonathan Borba', 'Pexels', 'https://www.pexels.com/photo/19773887/'),
 }
-CREDIT_LINE = 'צילומים: Helena Lopes, Jep Gambardella, Jonathan Borba, Arina Krasnikova, Ekaterina Bolovtsova (<a href="https://www.pexels.com/license/" target="_blank" rel="noopener">Pexels</a>) · Marisa Howenstine, Luiza Braun (<a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash</a>)'
+CREDIT_LINE = 'צילומים: Helena Lopes, Vika Glitter, Keira Burton, Jonathan Borba (<a href="https://www.pexels.com/license/" target="_blank" rel="noopener">Pexels</a>) · Marisa Howenstine, Luiza Braun (<a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash</a>)'
 
-def photo(name, alt='', cls='', eager=False, pos=None):
-    """<picture> with webp/jpg at 900/1600, decorative by default, credit in data attributes."""
+def photo(name, alt='', cls='', eager=False, sizes='(max-width:760px) 170px, 230px'):
     who, src, url = CREDITS[name]
-    st = (' style="object-position:%s"' % pos) if pos else ''
-    return ('<picture class="%s" data-credit="%s / %s" data-credit-url="%s"><source type="image/webp" srcset="assets/photos/%s-900.webp 900w, assets/photos/%s-1600.webp 1600w" sizes="100vw">'
-            '<img src="assets/photos/%s-1600.jpg" srcset="assets/photos/%s-900.jpg 900w, assets/photos/%s-1600.jpg 1600w" sizes="100vw" alt="%s" title="%s / %s"%s%s></picture>'
-            ) % (cls, who, src, url, name, name, name, name, name, esc(alt), who, src, st, '' if eager else ' loading="lazy"')
+    ws = (1400,) if name.startswith('tex-') else (420, 800)
+    srcset = lambda ext: ', '.join('assets/photos/%s-%d.%s %dw' % (name, w, ext, w) for w in ws)
+    return ('<picture class="%s" data-credit="%s / %s" data-credit-url="%s"><source type="image/webp" srcset="%s" sizes="%s">'
+            '<img src="assets/photos/%s-%d.jpg" srcset="%s" sizes="%s" alt="%s" title="%s / %s"%s></picture>'
+            ) % (cls, who, src, url, srcset('webp'), sizes, name, ws[-1], srcset('jpg'), sizes, esc(alt), who, src, '' if eager else ' loading="lazy"')
 
-def photo_band(name, alt=''):
-    return '  <div class="photo-band rv">%s</div>\n' % photo(name, alt)
+def polaroid(name, alt='', cap=None, cls='', eager=False):
+    capx = ('<p class="cap">%s</p>' % cap) if cap else ''
+    return '<div class="polaroid %s">%s%s</div>' % (cls, photo(name, alt, eager=eager), capx)
+
+def pola_side(name, alt=''):
+    return '    <div class="pola-side rv">%s</div>\n' % polaroid(name, alt)
 
 def crumb(name):
     return '  <div class="crumb"><a href="index.html">בית</a> › %s</div>\n' % name

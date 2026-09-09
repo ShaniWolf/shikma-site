@@ -6,7 +6,7 @@ DESC = 'כל התכנים והמדריכים הדיגיטליים להורים �
 
 html = head(TITLE, DESC, 'guides.html', ld=[crumbs_ld(('תוכן ומדריכים', SITE + 'guides.html'))], body_class='cpage')
 html += header()
-html += '<div class="wrap" id="main">\n' + photo_band('guides', 'אמא יושבת על הספה עם שני ילדים קטנים') + crumb('תוכן ומדריכים')
+html += '<div class="wrap" id="main">\n' + crumb('תוכן ומדריכים')
 html += '''
   <div class="hero">
     <span class="kicker">כל התכנים והמדריכים במקום אחד</span>

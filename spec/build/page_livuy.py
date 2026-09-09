@@ -32,10 +32,10 @@ quotes = [
 
 html = head(TITLE, DESC, 'livuy.html', ld=[SERVICE, faq_ld(FAQ), crumbs_ld(('ליווי אישי', SITE + 'livuy.html'))], og_title=OG_T, body_class='cpage')
 html += header()
-html += '<div class="wrap" id="main">\n' + photo_band('livuy', 'אמא מחזיקה תינוק ופעוט נשען עליה') + crumb('ליווי אישי')
+html += '<div class="wrap" id="main">\n' + crumb('ליווי אישי')
 html += '''
   <div class="hero">
-    <span class="kicker">ליווי אישי להורים לילדים צמודים</span>
+''' + pola_side('pola-livuy', 'אמא מחזיקה תינוק ופעוט נשען עליה') + '''    <span class="kicker">ליווי אישי להורים לילדים צמודים</span>
     <h1>צמודים בדרך שלכם</h1>
     <p class="kicker2">לדעת מה כל ילד צריך, גם כששניהם צריכים אתכם יחד</p>
     <p class="lead" style="margin-top:18px"><b style="font-weight:500;color:var(--ink)">דמיינו את סוף היום:</b> לא הכול עבר בדיוק לפי התוכנית, אולי היו בכי או מריבה, אבל ידעתם למי לגשת, איזה גבול להציב ומה כל אחד מהילדים צריך מכם. לא הלכתם לישון בתחושה שנכשלתם או שלא נתתם מספיק. הרגשתם שהיה לכם כיוון ושאתם יודעים להוביל את הבית שלכם.</p>

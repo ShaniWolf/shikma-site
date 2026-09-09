@@ -44,14 +44,14 @@ html += '\n<div class="ribbon">חגיגת השקה: הבית החדש עלה ל�
 html += header(home=True)
 html += '''
 <div class="hero home" id="main">
-  %s
   <div class="wrap"><div class="txt">
     <span class="kicker">צמודים: ילדים בהפרש של עד שנתיים</span>
     <h1>מגדלים ילדים בהפרש קטן?<br>ההורות שלכם צריכה כלים שמתאימים לשניים</h1>
     <p class="lead">אני שקמה דגרי, מדריכת הורים לגיל הרך ואמא לצמודים בהפרש של שנה וחודש. שיטת ״הורות בדאבל״ נולדה מתוך ההבנה שמה שעובד עם ילד אחד לא תמיד עובד כשיש שני קטנטנים שצריכים אתכם באותו הרגע.</p>
     <p class="lead" style="margin-top:0">היא עוזרת להבין מה כל ילד צריך, לדעת איך להגיב וליצור בבית יותר רוגע, בהירות וביטחון.</p>
     <a class="btn" href="#guides">למצוא את הכלים שמתאימים לי</a>
-  </div></div>
+  </div>
+  <div class="pola-stack">%s%s</div></div>
 </div>
 
 <section id="guides">
@@ -154,7 +154,7 @@ html += '''
     <p class="btn-note">ההצטרפות ללא עלות, ואפשר לבחור לאילו מהקבוצות להצטרף.</p>
   </div>
 </section>
-''' % (photo('home-hero', 'אמא יושבת על הספה עם תינוק על הברכיים ופעוט לצידה', cls='hero-bg', eager=True, pos='50% 30%'), ICON['storm'], ICON['frame'], ICON['hearts'], photo('home-band', 'ידיים של שני פעוטות משחקות בקוביות אותיות על השטיח'), carousel(cards), faq(FAQ, section=False), photo('home-community', '', cls='sec-bg'), WA_GROUP)
+''' % (polaroid('pola-home', 'אמא על הספה עם תינוק על הברכיים ופעוט לצידה', cls='p1', eager=True), polaroid('pola-blocks', 'ידיים של שני פעוטות משחקות בקוביות אותיות', cls='p2', eager=True), ICON['storm'], ICON['frame'], ICON['hearts'], polaroid('pola-rug', 'פעוט ותינוק יושבים יחד על שטיח', cls='r'), carousel(cards), faq(FAQ, section=False), photo('tex-blocks', '', cls='sec-bg', sizes='100vw'), WA_GROUP)
 
 html += footer(home=True) + CLICK_JS
 write('index.html', html)

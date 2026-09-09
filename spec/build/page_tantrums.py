@@ -35,10 +35,10 @@ quotes = [
 
 html = head(TITLE, DESC, 'tantrums.html', ld=[ART, PROD, faq_ld(FAQ), crumbs_ld(('טנטרומים והתפרצויות', SITE + 'tantrums.html'))], og_title=OG_T, body_class='cpage')
 html += header()
-html += '<div class="wrap" id="main">\n' + photo_band('tantrums', 'אמא מחבקת שני ילדים קטנים על המיטה') + crumb('טנטרומים והתפרצויות')
+html += '<div class="wrap" id="main">\n' + crumb('טנטרומים והתפרצויות')
 html += '''
   <div class="hero">
-    <span class="kicker">טנטרומים והתפרצויות אצל ילדים צמודים</span>
+''' + pola_side('pola-tantrums', 'אמא מחבקת שני ילדים קטנים במיטה') + '''    <span class="kicker">טנטרומים והתפרצויות אצל ילדים צמודים</span>
     <h1>כשהוא מתפרץ והשני נסחף: איך עוזרים לשניהם?</h1>
     <p class="lead">הגיע הזמן ללכת מהגינה. ילד אחד נשכב על הרצפה וצורח, ובדיוק אז גם אחיו מתחיל לבכות ורוצה על הידיים. ברגע אחד אתם צריכים לשמור על הגבול, לעזור לילד שמתפרץ ולא להשאיר את אחיו בלי מענה.</p>
     <p class="lead">כדי לדעת איך להגיב ברגע הזה, צריך קודם להבין מה קורה לילד ומה הופך את ההתפרצות למורכבת עוד יותר כשיש שני ילדים קטנים.</p>
