@@ -19,7 +19,7 @@ PROD = {"@context": "https://schema.org", "@type": "Product", "name": "חגים 
         "image": SITE + "assets/covers/chagim.png",
         "offers": {"@type": "Offer", "price": "36", "priceCurrency": "ILS", "availability": "https://schema.org/InStock", "url": SITE + "chagim.html#buy"}}
 
-OFFER_OPEN = False  # flip to True on launch day: pay button replaces the reminder
+OFFER_OPEN = True  # flip to True on launch day: pay button replaces the reminder
 html = head(TITLE, DESC, 'chagim.html', ld=[PROD, faq_ld(FAQ), crumbs_ld(('המדריכים', SITE + 'guides.html'), ('חגים עם צמודים', SITE + 'chagim.html'))], og_title=OG_T, body_class='cpage')
 html += header()
 html += '<div class="wrap" id="main">\n' + crumb('<a href="guides.html">המדריכים</a> › חגים עם צמודים')
@@ -65,26 +65,30 @@ html += csec('two', 'למי המדריך מתאים?', ul([
 html += bio_box()
 html += faq(FAQ, 'שאלות שאולי עלו לכם')
 BUY_OPEN = '''
-  <div class="cnext rv" id="buy">
-    <h2>״חגים עם צמודים״</h2>
-    <p>מדריך דיגיטלי קצר ומעשי להיערכות לחגים עם שני ילדים קטנים. מתאים לראש השנה, לסוכות ולכל אירוח או נסיעה בתשרי.</p>
-    <span class="cprice">36 ₪</span>
-    <p class="note-small" style="margin-top:-10px">פעמיים ח״י לשנה החדשה · מחיר השקה עד מוצאי שמחת תורה, 3.10</p>
-    <a class="btn" href="%s">אני רוצה את המדריך</a>
-    <p class="btn-note">תשלום מאובטח בכרטיס אשראי. המדריך נשלח לכתובת הדוא״ל שמסרתם.</p>
-    <p class="btn-note">בלחיצה על כפתור הרכישה אתם מאשרים שקראתם והסכמתם ל<a href="terms.html">תנאי השימוש, הרכישה, האספקה והביטולים</a> ול<a href="privacy.html">מדיניות הפרטיות</a>.</p>
+  <div class="buybox rv" id="buy">
+    <div class="bcv">%s</div>
+    <div class="btx">
+      <h2>״חגים עם צמודים״</h2>
+      <p class="bsub">מדריך קצר ומעשי לחגים עם שני ילדים קטנים. נקרא תוך שעה, נשלח למייל מיד אחרי התשלום.</p>
+      <div class="bprice">36 ₪</div>
+      <p class="bwas">מחיר השקה, פעמיים ח״י, עד מוצאי שמחת תורה (3.10)</p>
+      <a class="btn" href="%s">אני רוצה את המדריך</a>
+      <p class="bnote">תשלום מאובטח בכרטיס אשראי · הרכישה כפופה ל<a href="terms.html">תנאי השימוש והרכישה</a></p>
+    </div>
   </div>
-''' % PAY['chagim']
+''' % (polaroid_cover('assets/covers/chagim.png', 'כריכת המדריך חגים עם צמודים', cls='', width=170), PAY['chagim'])
 BUY_SOON = '''
-  <div class="cnext rv" id="buy">
-    <h2>״חגים עם צמודים״</h2>
-    <p>מדריך דיגיטלי קצר ומעשי להיערכות לחגים עם שני ילדים קטנים. מתאים לראש השנה, לסוכות ולכל אירוח או נסיעה בתשרי.</p>
-    <span class="cprice">36 ₪</span>
-    <p class="note-small" style="margin-top:-10px">פעמיים ח״י לשנה החדשה · מחיר השקה עד מוצאי שמחת תורה, 3.10</p>
-    <a class="btn green" href="%s" target="_blank" rel="noopener">רוצים תזכורת? ההצעה תיפתח קודם בקהילה</a>
-    <p class="btn-note">עד אז, <a href="taima.html">הגרסה המקוצרת</a> פתוחה לכולם.</p>
+  <div class="buybox rv" id="buy">
+    <div class="bcv">%s</div>
+    <div class="btx">
+      <h2>״חגים עם צמודים״</h2>
+      <p class="bsub">מדריך קצר ומעשי לחגים עם שני ילדים קטנים. נקרא תוך שעה.</p>
+      <div class="bprice">36 ₪</div>
+      <p class="bwas">מחיר השקה, פעמיים ח״י, עד מוצאי שמחת תורה (3.10)</p>
+      <a class="btn green" href="%s" target="_blank" rel="noopener">ההצעה נפתחת קודם בקהילה</a>
+    </div>
   </div>
-''' % WA_GROUP
+''' % (polaroid_cover('assets/covers/chagim.png', 'כריכת המדריך חגים עם צמודים', cls='', width=170), WA_GROUP)
 html += BUY_OPEN if OFFER_OPEN else BUY_SOON
 html += readmore([
   ('chag.html', 'sun', 'ראש השנה עם צמודים: חמישה דברים שמכינים מראש', 'תוכן פתוח: חמשת הדברים ששווה לסגור עוד לפני שיוצאים מהבית.', 'לקרוא עכשיו'),
