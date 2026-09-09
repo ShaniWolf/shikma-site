@@ -32,7 +32,7 @@ quotes = [
 
 html = head(TITLE, DESC, 'livuy.html', ld=[SERVICE, faq_ld(FAQ), crumbs_ld(('ליווי אישי', SITE + 'livuy.html'))], og_title=OG_T, body_class='cpage')
 html += header()
-html += '<div class="wrap" id="main">\n' + crumb('ליווי אישי')
+html += '<div class="wrap" id="main">\n' + photo_band('livuy', 'אמא מחזיקה תינוק ופעוט נשען עליה') + crumb('ליווי אישי')
 html += '''
   <div class="hero">
     <span class="kicker">ליווי אישי להורים לילדים צמודים</span>

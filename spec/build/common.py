@@ -3,7 +3,7 @@
 import json, os, re
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-CSS_V = '20'
+CSS_V = '21'
 JS_V = '10'
 SITE = 'https://imale.co/'
 WA_GROUP = 'https://chat.whatsapp.com/Fju9PGJPgFhL8h99M1mnX0'
@@ -158,7 +158,7 @@ def footer(home=False):
       </div>
     </div>
     <div class="f-bottom">
-      <div class="f-copy">© 2026 שקמה דגרי · כל הזכויות שמורות</div>
+      <div class="f-copy">© 2026 שקמה דגרי · כל הזכויות שמורות<p class="f-credit">%s</p></div>
       <div class="f-legal">
         <a href="terms.html">תנאי השימוש, הרכישה, האספקה והביטולים</a>
         <a href="privacy.html">מדיניות הפרטיות</a>
@@ -167,7 +167,7 @@ def footer(home=False):
     </div>
   </div>
 </footer>
-''' % (HEART.replace('width="15" height="15"', 'width="19" height="19"'), c, c, WA_GROUP, icons)
+''' % (HEART.replace('width="15" height="15"', 'width="19" height="19"'), c, c, WA_GROUP, icons, CREDIT_LINE)
 
 CLICK_JS = '''
 <script>
@@ -193,6 +193,30 @@ document.addEventListener('click', function(e){
 </body>
 </html>
 '''
+
+CREDITS = {
+ 'home-hero': ('Helena Lopes', 'Pexels', 'https://www.pexels.com/photo/27176460/'),
+ 'home-band': ('Marisa Howenstine', 'Unsplash', 'https://unsplash.com/photos/Cq9slNxV8YU'),
+ 'home-community': ('Jep Gambardella', 'Pexels', 'https://www.pexels.com/photo/6222761/'),
+ 'tantrums': ('Luiza Braun', 'Unsplash', 'https://unsplash.com/photos/qaOrl2G-T1M'),
+ 'gvulot': ('Jep Gambardella', 'Pexels', 'https://www.pexels.com/photo/6212573/'),
+ 'siblings': ('Jonathan Borba', 'Pexels', 'https://www.pexels.com/photo/19773887/'),
+ 'livuy': ('Helena Lopes', 'Pexels', 'https://www.pexels.com/photo/27176495/'),
+ 'chagim': ('Arina Krasnikova', 'Pexels', 'https://www.pexels.com/photo/5103413/'),
+ 'guides': ('Ekaterina Bolovtsova', 'Pexels', 'https://www.pexels.com/photo/4868382/'),
+}
+CREDIT_LINE = 'צילומים: Helena Lopes, Jep Gambardella, Jonathan Borba, Arina Krasnikova, Ekaterina Bolovtsova (<a href="https://www.pexels.com/license/" target="_blank" rel="noopener">Pexels</a>) · Marisa Howenstine, Luiza Braun (<a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash</a>)'
+
+def photo(name, alt='', cls='', eager=False, pos=None):
+    """<picture> with webp/jpg at 900/1600, decorative by default, credit in data attributes."""
+    who, src, url = CREDITS[name]
+    st = (' style="object-position:%s"' % pos) if pos else ''
+    return ('<picture class="%s" data-credit="%s / %s" data-credit-url="%s"><source type="image/webp" srcset="assets/photos/%s-900.webp 900w, assets/photos/%s-1600.webp 1600w" sizes="100vw">'
+            '<img src="assets/photos/%s-1600.jpg" srcset="assets/photos/%s-900.jpg 900w, assets/photos/%s-1600.jpg 1600w" sizes="100vw" alt="%s" title="%s / %s"%s%s></picture>'
+            ) % (cls, who, src, url, name, name, name, name, name, esc(alt), who, src, st, '' if eager else ' loading="lazy"')
+
+def photo_band(name, alt=''):
+    return '  <div class="photo-band rv">%s</div>\n' % photo(name, alt)
 
 def crumb(name):
     return '  <div class="crumb"><a href="index.html">בית</a> › %s</div>\n' % name

@@ -36,7 +36,7 @@ quotes = [
 
 html = head(TITLE, DESC, 'siblings.html', ld=[ART, PROD, faq_ld(FAQ), crumbs_ld(('אח חדש ויחסים בין האחים', SITE + 'siblings.html'))], og_title=OG_T, body_class='cpage')
 html += header()
-html += '<div class="wrap" id="main">\n' + crumb('אח חדש ויחסים בין האחים')
+html += '<div class="wrap" id="main">\n' + photo_band('siblings', 'פעוט שותה מבקבוק לצד אחותו התינוקת במיטה') + crumb('אח חדש ויחסים בין האחים')
 html += '''
   <div class="hero">
     <span class="kicker">אח חדש ויחסים בין אחים צמודים</span>

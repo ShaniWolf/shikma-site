@@ -38,7 +38,7 @@ quotes = [
 
 html = head(TITLE, DESC, 'gvulot.html', ld=[ART, PROD, faq_ld(FAQ), crumbs_ld(('גבולות ושיתוף פעולה', SITE + 'gvulot.html'))], og_title=OG_T, body_class='cpage')
 html += header()
-html += '<div class="wrap" id="main">\n' + crumb('גבולות ושיתוף פעולה')
+html += '<div class="wrap" id="main">\n' + photo_band('gvulot', 'שני ילדים קטנים בארוחת בוקר במטבח, אמא מולם') + crumb('גבולות ושיתוף פעולה')
 html += '''
   <div class="hero">
     <span class="kicker">גבולות ושיתוף פעולה עם ילדים צמודים</span>

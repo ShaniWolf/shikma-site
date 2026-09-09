@@ -43,14 +43,15 @@ html = head(TITLE, DESC, '', ld=[PERSON_LD, faq_ld(FAQ)], og_desc=OG_DESC)
 html += '\n<div class="ribbon">חגיגת השקה: הבית החדש עלה לאוויר, ולכבוד ראש השנה מחכה כאן משהו מיוחד · <a href="shana-tova.html">לעמוד החג</a></div>\n'
 html += header(home=True)
 html += '''
-<div class="hero" id="main">
-  <div class="wrap">
+<div class="hero home" id="main">
+  %s
+  <div class="wrap"><div class="txt">
     <span class="kicker">צמודים: ילדים בהפרש של עד שנתיים</span>
     <h1>מגדלים ילדים בהפרש קטן?<br>ההורות שלכם צריכה כלים שמתאימים לשניים</h1>
     <p class="lead">אני שקמה דגרי, מדריכת הורים לגיל הרך ואמא לצמודים בהפרש של שנה וחודש. שיטת ״הורות בדאבל״ נולדה מתוך ההבנה שמה שעובד עם ילד אחד לא תמיד עובד כשיש שני קטנטנים שצריכים אתכם באותו הרגע.</p>
     <p class="lead" style="margin-top:0">היא עוזרת להבין מה כל ילד צריך, לדעת איך להגיב וליצור בבית יותר רוגע, בהירות וביטחון.</p>
     <a class="btn" href="#guides">למצוא את הכלים שמתאימים לי</a>
-  </div>
+  </div></div>
 </div>
 
 <section id="guides">
@@ -77,10 +78,13 @@ html += '''
         <span class="go">לכלים מההיריון ועד יחסי האחים</span>
       </a>
     </div>
-    <div class="band rv">
-      <h3>מה משותף לכל הרגעים האלה?</h3>
-      <p>כשיש שני ילדים קטנים בבית, לא מספיק לדעת איך להגיב לכל התנהגות בנפרד. צריך להבין מה כל ילד מנסה להגיד, מה שניהם צריכים עכשיו ואיך להוביל את הרגע בלי להתפצל לשניים.</p>
-      <span class="sig">זו ״הורות בדאבל״.</span>
+    <div class="band photo rv">
+      <div class="bimg">%s</div>
+      <div class="btx">
+        <h3>מה משותף לכל הרגעים האלה?</h3>
+        <p>כשיש שני ילדים קטנים בבית, לא מספיק לדעת איך להגיב לכל התנהגות בנפרד. צריך להבין מה כל ילד מנסה להגיד, מה שניהם צריכים עכשיו ואיך להוביל את הרגע בלי להתפצל לשניים.</p>
+        <span class="sig">זו ״הורות בדאבל״.</span>
+      </div>
     </div>
   </div>
 </section>
@@ -135,7 +139,8 @@ html += '''
 %s  </div>
 </section>
 
-<section id="community" class="tintg">
+<section id="community" class="tintg photo-sec">
+  %s
   <div class="wrap center">
     <h2>יותר מ־300 הורים לצמודים כבר בקהילה</h2>
     <p>״אמאל׳ה צמודים״ היא קהילת וואטסאפ להורים שמגדלים ילדים בהפרש קטן. זה המקום לקבל כלים, לשאול, לשתף ולהכיר הורים שמבינים את המציאות הזאת מקרוב.</p>
@@ -149,7 +154,7 @@ html += '''
     <p class="btn-note">ההצטרפות ללא עלות, ואפשר לבחור לאילו מהקבוצות להצטרף.</p>
   </div>
 </section>
-''' % (ICON['storm'], ICON['frame'], ICON['hearts'], carousel(cards), faq(FAQ, section=False), WA_GROUP)
+''' % (photo('home-hero', 'אמא יושבת על הספה עם תינוק על הברכיים ופעוט לצידה', cls='hero-bg', eager=True, pos='50% 30%'), ICON['storm'], ICON['frame'], ICON['hearts'], photo('home-band', 'ידיים של שני פעוטות משחקות בקוביות אותיות על השטיח'), carousel(cards), faq(FAQ, section=False), photo('home-community', '', cls='sec-bg'), WA_GROUP)
 
 html += footer(home=True) + CLICK_JS
 write('index.html', html)
