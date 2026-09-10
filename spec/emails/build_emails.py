@@ -5,6 +5,12 @@ import os, html
 OUT = os.path.join(os.path.dirname(__file__), 'out')
 SITE = 'https://imale.co/'
 WA = 'https://chat.whatsapp.com/Fju9PGJPgFhL8h99M1mnX0'
+# לינקי ישראכרט במחיר מיוחד — בלעדיים לרצף המגנט, 25% הנחה
+PAY = {
+    'together': 'https://pay360.isracard.co.il/CustomerPayment/GenericURL?SaleId=62ef1b83-e368-5b88-b53e-1291e898b397',
+    'tantrums': 'https://pay360.isracard.co.il/CustomerPayment/GenericURL?SaleId=8d81d195-b504-5912-c2a1-670ddd72b691',
+    'gvulot':   'https://pay360.isracard.co.il/CustomerPayment/GenericURL?SaleId=e5f3f856-4218-8baa-2439-e0daf00ffdee',
+}
 
 def btn(text, href, color='#B4694E'):
     return ('<table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin:22px auto 6px">'
@@ -166,7 +172,10 @@ body = (kicker('יום 9') + h1('הרגע שבו יובל שאל אם תום ח�
     polaroid(SITE+'assets/photos/shk-sofa-420.jpg', 'שקמה על הספה בסלון עם יובל ותום', 190) +
     para(HI + '<br>כמה שבועות אחרי שתום נולד, יובל שאל אותי בקול הכי רגיל בעולם אם התינוק חוזר עכשיו לבית חולים. בלי כעס. בסקרנות. ובאותו רגע הבנתי שכל ההכנה שעשינו לפני הלידה הייתה רק ההתחלה, והעבודה האמיתית מתחילה בשגרה: מי מקבל אותי כשאני חוזרת הביתה, מי יושב עליי בסיפור, מה קורה כששניהם בוכים ואני לבד.') +
     para('מהרגע הזה נולד ״לגדול ביחד״. הוא לא מבטיח שלא תהיה קנאה. הוא נותן לכם דרך להגיב אליה כך ששני הילדים ירגישו שרואים אותם, גם כשיש רק זוג ידיים אחד.') +
-    btn('לפרטים על ״לגדול ביחד״', SITE+'siblings.html#guide') +
+    divider() +
+    para('למי שקורא את הסדרה הזאת שמרתי 25% הנחה על המדריך. הקישור למטה מוביל למחיר הזה, והוא לא מופיע באתר.') +
+    btn('לקבל את ״לגדול ביחד״ ב-25% הנחה', PAY['together']) +
+    small('רוצים קודם לראות מה יש בפנים? <a href="%ssiblings.html#guide" style="color:#B4694E">כל הפרקים כאן</a>.' % SITE) +
     para('ואם יש שאלה על מה שקורה אצלכם בבית, אפשר להשיב למייל הזה. אני קוראת הכל.') + sig())
 EMAILS['drip-4'] = ('הרגע שבו יובל שאל אם תום חוזר לבית חולים', shell('הרגע שבו יובל שאל אם תום חוזר לבית חולים', body, 'סיפור מהבית שלי, ומה נולד ממנו'))
 
