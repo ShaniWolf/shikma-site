@@ -7,7 +7,6 @@ from build_emails import shell, h1, kicker, para, small, ul, btn, sig, divider, 
 import build_emails
 UTM = '?utm_source=mailerlite&utm_medium=email&utm_campaign=shana-tova-5787'
 SITE = build_emails.SITE
-build_emails.SITE = SITE + UTM  # header logo + footer links in the shell
 
 
 SUBJECT = 'זוכרים את ״להכין את הלב״? שנה טובה, ומה קרה כאן מאז'
@@ -44,6 +43,8 @@ body = ''.join([
 if __name__ == '__main__':
     os.makedirs(OUT, exist_ok=True)
     html_out = shell(SUBJECT, body, PREHEADER)
+    # UTM on the shell's header/footer site links (hrefs only; the logo img src stays clean)
+    html_out = html_out.replace('href="%s"' % SITE, 'href="%s%s"' % (SITE, UTM))
     open(os.path.join(OUT, 'shana-tova.html'), 'w', encoding='utf-8').write(html_out)
     open(os.path.join(OUT, 'shana-tova.subject.txt'), 'w', encoding='utf-8').write(SUBJECT + '\n' + PREHEADER + '\n')
     print('built', len(html_out), 'bytes')
