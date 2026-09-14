@@ -165,12 +165,20 @@ document.documentElement.classList.add('js');
   }
 
   /* בועה קטנה וקבועה בפינה: תמיד זמינה, בלי לקפוץ על המבקר. לחיצה פותחת את אותו חלון. */
-  var bub = document.createElement('button');
-  bub.type = 'button'; bub.className = 'kbub';
-  bub.innerHTML = '<img src="assets/shikma.jpg" alt="" width="40" height="40"><span>' + o.h + '</span>';
-  bub.setAttribute('aria-label', o.h);
-  bub.addEventListener('click', function(){ ga('bubble_click'); open('bubble'); });
-  setTimeout(function(){ document.body.appendChild(bub); requestAnimationFrame(function(){ requestAnimationFrame(function(){ bub.classList.add('show'); }); }); }, 6000);
+  var BKEY = 'bub-' + id, bubOK = true;
+  try{ if(Date.now() - (+localStorage.getItem(BKEY) || 0) < 3*864e5) bubOK = false; }catch(e){}
+  if(bubOK){
+    var bub = document.createElement('div');
+    bub.className = 'kbub';
+    bub.innerHTML = '<button type="button" class="kbub-open"><img src="assets/shikma.jpg" alt="" width="40" height="40"><span>' + o.h + '</span></button>' +
+      '<button type="button" class="kbub-x" aria-label="סגירה">×</button>';
+    bub.querySelector('.kbub-open').addEventListener('click', function(){ ga('bubble_click'); open('bubble'); });
+    bub.querySelector('.kbub-x').addEventListener('click', function(){
+      try{ localStorage.setItem(BKEY, String(Date.now())); }catch(e){}
+      ga('bubble_close'); bub.classList.remove('show'); setTimeout(function(){ bub.remove(); }, 400);
+    });
+    setTimeout(function(){ document.body.appendChild(bub); requestAnimationFrame(function(){ requestAnimationFrame(function(){ bub.classList.add('show'); }); }); }, 6000);
+  }
   if(!autoOK) return;
   var t0 = Date.now(), DWELL = 30000;
   function ready(){ return Date.now() - t0 >= DWELL; }

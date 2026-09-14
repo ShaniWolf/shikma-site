@@ -703,11 +703,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 .kpop-offer{margin:0 0 14px;font-size:.92rem;color:var(--soft);line-height:1.6}
 @media (max-width:560px){.kpop-body{text-align:right}.kpop-who{justify-content:flex-start}}
 /* בועת שקמה בפינה */
-.kbub{position:fixed;bottom:18px;left:18px;z-index:40;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 36px);padding:6px 16px 6px 6px;border:1px solid var(--line);border-radius:99px;background:var(--card);box-shadow:0 10px 28px rgba(58,49,40,.18);font:inherit;font-size:.9rem;color:var(--ink);cursor:pointer;opacity:0;transform:translateY(14px);transition:opacity .35s,transform .35s}
+.kbub{position:fixed;bottom:18px;left:18px;z-index:40;display:flex;align-items:center;max-width:calc(100vw - 36px);border:1px solid var(--line);border-radius:99px;background:var(--card);box-shadow:0 10px 28px rgba(58,49,40,.18);opacity:0;transform:translateY(14px);transition:opacity .35s,transform .35s}
 .kbub.show{opacity:1;transform:none}
 .kbub:hover{border-color:var(--warm)}
-.kbub img{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none}
-.kbub span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kbub-open{display:flex;align-items:center;gap:10px;min-width:0;padding:6px 6px 6px 4px;padding-inline-start:6px;border:none;background:none;font:inherit;font-size:.9rem;color:var(--ink);cursor:pointer}
+.kbub-open img{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none}
+.kbub-open span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kbub-x{flex:none;width:30px;height:30px;margin-inline-end:6px;border:none;border-radius:50%;background:none;font-size:1.2rem;line-height:1;color:var(--soft);cursor:pointer}
+.kbub-x:hover{background:var(--warm-soft);color:var(--warm-deep)}
 .cookiebar.show ~ .kbub{bottom:84px}
 @media (max-width:560px){.cookiebar.show ~ .kbub{bottom:112px}}
 @media (max-width:560px){.kbub{bottom:12px;left:12px;font-size:.85rem}}
