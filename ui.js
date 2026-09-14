@@ -76,3 +76,90 @@ document.documentElement.classList.add('js');
     if(!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) restart();
   });
 })();
+
+/* חלון קופץ עונתי: דף ההיערכות ליום כיפור. נכבה מעצמו אחרי החג.
+   נפתח אחרי גלילה של 45% או 25 שניות בעמוד, או בכוונת יציאה במחשב. פעם ב-3 ימים לכל מבקר. */
+(function(){
+  var END = new Date('2026-09-21T20:00:00+03:00');
+  var EP = 'https://assets.mailerlite.com/jsonp/2618157/forms/198613248576062729/subscribe';
+  var KEY = 'kp-pop';
+  if(new Date() > END) return;
+  var p = location.pathname;
+  if(/kippur|thanks|privacy|terms|accessibility|404|lev\.html/.test(p)) return;
+  try{
+    var last = +localStorage.getItem(KEY) || 0;
+    if(Date.now() - last < 3*864e5) return;
+  }catch(e){}
+  var shown = false;
+  function ga(n, x){ if(typeof gtag === 'function') gtag('event', n, Object.assign({popup:'kippur', page_path:p}, x||{})); }
+  function mark(){ try{ localStorage.setItem(KEY, String(Date.now())); }catch(e){} }
+
+  function open(trigger){
+    if(shown) return; shown = true; mark();
+    var w = document.createElement('div');
+    w.className = 'kpop';
+    w.innerHTML =
+      '<div class="kpop-bg" data-close></div>' +
+      '<div class="kpop-card" role="dialog" aria-modal="true" aria-labelledby="kpop-h">' +
+        '<button type="button" class="kpop-x" data-close aria-label="סגירה">×</button>' +
+        '<div class="kpop-cover"><img src="assets/covers/kippur.png" alt="" width="120" height="170"></div>' +
+        '<div class="kpop-body">' +
+          '<p class="kpop-eyeb">דף היערכות קצר להורים לצמודים</p>' +
+          '<h2 id="kpop-h">מי עושה מה ביום כיפור?</h2>' +
+          '<p>חמש דקות של תיאום מראש יכולות למנוע את הרגע שבו שניכם כבר עייפים, שני הילדים צריכים אתכם ואף אחד לא יודע מה עושים עכשיו.</p>' +
+          '<form class="kpop-form" novalidate>' +
+            '<label class="sr" for="kpop-email">כתובת מייל</label>' +
+            '<input type="email" id="kpop-email" autocomplete="email" required placeholder="כתובת מייל">' +
+            '<button type="submit">שלחו לי את הדף</button>' +
+            '<p class="kpop-err" role="alert"></p>' +
+            '<p class="kpop-note">הדף מגיע מיד. אפשר להסיר את הכתובת בכל רגע. <a href="privacy.html">פרטיות</a></p>' +
+          '</form>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(w);
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ w.classList.add('show'); }); });
+    ga('popup_view', {trigger: trigger});
+    var prevFocus = document.activeElement;
+    var input = w.querySelector('input');
+    setTimeout(function(){ if(window.innerWidth >= 640) input.focus(); }, 350);
+
+    function close(){
+      w.classList.remove('show'); ga('popup_close');
+      document.removeEventListener('keydown', onKey);
+      setTimeout(function(){ w.remove(); if(prevFocus && prevFocus.focus) prevFocus.focus(); }, 300);
+    }
+    function onKey(e){ if(e.key === 'Escape') close(); }
+    document.addEventListener('keydown', onKey);
+    w.querySelectorAll('[data-close]').forEach(function(el){ el.addEventListener('click', close); });
+
+    var f = w.querySelector('form'), btn = f.querySelector('button'), err = f.querySelector('.kpop-err');
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = input.value.trim();
+      if(!email || email.indexOf('@') < 1 || email.indexOf('.') < 0){ err.textContent = 'צריך כתובת מייל תקינה כדי לשלוח את הדף'; return; }
+      err.textContent = ''; btn.disabled = true; btn.textContent = 'רגע, שולחת...';
+      var done = false;
+      function finish(){
+        if(done) return; done = true;
+        try{ localStorage.setItem(KEY, String(Date.now() + 30*864e5)); }catch(e){}
+        ga('magnet_signup', {magnet:'kippur'});
+        location.href = 'thanks-kippur.html';
+      }
+      fetch(EP, {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body:'fields%5Bemail%5D=' + encodeURIComponent(email) + '&ml-submit=1&anticsrf=true'}).then(finish).catch(finish);
+      setTimeout(finish, 6000);
+    });
+  }
+
+  var timer = setTimeout(function(){ open('time'); }, 25000);
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if(h > 0 && window.scrollY / h > .45){ window.removeEventListener('scroll', onScroll); clearTimeout(timer); open('scroll'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  if(window.matchMedia && window.matchMedia('(pointer:fine)').matches){
+    document.addEventListener('mouseout', function(e){
+      if(!e.relatedTarget && e.clientY < 8){ clearTimeout(timer); open('exit'); }
+    });
+  }
+})();
