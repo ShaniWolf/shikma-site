@@ -692,3 +692,5 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
   .kpop-body{text-align:center}
 }
 @media (prefers-reduced-motion:reduce){.kpop-bg,.kpop-card{transition:none}}
+.kpop-cta{display:block;text-align:center;margin-top:4px;font-weight:500;font-size:1rem;padding:13px 18px;border-radius:99px;background:var(--warm);color:#fff;text-decoration:none}
+.kpop-cta:hover{background:var(--warm-deep)}
