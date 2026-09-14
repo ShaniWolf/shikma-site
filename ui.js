@@ -107,12 +107,13 @@ document.documentElement.classList.add('js');
   var o = OFFERS[id];
   if(o.skip.test(P)) return;
   var KEY = 'pop-' + id;
-  try{ if(Date.now() - (+localStorage.getItem(KEY) || 0) < 3*864e5) return; }catch(e){}
-  var shown = false;
+  var autoOK = true;
+  try{ if(Date.now() - (+localStorage.getItem(KEY) || 0) < 3*864e5) autoOK = false; }catch(e){}
+  var shown = false, isOpen = false;
   function ga(n, x){ if(typeof gtag === 'function') gtag('event', n, Object.assign({popup:id, page_path:P}, x||{})); }
 
   function open(trigger){
-    if(shown) return; shown = true;
+    if(isOpen || (shown && trigger !== 'bubble')) return; shown = true; isOpen = true;
     try{ localStorage.setItem(KEY, String(Date.now())); }catch(e){}
     var w = document.createElement('div');
     w.className = 'kpop';
@@ -132,7 +133,7 @@ document.documentElement.classList.add('js');
     ga('popup_view', {trigger: trigger});
     var prevFocus = document.activeElement;
     function close(){
-      w.classList.remove('show'); ga('popup_close');
+      w.classList.remove('show'); ga('popup_close'); isOpen = false;
       document.removeEventListener('keydown', onKey);
       setTimeout(function(){ w.remove(); if(prevFocus && prevFocus.focus) prevFocus.focus(); }, 300);
     }
@@ -163,6 +164,14 @@ document.documentElement.classList.add('js');
     });
   }
 
+  /* בועה קטנה וקבועה בפינה: תמיד זמינה, בלי לקפוץ על המבקר. לחיצה פותחת את אותו חלון. */
+  var bub = document.createElement('button');
+  bub.type = 'button'; bub.className = 'kbub';
+  bub.innerHTML = '<img src="assets/shikma.jpg" alt="" width="40" height="40"><span>' + o.h + '</span>';
+  bub.setAttribute('aria-label', o.h);
+  bub.addEventListener('click', function(){ ga('bubble_click'); open('bubble'); });
+  setTimeout(function(){ document.body.appendChild(bub); requestAnimationFrame(function(){ requestAnimationFrame(function(){ bub.classList.add('show'); }); }); }, 6000);
+  if(!autoOK) return;
   var t0 = Date.now(), DWELL = 30000;
   function ready(){ return Date.now() - t0 >= DWELL; }
   var timer = setTimeout(function(){ open('time'); }, 50000);

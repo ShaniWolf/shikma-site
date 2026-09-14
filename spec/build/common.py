@@ -3,8 +3,8 @@
 import json, os, re
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-CSS_V = '30'
-JS_V = '13'
+CSS_V = '31'
+JS_V = '14'
 SITE = 'https://imale.co/'
 WA_GROUP = 'https://chat.whatsapp.com/Fju9PGJPgFhL8h99M1mnX0'
 CAL = 'https://calendar.app.google/Rqgzmeg3HPCNJg4cA'
