@@ -79,20 +79,24 @@ document.documentElement.classList.add('js');
 
 /* חלונות קופצים לפי לוגיקה (עונה + הקשר העמוד). פעם ב-3 ימים לכל מבקר, לא מופיע על העמוד של ההצעה עצמה.
    עד מוצאי כיפור (21.9): דף ההיערכות לכיפור. עד 3.10: מדריך החגים לסוכות. אחר כך: להכין את הלב.
-   בעמודי אחים (siblings/lev) תמיד להכין את הלב. נפתח אחרי 45% גלילה, 25 שניות, או כוונת יציאה במחשב. */
+   בעמודי אחים (siblings/lev) תמיד להכין את הלב. אף פעם לא ב-30 השניות הראשונות; אחר כך 60% גלילה, 50 שניות, או כוונת יציאה במחשב.
+   הטון: טיפ של שקמה קודם, ההצעה אחריו. */
 (function(){
   var P = location.pathname, now = new Date();
   if(/thanks|privacy|terms|accessibility|404/.test(P)) return;
   var ML = 'https://assets.mailerlite.com/jsonp/2618157/forms/';
   var OFFERS = {
-    kippur: {cover:'assets/covers/kippur.png', eyeb:'דף היערכות קצר להורים לצמודים', h:'מי עושה מה ביום כיפור?',
-      p:'חמש דקות של תיאום מראש יכולות למנוע את הרגע שבו שניכם כבר עייפים, שני הילדים צריכים אתכם ואף אחד לא יודע מה עושים עכשיו.',
+    kippur: {h:'עוגן אחד לילדים ביום כיפור',
+      tip:'בחרו עוגן אחד או שניים שחשוב לכם לשמור עליהם. למשל: שנת הצהריים, ארוחה בשעה מוכרת או טקס השינה מהבית. לא חייבים לשמור על כל השגרה כדי לתת לילדים יציבות.',
+      offer:'רוצים לסגור את זה מראש יחד עם מי שאיתכם בבית? הכנתי דף היערכות קצר: מי מוביל, מי נח ומה עושים כשהם צריכים דברים שונים.',
       form:'198613248576062729', btn:'שלחו לי את הדף', thanks:'thanks-kippur.html', skip:/kippur/},
-    chagim: {cover:'assets/covers/chagim.png', eyeb:'לקראת סוכות', h:'רוצים להגיע גם לשאר החגים עם פחות אלתורים ויותר בהירות?',
-      p:'במדריך ״חגים עם צמודים״ מחכים לכם כלים נוספים לשינה, גבולות, חלוקת תפקידים והרגע שבו כל ילד צריך משהו אחר.',
+    chagim: {h:'לקראת סוכות',
+      tip:'לפעמים נכון לצאת לפני הקינוח. לפעמים אחד ההורים ירדים והשני יישאר. ולפעמים הבחירה המתאימה תהיה להגיע לזמן קצר או להתפצל.',
+      offer:'כשזה קורה, זיהיתם מה המשפחה שלכם צריכה עכשיו ובחרתם בהתאם. עוד כלים כאלה, לשינה, לגבולות ולחלוקת תפקידים, מחכים במדריך ״חגים עם צמודים״.',
       link:'chagim.html', btn:'לכל הפרטים על המדריך', skip:/chagim/},
-    lev: {cover:'assets/covers/lev.png', eyeb:'מדריך קצר · 6 כלים לימים הראשונים', h:'להכין את הלב',
-      p:'המדריך להצטרפות אח או אחות למשפחה, ולשמירה על הקשר עם מי שהיו כאן ראשונים.',
+    lev: {h:'כשמגיע אח או אחות',
+      tip:'האנרגיה שלכם משפיעה יותר מכל טכניקה, ולא צריך לעשות את זה מושלם. מה שעוזר הוא הכנה מוקדמת ותחושה שהלב פשוט גדל.',
+      offer:'הכנתי מדריך קצר שלוקח אתכם מההיריון ועד השבועות הראשונים, עם המילים שאפשר להגיד ברגעים עצמם.',
       form:'197954875365000600', btn:'שלחו לי את המדריך', thanks:'thanks-lev.html', skip:/lev\.html/}
   };
   var id;
@@ -121,8 +125,8 @@ document.documentElement.classList.add('js');
     w.innerHTML = '<div class="kpop-bg" data-close></div>' +
       '<div class="kpop-card" role="dialog" aria-modal="true" aria-labelledby="kpop-h">' +
       '<button type="button" class="kpop-x" data-close aria-label="סגירה">×</button>' +
-      '<div class="kpop-cover"><img src="' + o.cover + '" alt="" width="120" height="170"></div>' +
-      '<div class="kpop-body"><p class="kpop-eyeb">' + o.eyeb + '</p><h2 id="kpop-h">' + o.h + '</h2><p>' + o.p + '</p>' + action + '</div></div>';
+      '<div class="kpop-body"><div class="kpop-who"><img src="assets/shikma.jpg" alt="" width="52" height="52"><span><b>שקמה דגרי</b>הדרכת הורים לגיל הרך | התמחות בצמודים</span></div>' +
+      '<h2 id="kpop-h">' + o.h + '</h2><p class="kpop-tip">' + o.tip + '</p><p class="kpop-offer">' + o.offer + '</p>' + action + '</div></div>';
     document.body.appendChild(w);
     requestAnimationFrame(function(){ requestAnimationFrame(function(){ w.classList.add('show'); }); });
     ga('popup_view', {trigger: trigger});
@@ -159,13 +163,16 @@ document.documentElement.classList.add('js');
     });
   }
 
-  var timer = setTimeout(function(){ open('time'); }, 25000);
+  var t0 = Date.now(), DWELL = 30000;
+  function ready(){ return Date.now() - t0 >= DWELL; }
+  var timer = setTimeout(function(){ open('time'); }, 50000);
   function onScroll(){
+    if(!ready()) return;
     var h = document.documentElement.scrollHeight - window.innerHeight;
-    if(h > 0 && window.scrollY / h > .45){ window.removeEventListener('scroll', onScroll); clearTimeout(timer); open('scroll'); }
+    if(h > 0 && window.scrollY / h > .6){ window.removeEventListener('scroll', onScroll); clearTimeout(timer); open('scroll'); }
   }
   window.addEventListener('scroll', onScroll, {passive:true});
   if(window.matchMedia && window.matchMedia('(pointer:fine)').matches){
-    document.addEventListener('mouseout', function(e){ if(!e.relatedTarget && e.clientY < 8){ clearTimeout(timer); open('exit'); } });
+    document.addEventListener('mouseout', function(e){ if(ready() && !e.relatedTarget && e.clientY < 8){ clearTimeout(timer); open('exit'); } });
   }
 })();

@@ -694,3 +694,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 @media (prefers-reduced-motion:reduce){.kpop-bg,.kpop-card{transition:none}}
 .kpop-cta{display:block;text-align:center;margin-top:4px;font-weight:500;font-size:1rem;padding:13px 18px;border-radius:99px;background:var(--warm);color:#fff;text-decoration:none}
 .kpop-cta:hover{background:var(--warm-deep)}
+.kpop-card{max-width:500px}
+.kpop-who{display:flex;align-items:center;gap:12px;margin:0 0 14px}
+.kpop-who img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--warm-soft)}
+.kpop-who span{font-size:.8rem;color:var(--soft);line-height:1.4}
+.kpop-who b{display:block;font-family:'Varela Round',sans-serif;font-weight:400;font-size:1rem;color:var(--ink)}
+.kpop-tip{margin:0 0 12px;padding:12px 16px;background:var(--green-soft);border-radius:14px;font-size:.97rem;line-height:1.7;color:var(--ink)}
+.kpop-offer{margin:0 0 14px;font-size:.92rem;color:var(--soft);line-height:1.6}
+@media (max-width:560px){.kpop-body{text-align:right}.kpop-who{justify-content:flex-start}}
