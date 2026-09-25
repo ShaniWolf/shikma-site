@@ -276,9 +276,8 @@ def wa_card(label, cap, img=None, alt=None, text=None, time='21:14', delay=''):
     return '''      <div class="wa-card rv"%s>
         <div class="wa-head"><span class="wa-av" aria-hidden="true">%s</span><span class="wa-name"><b>%s</b></span>%s</div>
         %s
-        <div class="wa-cap">%s</div>
       </div>
-''' % (d, cap.strip()[0], cap, WA_SVG, body, cap)
+''' % (d, cap.strip()[0], cap, WA_SVG, body)
 
 def carousel(cards, label='המלצות'):
     return '''    <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="%s">
