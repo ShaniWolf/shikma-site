@@ -37,7 +37,7 @@ gtag('config', 'G-XQ1HEQR5HK');
 <link rel="canonical" href="https://imale.co/quiz.html">
 <link rel="apple-touch-icon" href="https://imale.co/assets/apple-touch-icon.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath fill=%22%23B4694E%22 d=%22M12 21c-.4 0-.8-.15-1.1-.44C6.7 16.9 3 13.6 3 9.9 3 6.9 5.3 4.6 8.2 4.6c1.5 0 2.9.66 3.8 1.72.9-1.06 2.3-1.72 3.8-1.72 2.9 0 5.2 2.3 5.2 5.3 0 3.7-3.7 7-7.9 10.66-.3.29-.7.44-1.1.44z%22/%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css?v=36">
+<link rel="stylesheet" href="style.css?v=37">
 <script defer src="ui.js?v=16"></script>
 <script type="application/ld+json">
 {
@@ -85,24 +85,7 @@ gtag('config', 'G-XQ1HEQR5HK');
     <h1>איפה הדאבל פוגש אותך?</h1>
     <p class="lead">שאלון קצר שיעזור לך לזהות מה יוצר אצלכם הכי הרבה עומס ומה יכול לעזור לך כבר עכשיו.</p>
     <p class="lead">בסיום תקבלי תוצאה אישית וכלי אחד שתוכלי לנסות בבית.</p>
-    <button type="button" class="btn" data-go="form">מתחילות בשאלון</button>
-  </div>
-  <div class="qz-step" data-step="form" hidden>
-    <h2>לפני שמתחילות, איך לפנות אלייך?</h2>
-    <form class="mform" id="mf" novalidate>
-      <label for="mf-name">שם פרטי</label>
-      <input type="text" id="mf-name" name="name" autocomplete="given-name" required placeholder="שם פרטי">
-      <label for="mf-last">שם משפחה</label>
-      <input type="text" id="mf-last" name="last_name" autocomplete="family-name" required placeholder="שם משפחה">
-      <label for="mf-email">כתובת מייל</label>
-      <input type="email" id="mf-email" name="email" autocomplete="email" required placeholder="name@example.com">
-      <label for="mf-phone">מספר טלפון (לא חובה)</label>
-      <input type="tel" id="mf-phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="050-0000000">
-      <label class="chk"><input type="checkbox" id="mf-ok" required> אני מאשרת לקבל משקמה תכנים, כלים ועדכונים במייל ובוואטסאפ. אפשר להסיר את ההרשמה בכל עת.</label>
-      <button type="submit">מתחילות בשאלון</button>
-      <p class="err" role="alert"></p>
-      <p class="consent">פרטים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
-    </form>
+    <button type="button" class="btn" data-go="q0">מתחילות בשאלון</button>
   </div>
   <div class="qz-step" data-step="q0" hidden>
     <p class="qz-prog">שאלה 1 מתוך 8</p>
@@ -182,18 +165,20 @@ gtag('config', 'G-XQ1HEQR5HK');
     <h2>הכי קשה לך כששניהם צריכים אותך יחד</h2>
     <p>אחד בוכה, השני מושך אותך אליו, ואת צריכה להחליט למי לגשת קודם כשברור לך ששניהם באמת צריכים אותך.</p>
     <p>ברגעים האלה קל להגיב למי שבוכה חזק יותר, לנסות לעשות הכול יחד או להרגיש אשמה על הילד שנאלץ לחכות.</p>
-    <h3>מה יכול לעזור לך כבר עכשיו?</h3>
-    <ul class="check">
-      <li>בדקי אם אחד מהם נמצא בסכנה או זקוק לעזרה מיד.</li>
-      <li>גשי קודם לילד עם הצורך שלא יכול לחכות.</li>
-      <li>אמרי לילד שמחכה: "אני רואה שגם אתה צריך אותי. קודם אני עוזרת לאחיך ואז אני באה אליך".</li>
-      <li>חזרי אליו כפי שהבטחת: "חיכית לי. עכשיו אני איתך".</li>
-    </ul>
-    <div class="guide-intro" style="margin-top:22px">
-      <p>הבחירה למי לגשת קודם היא רק חלק מהתמונה.</p>
-      <p>מדריך "הורות בדאבל" יעזור לך  להבין מה כל ילד צריך באמת ולדעת איך להגיב ברגעים האמיתיים של החיים עם שני קטנטנים - עם יותר בהירות ופחות צעקות, ניחושים ואשמה.</p>
-      <a class="btn" href="double.html">להכיר את ״הורות בדאבל״</a>
-      <p class="btn-note">מדריך דיגיטלי להורים לשני ילדים קטנים לרגעים ששניהם צריכים אתכם יחד, עם כלים, דוגמאות ומשפטים שאפשר לקחת ישר הביתה.</p>
+    <div class="qz-more" hidden>
+      <h3>מה יכול לעזור לך כבר עכשיו?</h3>
+      <ul class="check">
+        <li>בדקי אם אחד מהם נמצא בסכנה או זקוק לעזרה מיד.</li>
+        <li>גשי קודם לילד עם הצורך שלא יכול לחכות.</li>
+        <li>אמרי לילד שמחכה: "אני רואה שגם אתה צריך אותי. קודם אני עוזרת לאחיך ואז אני באה אליך".</li>
+        <li>חזרי אליו כפי שהבטחת: "חיכית לי. עכשיו אני איתך".</li>
+      </ul>
+      <div class="guide-intro" style="margin-top:22px">
+        <p>הבחירה למי לגשת קודם היא רק חלק מהתמונה.</p>
+        <p>מדריך "הורות בדאבל" יעזור לך  להבין מה כל ילד צריך באמת ולדעת איך להגיב ברגעים האמיתיים של החיים עם שני קטנטנים - עם יותר בהירות ופחות צעקות, ניחושים ואשמה.</p>
+        <a class="btn" href="double.html">להכיר את ״הורות בדאבל״</a>
+        <p class="btn-note">מדריך דיגיטלי להורים לשני ילדים קטנים לרגעים ששניהם צריכים אתכם יחד, עם כלים, דוגמאות ומשפטים שאפשר לקחת ישר הביתה.</p>
+      </div>
     </div>
   </div>
   <div class="qz-step qz-res" data-step="res-b" hidden>
@@ -202,18 +187,20 @@ gtag('config', 'G-XQ1HEQR5HK');
     <p>העומס אצלך מתחיל ברגעים שבהם צריך לעצור, לסיים משהו או לעבור לדבר הבא.</p>
     <p>כיבוי מסך, יציאה מהבית, מקלחת או סיום משחק מתחילים בבקשה קטנה ותוך רגע מגיעים בכי, צעקות או טנטרום.</p>
     <p>כשגם הילד השני זקוק לך, קשה עוד יותר להישאר ברורה. את עלולה להסביר שוב ושוב, להרים את הקול או לוותר רק כדי שהרגע ייגמר.</p>
-    <h3>מה יכול לעזור לך כבר עכשיו?</h3>
-    <ul class="check">
-      <li>ספרי לילד מראש מה עומד לקרות בצורה מוחשית.</li>
-      <li>כשהגיע הזמן, התקרבי אליו במקום לקרוא לו מהחדר השני.</li>
-      <li>אמרי את הגבול במשפט קצר.</li>
-      <li>הציעי בחירה בדרך, בלי להפוך את הגבול עצמו לבחירה.</li>
-    </ul>
-    <div class="guide-intro" style="margin-top:22px">
-      <p>גבול אחד ברור יכול לעזור ברגע מסוים, אבל בבית עם צמודים הגבול כמעט אף פעם לא פוגש רק ילד אחד.</p>
-      <p>המדריך "הורות בדאבל" יעזור לך להבין מה עומד מאחורי ההתנגדות ולדעת מה לעשות גם כשהילד השני בוכה או זקוק לך.</p>
-      <a class="btn" href="double.html">להכיר את ״הורות בדאבל״</a>
-      <p class="btn-note">מדריך דיגיטלי להורים לשני ילדים קטנים לרגעים ששניהם צריכים אתכם יחד, עם כלים, דוגמאות ומשפטים שאפשר לקחת ישר הביתה.</p>
+    <div class="qz-more" hidden>
+      <h3>מה יכול לעזור לך כבר עכשיו?</h3>
+      <ul class="check">
+        <li>ספרי לילד מראש מה עומד לקרות בצורה מוחשית.</li>
+        <li>כשהגיע הזמן, התקרבי אליו במקום לקרוא לו מהחדר השני.</li>
+        <li>אמרי את הגבול במשפט קצר.</li>
+        <li>הציעי בחירה בדרך, בלי להפוך את הגבול עצמו לבחירה.</li>
+      </ul>
+      <div class="guide-intro" style="margin-top:22px">
+        <p>גבול אחד ברור יכול לעזור ברגע מסוים, אבל בבית עם צמודים הגבול כמעט אף פעם לא פוגש רק ילד אחד.</p>
+        <p>המדריך "הורות בדאבל" יעזור לך להבין מה עומד מאחורי ההתנגדות ולדעת מה לעשות גם כשהילד השני בוכה או זקוק לך.</p>
+        <a class="btn" href="double.html">להכיר את ״הורות בדאבל״</a>
+        <p class="btn-note">מדריך דיגיטלי להורים לשני ילדים קטנים לרגעים ששניהם צריכים אתכם יחד, עם כלים, דוגמאות ומשפטים שאפשר לקחת ישר הביתה.</p>
+      </div>
     </div>
   </div>
   <div class="qz-step qz-res" data-step="res-c" hidden>
@@ -221,19 +208,21 @@ gtag('config', 'G-XQ1HEQR5HK');
     <h2>הכי קשה לך כשהם רבים ביניהם</h2>
     <p>העומס אצלך מתחיל בעיקר בין הילדים: חטיפות, מכות, קנאה ותחרות עלייך.</p>
     <p>את מוצאת את עצמך בודקת מי התחיל, מבקשת מהבכור לוותר או מפרידה ביניהם שוב ושוב ולא בטוחה מתי להתערב ומה לומר בלי לבחור צד.</p>
-    <h3>מה יכול לעזור לך כבר עכשיו?</h3>
-    <ul class="check">
-      <li>עצרי פגיעה: "אני לא אתן לכם להרביץ".</li>
-      <li>תארי את מה שאת רואה בלי לבחור צד: "שניכם רוצים עכשיו את המשאית".</li>
-      <li>תני מילים למה שכל אחד רוצה.</li>
-      <li>רק אחר כך עזרי להם למצוא פתרון שמתאים לגילם.</li>
-    </ul>
-    <div class="guide-intro" style="margin-top:22px">
-      <p>המריבה היא מה שרואים מבחוץ.</p>
-      <p>מתחתיה יכולים להיות תסכול, קנאה, קושי לחכות או רצון להרגיש שגם לי יש מקום ליד אמא.</p>
-      <p>המדריך "הורות בדאבל" יעזור לך לזהות מה כל ילד צריך ולדעת מתי להתערב ואיך לעצור פגיעה בלי לבחור צד.</p>
-      <a class="btn" href="double.html">להכיר את ״הורות בדאבל״</a>
-      <p class="btn-note">מדריך דיגיטלי להורים לשני ילדים קטנים לרגעים ששניהם צריכים אתכם יחד, עם כלים, דוגמאות ומשפטים שאפשר לקחת ישר הביתה.</p>
+    <div class="qz-more" hidden>
+      <h3>מה יכול לעזור לך כבר עכשיו?</h3>
+      <ul class="check">
+        <li>עצרי פגיעה: "אני לא אתן לכם להרביץ".</li>
+        <li>תארי את מה שאת רואה בלי לבחור צד: "שניכם רוצים עכשיו את המשאית".</li>
+        <li>תני מילים למה שכל אחד רוצה.</li>
+        <li>רק אחר כך עזרי להם למצוא פתרון שמתאים לגילם.</li>
+      </ul>
+      <div class="guide-intro" style="margin-top:22px">
+        <p>המריבה היא מה שרואים מבחוץ.</p>
+        <p>מתחתיה יכולים להיות תסכול, קנאה, קושי לחכות או רצון להרגיש שגם לי יש מקום ליד אמא.</p>
+        <p>המדריך "הורות בדאבל" יעזור לך לזהות מה כל ילד צריך ולדעת מתי להתערב ואיך לעצור פגיעה בלי לבחור צד.</p>
+        <a class="btn" href="double.html">להכיר את ״הורות בדאבל״</a>
+        <p class="btn-note">מדריך דיגיטלי להורים לשני ילדים קטנים לרגעים ששניהם צריכים אתכם יחד, עם כלים, דוגמאות ומשפטים שאפשר לקחת ישר הביתה.</p>
+      </div>
     </div>
   </div>
   <div class="qz-step qz-res" data-step="res-d" hidden>
@@ -241,24 +230,44 @@ gtag('config', 'G-XQ1HEQR5HK');
     <h2>אצלך כל האתגרים מתחברים יחד</h2>
     <p>מהתשובות שלך לא עולה רגע אחד שבו תמיד הכי קשה לך, וזה הגיוני מאוד.</p>
     <p>בבית עם שני ילדים קטנים דבר אחד מוביל מהר לדבר הבא: התנגדות למקלחת הופכת לבכי של שניהם, ומריבה על צעצוע הופכת לתחרות עלייך.</p>
-    <h3>מה יכול לעזור לך כבר עכשיו?</h3>
-    <p>בחרי סיטואציה אחת שחוזרת אצלכם ושאלי:</p>
-    <ul class="check">
-      <li>מה קרה רגע לפני?</li>
-      <li>מה כל ילד היה צריך ממני?</li>
-      <li>האם הייתי צריכה לעצור משהו, להציב גבול או לעזור לאחד מהם לחכות?</li>
-      <li>מה אני יכולה להכין מראש לפעם הבאה?</li>
-    </ul>
-    <p>אל תנסי לשנות הכול בבת אחת.</p>
-    <p>בחרי רגע אחד שחוזר כמעט בכל יום והתחילי ממנו.</p>
-    <div class="guide-intro" style="margin-top:22px">
-      <p>זה בדיוק הרעיון של "הורות בדאבל":</p>
-      <p>לא לנסות לפתור כל בכי, התנגדות או מריבה בנפרד, אלא להבין מה כל ילד צריך ולדעת מה לעשות גם כשהכול קורה יחד.</p>
-      <p>במדריך תקבלי דרך ברורה שתוכלי לחזור אליה בכל פעם ששניהם צריכים אותך ואת לא בטוחה מה לעשות קודם.</p>
-      <p>כדי שתוכלי לפעול עם יותר בהירות ופחות צעקות, ניחושים ואשמה.</p>
-      <a class="btn" href="double.html">להכיר את ״הורות בדאבל״</a>
-      <p class="btn-note">מדריך דיגיטלי להורים לשני ילדים קטנים לרגעים ששניהם צריכים אתכם יחד, עם כלים, דוגמאות ומשפטים שאפשר לקחת ישר הביתה.</p>
+    <div class="qz-more" hidden>
+      <h3>מה יכול לעזור לך כבר עכשיו?</h3>
+      <p>בחרי סיטואציה אחת שחוזרת אצלכם ושאלי:</p>
+      <ul class="check">
+        <li>מה קרה רגע לפני?</li>
+        <li>מה כל ילד היה צריך ממני?</li>
+        <li>האם הייתי צריכה לעצור משהו, להציב גבול או לעזור לאחד מהם לחכות?</li>
+        <li>מה אני יכולה להכין מראש לפעם הבאה?</li>
+      </ul>
+      <p>אל תנסי לשנות הכול בבת אחת.</p>
+      <p>בחרי רגע אחד שחוזר כמעט בכל יום והתחילי ממנו.</p>
+      <div class="guide-intro" style="margin-top:22px">
+        <p>זה בדיוק הרעיון של "הורות בדאבל":</p>
+        <p>לא לנסות לפתור כל בכי, התנגדות או מריבה בנפרד, אלא להבין מה כל ילד צריך ולדעת מה לעשות גם כשהכול קורה יחד.</p>
+        <p>במדריך תקבלי דרך ברורה שתוכלי לחזור אליה בכל פעם ששניהם צריכים אותך ואת לא בטוחה מה לעשות קודם.</p>
+        <p>כדי שתוכלי לפעול עם יותר בהירות ופחות צעקות, ניחושים ואשמה.</p>
+        <a class="btn" href="double.html">להכיר את ״הורות בדאבל״</a>
+        <p class="btn-note">מדריך דיגיטלי להורים לשני ילדים קטנים לרגעים ששניהם צריכים אתכם יחד, עם כלים, דוגמאות ומשפטים שאפשר לקחת ישר הביתה.</p>
+      </div>
     </div>
+  </div>
+  <div class="qz-gate" id="qz-gate" hidden style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)">
+    <h3 style="margin-top:0">מה יכול לעזור לך כבר עכשיו?</h3>
+    <p>השאירי פרטים ותראי מיד את הכלים שמתאימים בדיוק לתוצאה שלך.</p>
+    <form class="mform" id="mf" novalidate>
+      <label for="mf-name">שם פרטי</label>
+      <input type="text" id="mf-name" name="name" autocomplete="given-name" required placeholder="שם פרטי">
+      <label for="mf-last">שם משפחה</label>
+      <input type="text" id="mf-last" name="last_name" autocomplete="family-name" required placeholder="שם משפחה">
+      <label for="mf-email">כתובת מייל</label>
+      <input type="email" id="mf-email" name="email" autocomplete="email" required placeholder="name@example.com">
+      <label for="mf-phone">מספר טלפון (לא חובה)</label>
+      <input type="tel" id="mf-phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="050-0000000">
+      <label class="chk"><input type="checkbox" id="mf-ok" required> אני מאשרת לקבל משקמה תכנים, כלים ועדכונים במייל ובוואטסאפ. אפשר להסיר את ההרשמה בכל עת.</label>
+      <button type="submit">לראות מה יכול לעזור לי</button>
+      <p class="err" role="alert"></p>
+      <p class="consent">פרטים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
+    </form>
   </div>
   </div>
   <div class="csec rv" style="background:var(--warm-soft);border-color:#EBD9CC">
@@ -379,15 +388,21 @@ document.addEventListener('click', function(e){
   function ga(n,x){ if(typeof gtag==='function') gtag('event',n,Object.assign({page_path:location.pathname},x||{})); }
   function show(name){ steps.forEach(function(s){ s.hidden = s.getAttribute('data-step')!==name; });
     root.scrollIntoView({behavior:'smooth',block:'start'}); }
-  root.querySelector('[data-go=form]').addEventListener('click', function(){ show('form'); ga('quiz_start'); });
+  var gate=document.getElementById('qz-gate'), cur=null;
+  function seen(){ try{ return localStorage.getItem('imale_quiz_ok')==='1'; }catch(e){ return false; } }
+  function open(){ gate.hidden=true; cur.querySelector('.qz-more').hidden=false; }
+  root.querySelector('[data-go=q0]').addEventListener('click', function(){ show('q0'); ga('quiz_start'); });
   document.getElementById('mf').addEventListener('submit', function(e){ e.preventDefault();
-    imaleSubmit(this, '199585225455436936', 'quiz', function(){ show('q0'); }); });
+    imaleSubmit(this, '199585225455436936', 'quiz', function(){ try{ localStorage.setItem('imale_quiz_ok','1'); }catch(e){} open(); }); });
   root.querySelectorAll('.qz-opt').forEach(function(b){ b.addEventListener('click', function(){
     score[b.getAttribute('data-cat')]++; qi++;
     if(qi<N){ show('q'+qi); return; }
     var k=['a','b','c'].sort(function(x,y){ return score[y]-score[x]; }), top=k[0];
     var res = (score[top]>=4 && score[top]-score[k[1]]>=2) ? top : 'd';
     show('res-'+res); ga('quiz_complete',{result:res});
+    cur=root.querySelector('[data-step=res-'+res+']');
+    if(seen()){ open(); return; }
+    cur.insertBefore(gate, cur.querySelector('.qz-more')); gate.hidden=false; ga('quiz_gate',{result:res});
   }); });
 })();
 </script>
