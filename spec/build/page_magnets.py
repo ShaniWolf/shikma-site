@@ -34,7 +34,7 @@ MAGNETS = [
   crumb='שעת העומס בדאבל',
   title='שעת העומס בדאבל: מיני מדריך להורים לצמודים | שקמה דגרי',
   desc='מיני מדריך מאת שקמה דגרי: למה אותה שעה עם שני קטנטנים מסתבכת שוב ושוב, ומה אפשר לשנות כדי לעבור אותה עם יותר בהירות. בחינם, מיד למייל.',
-  kicker='מיני מדריך · עם דף עבודה קצר',
+  kicker='מיני מדריך · לשעה שהכי קשה לכם',
   h1='שעת העומס בדאבל',
   lead='כמעט בכל בית עם שני קטנטנים יש שעה כזאת. החזרה מהמסגרות, ארוחת הערב, ההשכבות. מיני מדריך שיעזור לך להבין למה דווקא היא מסתבכת שוב ושוב, ומה אפשר לשנות.',
   cover_alt='כריכת המיני מדריך שעת העומס בדאבל',
@@ -43,11 +43,11 @@ MAGNETS = [
   learn=[('לא תמיד שניהם צריכים את אותו הדבר', 'אחד רעב והשני צריך כמה דקות של קרבה. איך מבחינים בזה בתוך הרעש.'),
          ('לחפש את הרגע שלפני', 'מה קורה רגע לפני שהכול מתפרק, ומה אפשר להקדים, לקצר או להוריד מראש.'),
          ('סדר קבוע, לא יום מושלם', 'סדר שחוזר על עצמו עוזר לכם ולילדים לדעת מה קורה עכשיו ומה יבוא אחר כך.'),
-         ('דף עבודה: שעת העומס שלנו', 'שש שאלות קצרות לסמן ולהשלים, רק מה שמתאים לבית שלכם עכשיו.'),
+         ('מה יכול להקל כבר מחר', 'דברים קטנים שאפשר להקדים, לקצר או לוותר עליהם, כדי שהשעה הזאת תעבור עם פחות צעקות.'),
          ('ביום שאין בו כוחות', 'על מה שומרים ועל מה מוותרים. ערב פשוט יותר הוא לא ערב שנכשל.')],
   btn='שלחו לי את המיני מדריך', get_h='המיני מדריך אצלכם תוך רגע',
   t_h1='״שעת העומס בדאבל״ אצלכם', t_lead='אין צורך לקרוא הכול עכשיו. מספיק לבחור שעה אחת שחוזרת אצלכם.',
-  t_start='מדף העבודה ״שעת העומס שלנו״: מסמנים מתי הכי קשה, מה כל ילד צריך בשעה הזאת, ובוחרים דבר אחד להכין מראש.',
+  t_start='מהחלק ״לחפש את הרגע שלפני״. הוא עוזר לראות מה קורה רגע לפני שהכול מתפרק, ומשם קל לבחור דבר אחד שיקל כבר מחר.',
   ga='omes',
  ),
 ]
@@ -59,6 +59,8 @@ document.querySelectorAll('form.mform[data-magnet]').forEach(function(f){
     e.preventDefault();
     var email=f.querySelector('input[type=email]').value.trim();
     var nameEl=f.querySelector('input[type=text]'), name=nameEl?nameEl.value.trim():'';
+    var last=(f.querySelector('input[name=last_name]')||{value:''}).value.trim();
+    if(!name || !last){ err.textContent='צריך שם פרטי ושם משפחה'; return; }
     if(!email || email.indexOf('@')<1 || email.indexOf('.')<0){ err.textContent='צריך כתובת מייל תקינה כדי לשלוח את הקובץ'; return; }
     err.textContent=''; btn.disabled=true; btn.textContent='רגע, שולחת...';
     var done=false;
@@ -67,7 +69,7 @@ document.querySelectorAll('form.mform[data-magnet]').forEach(function(f){
       if(typeof gtag==='function'){ gtag('event','magnet_signup',{magnet:'%(ga)s',page_path:location.pathname}); }
       location.href='thanks-%(slug)s.html';
     }
-    var body='fields%%5Bemail%%5D='+encodeURIComponent(email)+(name?'&fields%%5Bname%%5D='+encodeURIComponent(name)+'&fields%%5Bfirst_name%%5D='+encodeURIComponent(name.split(' ')[0]):'')+'&ml-submit=1&anticsrf=true';
+    var body='fields%%5Bemail%%5D='+encodeURIComponent(email)+'&fields%%5Bname%%5D='+encodeURIComponent(name)+'&fields%%5Bfirst_name%%5D='+encodeURIComponent(name)+'&fields%%5Blast_name%%5D='+encodeURIComponent(last)+'&ml-submit=1&anticsrf=true';
     fetch('https://assets.mailerlite.com/jsonp/2618157/forms/%(form)s/subscribe',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(finish).catch(finish);
     setTimeout(finish, 6000);
   });
@@ -112,8 +114,10 @@ def landing(m):
     <h2>%(get_h)s</h2>
     <p>משאירים מייל ומקבלים את הקובץ מיד.</p>
     <form class="mform" data-magnet id="mf" novalidate>
-      <label for="mf-name">איך לפנות אליכם? (לא חובה)</label>
-      <input type="text" id="mf-name" name="name" autocomplete="given-name" placeholder="שם פרטי">
+      <label for="mf-name">שם פרטי</label>
+      <input type="text" id="mf-name" name="name" autocomplete="given-name" required placeholder="שם פרטי">
+      <label for="mf-last">שם משפחה</label>
+      <input type="text" id="mf-last" name="last_name" autocomplete="family-name" required placeholder="שם משפחה">
       <label for="mf-email">כתובת מייל</label>
       <input type="email" id="mf-email" name="email" autocomplete="email" required placeholder="name@example.com">
       <button type="submit">%(btn)s</button>

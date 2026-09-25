@@ -3,8 +3,8 @@
 import json, os, re
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-CSS_V = '32'
-JS_V = '15'
+CSS_V = '34'
+JS_V = '16'
 SITE = 'https://imale.co/'
 WA_GROUP = 'https://chat.whatsapp.com/Fju9PGJPgFhL8h99M1mnX0'
 CAL = 'https://calendar.app.google/Rqgzmeg3HPCNJg4cA'
@@ -139,8 +139,8 @@ def footer(home=False):
           %s
           שקמה דגרי
         </a>
-        <p class="f-tag">הדרכת הורים לגיל הרך</p>
-        <p class="f-bio">יוצרת שיטת ״הורות בדאבל״ למשפחות עם ילדים צמודים</p>
+        <p class="f-tag">מדריכת הורים לגיל הרך ויועצת שינה</p>
+        <p class="f-bio">מתמחה בילדים צמודים, בהפרש של עד שנתיים, ויוצרת שיטת ״הורות בדאבל״</p>
       </div>
       <div class="f-nav">
         <h3 class="f-h">ניווט</h3>
@@ -150,6 +150,18 @@ def footer(home=False):
           <li><a href="livuy.html">ליווי אישי</a></li>
           <li><a href="%s#community">הקהילה</a></li>
           <li><a href="%s#about">אודות</a></li>
+        </ul>
+      </div>
+      <div class="f-nav f-topics">
+        <h3 class="f-h">נושאים</h3>
+        <ul class="f-links">
+          <li><a href="tantrums.html">טנטרומים והתקפי זעם אצל ילדים</a></li>
+          <li><a href="gvulot.html">הצבת גבולות לילדים</a></li>
+          <li><a href="siblings.html">מריבות וקנאה בין אחים</a></li>
+          <li><a href="lev.html">הכנת הבכור לאח חדש</a></li>
+          <li><a href="double.html">הורות בדאבל: שני ילדים קטנים יחד</a></li>
+          <li><a href="chagim.html">חגים עם ילדים צמודים</a></li>
+          <li><a href="livuy.html">הדרכת הורים לגיל הרך</a></li>
         </ul>
       </div>
       <div class="f-connect">
