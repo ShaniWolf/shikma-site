@@ -220,15 +220,15 @@ def funnel():
     out = {}
     REPLY = para('ואם משהו לא מסתדר אצלכם בבית, השיבו למייל הזה. אני קוראת הכל.')
     # מייל 1: מה שביקשו, בסגנון מייל הפתיחה של ״להכין את הלב״
-    body = (kicker('המתנה אצלכם') + h1("{$gift_name|default('המתנה שלכם')} מחכה לכם כאן") +
+    body = (kicker('המתנה אצלכם') + h1("{$gift_name|default('המתנה שלכם')}") +
         polaroid("{$gift_cover|default('https://imale.co/assets/photos/pola-home-420.jpg')}", 'כריכת המתנה', 150) +
-        para(HI + "<br>הנה {$gift_name|default('המתנה שלכם')}. {$gift_desc|default('')}") +
+        para(HI + "<br>{$gift_desc|default('הנה המתנה שביקשתם מהאתר.')}") +
         btn('לפתיחה', SITE + "g.html?k={$gift|default('')}") + divider() +
         polaroid(SITE + 'assets/photos/shk-sofa-420.jpg', 'שקמה על הספה בסלון עם יובל ותום', 170) +
         para('אני שקמה דגרי, מדריכת הורים ויועצת שינה לגיל הרך ואמא לצמודים, יובל ותום, בהפרש של שנה וחודש. מתוך החיים עם שני קטנטנים והעבודה עם משפחות יצרתי את שיטת ״הורות בדאבל״, כדי לעזור להורים להבין מה כל ילד צריך ולדעת מה לעשות גם כששניהם צריכים אותם יחד.') +
         para(NEW('בימים הקרובים אשלח לכם עוד כלי אחד שמתאים למה שביקשתם, וסיפור קטן מהבית שלנו.')) +
         REPLY + sig())
-    out['funnel-1'] = ("{$gift_name|default('המתנה שלכם')} אצלכם", shell('המתנה אצלכם', body, 'הקישור בפנים, ומי אני בכלל'))
+    out['funnel-1'] = ("הנה מה שביקשתם: {$gift_name|default('המתנה שלכם')}", shell('המתנה אצלכם', body, 'הקישור בפנים, ומי אני בכלל'))
 
     # מייל 2: הרגע ששניהם בוכים (מתוך מייל 3 של ״להכין את הלב״) + המתנה הבאה + הקהילה
     body = (kicker('יום 2') + h1('למי ניגשים קודם כששניהם בוכים') +
@@ -239,9 +239,9 @@ def funnel():
         ul(['אין כלל שאומר תמיד לצעיר או תמיד לבכור. בודקים מי זקוק לעזרה דחופה יותר ומי יכול להחזיק עוד רגע.',
             'לילד שמחכה מגיעה אמירה קצרה: ״אני רואה אותך. אני מסיימת עם אחיך ומגיעה אלייך.״ משפט אחד וקשר עין מחזיקים יותר ממה שנדמה.',
             'כשהסערה נגמרת, שווה לחזור לילד שחיכה ולתת לו כמה דקות שקטות שהן רק שלו.']) +
-        divider() + para("ובגלל שביקשתם את {$gift_name|default('המתנה שלכם')}, חשבתי שגם זה יכול לעזור לכם:") +
+        divider() + para('חשבתי שגם זה יכול לעזור לכם:') +
         polaroid("{$gift_next_cover|default('https://imale.co/assets/covers/checklist.png')}", 'כריכת הכלי', 120) +
-        '<h2 style="margin:0 0 8px;text-align:center;font-family:\'Varela Round\',Rubik,Arial,Helvetica,sans-serif;font-weight:400;font-size:21px;color:#3A3128">{$gift_next_name|default(\'״מה עושים כששניהם צריכים אותי עכשיו?״\')}</h2>' +
+        '<h2 style="margin:0 0 8px;text-align:center;font-family:\'Varela Round\',Rubik,Arial,Helvetica,sans-serif;font-weight:400;font-size:21px;color:#3A3128">{$gift_next_name|default(\'מה עושים כששניהם צריכים אותי עכשיו?\')}</h2>' +
         para("{$gift_next_desc|default('צ׳קליסט קצר שיעזור לכם לדעת למי לגשת קודם ומה לומר לילד שצריך לחכות.')}") +
         btn('לפתיחה', SITE + "g.html?k={$gift_next|default('checklist')}") + divider() +
         kicker('יותר מ־300 הורים לצמודים כבר בקהילה') +
@@ -281,7 +281,7 @@ import re as _re
 def _inner(h): return _re.search(r'<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#FBF7F0".*?</table>\n</body>', h, _re.S).group(0)[:-len('\n</body>')]
 _when = {'funnel-1': 'מייל 1 · נשלח מיד אחרי ההרשמה', 'funnel-2': 'מייל 2 · יומיים אחרי', 'funnel-3': 'מייל 3 · 3 ימים אחרי מייל 2'}
 _parts = []
-_SAMPLE = [(r"\{\$gift_name\|default\('[^']*'\)\}", '״שעת העומס בדאבל״'), (r"\{\$gift_desc\|default\('[^']*'\)\}", 'מיני־מדריך שיעזור לכם להבין למה אותה שעה מסתבכת שוב ושוב ומה אפשר לשנות כדי לעבור אותה עם פחות צעקות והתנגדויות.'),
+_SAMPLE = [(r"\{\$gift_name\|default\('[^']*'\)\}", 'שעת העומס בדאבל'), (r"\{\$gift_desc\|default\('[^']*'\)\}", 'מיני־מדריך שיעזור לכם להבין למה אותה שעה מסתבכת שוב ושוב ומה אפשר לשנות כדי לעבור אותה עם פחות צעקות והתנגדויות.'),
            (r"\{\$gift_cover\|default\('[^']*'\)\}", 'https://imale.co/assets/covers/omes.png'), (r"\{\$gift_next_name\|default\('[^']*'\)\}", 'מה עושים כששניהם צריכים אותי עכשיו?'),
            (r"\{\$gift_next_desc\|default\('[^']*'\)\}", 'צ׳קליסט קצר שיעזור לכם לדעת למי לגשת קודם ומה לומר לילד שצריך לחכות.'), (r"\{\$gift_next_cover\|default\('[^']*'\)\}", 'https://imale.co/assets/covers/checklist.png'),
            (r"\{\$gift\|default\('[^']*'\)\}", 'rush'), (r"\{\$gift_next\|default\('[^']*'\)\}", 'checklist'),(r"\{\$gift_name\|default\('[^']*'\)\}", 'שעת העומס בדאבל'),
