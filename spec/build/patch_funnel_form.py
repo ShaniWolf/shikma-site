@@ -1,6 +1,7 @@
 """משפך הדאבל (25.9.2026): כל טופס מתנה באתר נרשם גם לטופס האחד ״משפך הדאבל״ ב-MailerLite,
 עם שני שדות: gift (מה ביקשה) ו-gift_next (המתנה הבאה שתקבל במייל 2).
 האוטומציה האחת משתמשת בהם בקישורים: imale.co/g.html?k={$gift}.
+בהמשך (25.9) נוספו גם gift_name, gift_next_name, gift_next_desc (עריכה ידנית בארבעת העמודים).
 עורך את ה-HTML החי; אידמפוטנטי (FUNNEL_FORM). בנוסף יוצר את g.html (הפניה לקובץ לפי המתנה)."""
 import pathlib, re
 ROOT = pathlib.Path(__file__).resolve().parents[2]

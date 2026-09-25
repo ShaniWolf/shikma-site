@@ -208,8 +208,81 @@ body = (kicker('השאלון') + h1('איפה הדאבל פוגש אותך?') +
     btn('להכיר את ״הורות בדאבל״', DOUBLE) + sig())
 EMAILS['magnet-quiz'] = ('איפה הדאבל פוגש אותך?', shell('איפה הדאבל פוגש אותך?', body, 'הורות בדאבל'))
 
+# ---------- D. משפך הדאבל (25.9): אוטומציה אחת לכל המתנות ----------
+# השדות gift / gift_name / gift_next / gift_next_name / gift_next_desc נשלחים מהאתר.
+# NEW(...) = טקסט מקשר שלא נכתב על ידי שקמה; בגרסת האישור הוא מסומן בצהוב.
+REVIEW = False
+def NEW(t): return ('<span style="background:#FFF1A8">%s</span>' % t) if REVIEW else t
+HI_F = "היי {$first_name|default('')},"
+ABOUT = 'אני שקמה דגרי, מדריכת הורים ויועצת שינה מוסמכת לגיל הרך, ואמא לצמודים בהפרש של שנה וחודש. מתוך החיים עם שני קטנטנים והעבודה עם משפחות יצרתי את שיטת ״הורות בדאבל״, כדי לעזור להורים להבין מה כל ילד צריך ולדעת מה לעשות גם כששניהם צריכים אותם יחד.'
+
+def funnel():
+    out = {}
+    body = (kicker(NEW('מה שביקשת')) + h1("{$gift_name|default('המתנה שלך')}") +
+        para(HI_F + '<br>' + NEW('הנה מה שביקשת. הקישור נשאר כאן, אז אפשר לחזור אליו מתי שצריך.')) +
+        btn('לפתיחה', SITE + "g.html?k={$gift|default('')}") + divider() +
+        small(ABOUT) + sig())
+    out['funnel-1'] = ("{$gift_name|default('המתנה שלך')} " + NEW('מחכה לך'), shell('מה שביקשת', body, NEW('הקישור בפנים')))
+
+    body = (kicker(NEW('עוד כלי אחד בשבילך')) + h1("{$gift_next_name|default('מה עושים כששניהם צריכים אותי עכשיו?')}") +
+        para(HI_F + '<br>' + "{$gift_next_desc|default('צ׳קליסט קצר שיעזור לך לדעת למי לגשת קודם ומה לומר לילד שצריך לחכות.')}") +
+        btn('לפתיחה', SITE + "g.html?k={$gift_next|default('checklist')}") + divider() +
+        kicker('יותר מ־300 הורים לצמודים כבר בקהילה') +
+        para('״אמאל׳ה צמודים״ היא קהילת וואטסאפ להורים שמגדלים ילדים בהפרש קטן. זה המקום לקבל כלים, לשאול, לשתף ולהכיר הורים שמבינים את המציאות הזאת מקרוב.') +
+        ul(['<b>הקבוצה השקטה</b>: מסר חדש בכל מוצאי שבת, סיפור אמיתי ותובנה במהלך השבוע וחלון שאלות והתייעצות בכל יום רביעי.',
+            '<b>שיח פתוח</b>: מקום לשתף, להתייעץ ולשמוע מהורים נוספים שמכירים את המציאות עם ילדים צמודים.',
+            '<b>קבוצות אזוריות</b>: היכרות, חיבורים ומפגשים בין משפחות שגרות קרוב אליכם.']) +
+        btn('אני רוצה להצטרף לקהילה', WA, '#7A8B6F') +
+        small('ההצטרפות ללא עלות, ואפשר לבחור לאילו מהקבוצות להצטרף.') + sig())
+    out['funnel-2'] = ("{$gift_next_name|default('עוד כלי אחד בשבילך')}", shell('עוד כלי אחד בשבילך', body, NEW('ועוד מקום אחד שכדאי להכיר')))
+
+    body = (kicker('המדריך המעשי לחיים עם שני ילדים קטנים') + h1('הורות בדאבל') +
+        para(HI_F + '<br>אחד בוכה והשני קורא לכם. במקום לעמוד ביניהם ולא לדעת למי לגשת קודם, אתם יודעים מה לעשות עכשיו ואיך להראות גם לילד שמחכה שלא שכחתם אותו.') +
+        para('רוב העצות להורים מתייחסות לילד אחד ולהורה שפנוי להגיב אליו. אבל כשיש שני ילדים קטנים, המציאות שונה. אתם לא יכולים להפוך לשני הורים באותו הרגע. אתם כן יכולים ללמוד להבין מה כל אחד צריך, לדעת למי לגשת קודם ולעזור גם לילד שצריך לחכות.') +
+        kicker('באילו רגעים המדריך יעזור לכם?') +
+        ul(['כששניהם בוכים יחד ולא ברור למי לגשת קודם.',
+            'כשהבכור זקוק לכם בדיוק בזמן האכלה או הרדמה של התינוק.',
+            'כשילד אחד מתפרץ והשני נסחף לתוך הבכי.',
+            'כשצריך להציב גבול ואחד הילדים מתנגד.',
+            'כשאתם לבד בערב וצריך לקלח, להאכיל ולהשכיב את שניהם.']) +
+        para('מדריך ״הורות בדאבל״ יעזור לכם להבין מה כל ילד באמת צריך ולדעת מה לעשות גם כשהכול קורה יחד, עם יותר בהירות ופחות ניחושים ואשמה.') +
+        btn('לראות איך זה יכול לעזור לי', DOUBLE) +
+        small('מדריך דיגיטלי ממוקד ומעשי לחיים עם שני קטנטנים. המדריך בנוי בפרקים קצרים, כך שתוכלו לעבור ישר לנושא שהכי מעסיק אתכם בבית.') + sig())
+    out['funnel-3'] = ('שניהם צריכים אתכם יחד', shell('הורות בדאבל', body, 'אתם לא צריכים להמשיך לנחש למי לגשת ומה לעשות'))
+    return out
+
+EMAILS.update(funnel())
+REVIEW = True
+FUNNEL_REVIEW = funnel()
+REVIEW = False
+
 os.makedirs(OUT, exist_ok=True)
 for k, (subject, h) in EMAILS.items():
     open(os.path.join(OUT, k + '.html'), 'w', encoding='utf-8').write(h)
     open(os.path.join(OUT, k + '.subject.txt'), 'w', encoding='utf-8').write(subject)
     print(k, '|', subject, '|', len(h))
+
+# גרסת אישור לשקמה: שלושת המיילים ברצף, טקסט חדש מסומן בצהוב
+import re as _re
+def _inner(h): return _re.search(r'<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#FBF7F0".*?</table>\n</body>', h, _re.S).group(0)[:-len('\n</body>')]
+_when = {'funnel-1': 'מייל 1 · נשלח מיד אחרי ההרשמה', 'funnel-2': 'מייל 2 · יומיים אחרי', 'funnel-3': 'מייל 3 · 3 ימים אחרי מייל 2'}
+_parts = []
+_SAMPLE = [(r"\{\$gift_name\|default\('[^']*'\)\}", 'שעת העומס בדאבל'),
+           (r"\{\$gift_next_name\|default\('[^']*'\)\}", 'הצ׳קליסט: מה עושים כששניהם צריכים אותי עכשיו?'),
+           (r"\{\$gift_next_desc\|default\('[^']*'\)\}", 'צ׳קליסט קצר שיעזור לך לדעת למי לגשת קודם ומה לומר לילד שצריך לחכות.'),
+           (r"\{\$first_name\|default\('[^']*'\)\}", 'דנה')]
+def _sample(t):
+    for a, b in _SAMPLE: t = _re.sub(a, b, t)
+    return t
+for k, (subj, h) in FUNNEL_REVIEW.items():
+    _parts.append('<div style="max-width:560px;margin:34px auto 6px;font-family:Rubik,Arial,sans-serif;direction:rtl;text-align:right">'
+                  '<div style="font-size:15px;font-weight:500;color:#B4694E">%s</div>'
+                  '<div style="font-size:15px;color:#3A3128;margin-top:4px">נושא: <b>%s</b></div></div>' % (_when[k], _sample(subj)) + _sample(_inner(h)))
+REVIEW_HTML = ('<div dir="rtl" style="background:#FBF7F0;padding:20px 10px 40px">'
+    '<div style="max-width:560px;margin:0 auto;font-family:Rubik,Arial,sans-serif;font-size:16px;line-height:1.8;color:#3A3128;text-align:right">'
+    'היי שקמה,<br>אלה שלושת המיילים של המשפך החדש. כל מי שמשאירה פרטים לאחת המתנות באתר מקבלת אותם.<br>'
+    'כמעט כל הטקסט לקוח מהאתר, ממה שכתבת. <span style="background:#FFF1A8">משפטים מסומנים בצהוב</span> הם חדשים ומחכים לאישור שלך.<br>'
+    'כל מייל מתאים את עצמו למה שהנרשמת ביקשה. כאן מוצגת דוגמה של אמא בשם דנה שביקשה את ״שעת העומס בדאבל״. מי שתבקש צ׳קליסט או את ״להכין את הלב״ תראה את השם שלהם במקום.<br>'
+    'אפשר להשיב למייל הזה עם תיקונים.</div>' + ''.join(_parts) + '</div>')
+open(os.path.join(OUT, 'funnel-review.html'), 'w', encoding='utf-8').write('<!DOCTYPE html><html lang="he" dir="rtl"><head><meta charset="utf-8"></head><body style="margin:0">' + REVIEW_HTML + '</body></html>')
+print('funnel-review.html', len(REVIEW_HTML))
