@@ -313,7 +313,7 @@ ul.get li::before{
 /* טופס המגנט */
 .mform{max-width:420px;margin:18px auto 0;text-align:right}
 .mform label{display:block;font-size:.86rem;color:var(--soft);margin:0 0 4px}
-.mform input[type="text"],.mform input[type="email"]{
+.mform input[type="text"],.mform input[type="email"],.mform input[type="tel"]{
   width:100%;font-family:'Rubik',sans-serif;font-size:1rem;color:var(--ink);
   background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:12px;
 }
