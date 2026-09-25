@@ -13,9 +13,9 @@ def card(href, icon, h3, txt, go):
             '<span class="go"><span>%s</span></span></a>\n') % (href, h3, ICON[icon], h3, txt, go)
 
 
-S_CHECK = card('checklist.html', 'list', 'כששניהם צריכים אותי עכשיו',
+S_CHECK = card('both-now.html', 'list', 'כששניהם צריכים אותי עכשיו',
                'צ׳קליסט קצר לחול המועד: למי ניגשים קודם כששניהם בוכים, ומה אומרים לילד שצריך לחכות.', 'לקבל את הצ׳קליסט')
-S_OMES = card('omes.html', 'clock', 'שעת העומס בדאבל',
+S_OMES = card('rush-hour.html', 'clock', 'שעת העומס בדאבל',
               'הארוחה בסוכה, החזרה מהטיול, ההשכבות: מיני מדריך לשעה שמסתבכת שוב ושוב.', 'לקבל את המיני מדריך')
 
 
@@ -47,12 +47,12 @@ sub('chagim.html', r'  <!--kp--><div class="readmore rv" id="tools">.*?\n  </div
 
 # 3. כרטיס החגים בעמוד המדריכים
 sub('guides.html', r'<p class="btn-note"><!--kp-->לקראת יום כיפור:.*?</p>',
-    '<p class="btn-note"><!--sk-->לחול המועד: <a href="checklist.html">מה עושים כששניהם צריכים אותי עכשיו?</a> צ׳קליסט קצר.</p>')
+    '<p class="btn-note"><!--sk-->לחול המועד: <a href="both-now.html">מה עושים כששניהם צריכים אותי עכשיו?</a> צ׳קליסט קצר.</p>')
 
 # 4. מאמר ראש השנה
 sub('chag.html', r'  <!--kp--><div class="pain">.*?\n  </div>\n',
     '''  <!--sk--><div class="pain">
     <h3>סוכות כבר כאן</h3>
-    <p>לחול המועד: <a href="checklist.html">מה עושים כששניהם צריכים אותי עכשיו?</a> צ׳קליסט קצר, ו<a href="chagim.html">המדריך ״חגים עם צמודים״</a> לכל מה שנשאר מהחגים.</p>
+    <p>לחול המועד: <a href="both-now.html">מה עושים כששניהם צריכים אותי עכשיו?</a> צ׳קליסט קצר, ו<a href="chagim.html">המדריך ״חגים עם צמודים״</a> לכל מה שנשאר מהחגים.</p>
   </div>
 ''')

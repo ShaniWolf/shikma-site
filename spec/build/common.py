@@ -3,7 +3,7 @@
 import json, os, re
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-CSS_V = '35'
+CSS_V = '36'
 JS_V = '16'
 SITE = 'https://imale.co/'
 WA_GROUP = 'https://chat.whatsapp.com/Fju9PGJPgFhL8h99M1mnX0'
