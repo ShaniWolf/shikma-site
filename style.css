@@ -715,3 +715,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 @media (max-width:560px){.cookiebar.show ~ .kbub{bottom:112px}}
 @media (max-width:560px){.kbub{bottom:12px;left:12px;font-size:.85rem}}
 @media (prefers-reduced-motion:reduce){.kbub{transition:none}}
+
+/* ── v33 (25.9): פוטר עם עמודת נושאים (SEO/AEO) ── */
+.f-grid{grid-template-columns:1.15fr .7fr 1fr 1fr}
+@media (max-width:760px){.f-grid{grid-template-columns:1fr 1fr;gap:30px}.f-about,.f-connect{grid-column:1/-1}}
+.kpop-form input{margin-bottom:8px}

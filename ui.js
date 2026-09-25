@@ -118,7 +118,11 @@ document.documentElement.classList.add('js');
     var w = document.createElement('div');
     w.className = 'kpop';
     var action = o.form
-      ? '<form class="kpop-form" novalidate><label class="sr" for="kpop-email">כתובת מייל</label>' +
+      ? '<form class="kpop-form" novalidate><label class="sr" for="kpop-name">שם פרטי</label>' +
+        '<input type="text" id="kpop-name" autocomplete="given-name" required placeholder="שם פרטי">' +
+        '<label class="sr" for="kpop-last">שם משפחה</label>' +
+        '<input type="text" id="kpop-last" autocomplete="family-name" required placeholder="שם משפחה">' +
+        '<label class="sr" for="kpop-email">כתובת מייל</label>' +
         '<input type="email" id="kpop-email" autocomplete="email" required placeholder="כתובת מייל">' +
         '<button type="submit">' + o.btn + '</button><p class="kpop-err" role="alert"></p>' +
         '<p class="kpop-note">מגיע מיד. אפשר להסיר את הכתובת בכל רגע. <a href="privacy.html">פרטיות</a></p></form>'
@@ -148,7 +152,9 @@ document.documentElement.classList.add('js');
     setTimeout(function(){ if(window.innerWidth >= 640) input.focus(); }, 350);
     f.addEventListener('submit', function(e){
       e.preventDefault();
-      var email = input.value.trim();
+      var email = f.querySelector('#kpop-email').value.trim();
+      var name = f.querySelector('#kpop-name').value.trim(), last = f.querySelector('#kpop-last').value.trim();
+      if(!name || !last){ err.textContent = 'צריך שם פרטי ושם משפחה'; return; }
       if(!email || email.indexOf('@') < 1 || email.indexOf('.') < 0){ err.textContent = 'צריך כתובת מייל תקינה'; return; }
       err.textContent = ''; btn.disabled = true; btn.textContent = 'רגע, שולחת...';
       var done = false;
@@ -159,7 +165,7 @@ document.documentElement.classList.add('js');
         location.href = o.thanks;
       }
       fetch(ML + o.form + '/subscribe', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
-        body:'fields%5Bemail%5D=' + encodeURIComponent(email) + '&ml-submit=1&anticsrf=true'}).then(finish).catch(finish);
+        body:'fields%5Bemail%5D=' + encodeURIComponent(email) + '&fields%5Bname%5D=' + encodeURIComponent(name) + '&fields%5Bfirst_name%5D=' + encodeURIComponent(name) + '&fields%5Blast_name%5D=' + encodeURIComponent(last) + '&ml-submit=1&anticsrf=true'}).then(finish).catch(finish);
       setTimeout(finish, 6000);
     });
   }
