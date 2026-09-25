@@ -36,3 +36,9 @@ for f, swaps in PLAN.items():
 h = read('siblings.html')
 h = re.sub(r'(<span class="wa-name"><b>[^<]*</b>)<small>[^<]*</small>', r'\1', h)
 open(os.path.join(ROOT, 'siblings.html'), 'w', encoding='utf-8').write(h)
+
+# בכל העמודים: בלי השורה הקטנה מתחת לשם (25.9, לבקשת שני)
+for f in ['index.html', 'tantrums.html', 'gvulot.html', 'livuy.html']:
+    h = read(f)
+    h = re.sub(r'(<span class="wa-name"><b>[^<]*</b>)<small>[^<]*</small>', r'\1', h)
+    open(os.path.join(ROOT, f), 'w', encoding='utf-8').write(h)
