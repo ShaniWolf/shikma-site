@@ -274,11 +274,11 @@ def wa_card(label, cap, img=None, alt=None, text=None, time='21:14', delay=''):
     else:
         body = '<div class="wa-body chat"><div class="wa-bubble">%s<div class="wa-meta"><span class="wa-time">%s</span><span class="wa-tick" aria-hidden="true">✓✓</span></div></div></div>' % (text, time)
     return '''      <div class="wa-card rv"%s>
-        <div class="wa-head"><span class="wa-av" aria-hidden="true">%s</span><span class="wa-name"><b>%s</b><small>%s</small></span>%s</div>
+        <div class="wa-head"><span class="wa-av" aria-hidden="true">%s</span><span class="wa-name"><b>%s</b></span>%s</div>
         %s
         <div class="wa-cap">%s</div>
       </div>
-''' % (d, cap.strip()[0], cap, label, WA_SVG, body, cap)
+''' % (d, cap.strip()[0], cap, WA_SVG, body, cap)
 
 def carousel(cards, label='המלצות'):
     return '''    <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="%s">
