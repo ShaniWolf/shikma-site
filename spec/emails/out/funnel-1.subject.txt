@@ -1,1 +1,1 @@
-״{$gift_name}״ אצלכם
+{$gift_name|default('המתנה שלכם')} אצלכם
