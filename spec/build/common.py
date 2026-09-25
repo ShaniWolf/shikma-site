@@ -3,7 +3,7 @@
 import json, os, re
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-CSS_V = '37'
+CSS_V = '38'
 JS_V = '16'
 SITE = 'https://imale.co/'
 WA_GROUP = 'https://chat.whatsapp.com/Fju9PGJPgFhL8h99M1mnX0'
@@ -162,6 +162,15 @@ def footer(home=False):
           <li><a href="double.html">הורות בדאבל: שני ילדים קטנים יחד</a></li>
           <li><a href="chagim.html">חגים עם ילדים צמודים</a></li>
           <li><a href="livuy.html">הדרכת הורים לגיל הרך</a></li>
+        </ul>
+      </div>
+      <div class="f-nav f-gifts">
+        <h3 class="f-h">כלים ללא עלות</h3>
+        <ul class="f-links">
+          <li><a href="quiz.html">שאלון: איפה הדאבל פוגש אותך?</a></li>
+          <li><a href="both-now.html">צ׳קליסט: כששניהם צריכים אותי עכשיו</a></li>
+          <li><a href="rush-hour.html">שעת העומס בדאבל</a></li>
+          <li><a href="lev.html">להכין את הלב</a></li>
         </ul>
       </div>
       <div class="f-connect">

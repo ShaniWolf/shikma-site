@@ -22,7 +22,7 @@
 ## איך עובדים בקוד
 - אתר סטטי ב-GitHub Pages (ענף main, דומיין imale.co). מפתחים בענף, פותחים PR וממזגים. שני אישרה פרסום ישיר.
 - עמודים חדשים נבנים ב-`spec/build/page_*.py` (על בסיס `common.py`). עריכות בעמודים קיימים נעשות בסקריפטי `patch_*.py` שמשנים את ה-HTML החי. **לא להריץ את page_index / page_tantrums וכו' הישנים**, כי הם לא מסונכרנים עם העריכות מ-9.9 ואילך.
-- כשמשנים את style.css או ui.js, מעלים את הגרסה (`?v=`) בכל העמודים וב-CSS_V/JS_V שב-common.py. כרגע: css v37, js v16.
+- כשמשנים את style.css או ui.js, מעלים את הגרסה (`?v=`) בכל העמודים וב-CSS_V/JS_V שב-common.py. כרגע: css v38, js v16.
 - לפני פרסום בודקים בדפדפן: Playwright עם `executablePath:'/opt/pw-browsers/chromium'`.
 
 ## מזהים
