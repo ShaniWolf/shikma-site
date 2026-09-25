@@ -239,7 +239,7 @@ def funnel():
         ul(['אין כלל שאומר תמיד לצעיר או תמיד לבכור. בודקים מי זקוק לעזרה דחופה יותר ומי יכול להחזיק עוד רגע.',
             'לילד שמחכה מגיעה אמירה קצרה: ״אני רואה אותך. אני מסיימת עם אחיך ומגיעה אלייך.״ משפט אחד וקשר עין מחזיקים יותר ממה שנדמה.',
             'כשהסערה נגמרת, שווה לחזור לילד שחיכה ולתת לו כמה דקות שקטות שהן רק שלו.']) +
-        divider() + kicker(NEW('ועוד כלי אחד בשבילכם')) +
+        divider() + para('ובגלל שביקשתם את ״{$gift_name}״, חשבתי שגם זה יכול לעזור לכם:') +
         polaroid('{$gift_next_cover}', 'כריכת הכלי', 120) +
         '<h2 style="margin:0 0 8px;text-align:center;font-family:\'Varela Round\',Rubik,Arial,Helvetica,sans-serif;font-weight:400;font-size:21px;color:#3A3128">{$gift_next_name}</h2>' +
         para('{$gift_next_desc}') +
