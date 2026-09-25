@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>אמאל׳ה צמודים</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XQ1HEQR5HK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XQ1HEQR5HK');
+var M = {
+  'lev': 'assets/d/11103785b16fa692/lev-full.pdf',
+  'checklist': 'assets/d/b36f3b5e2ea9d89a/checklist-shneihem.pdf',
+  'rush': 'assets/d/c7f508ddfe55c6b2/shaat-haomes.pdf',
+  'quiz': 'quiz.html',
+  'quiz-a': 'quiz.html#r=a', 'quiz-b': 'quiz.html#r=b', 'quiz-c': 'quiz.html#r=c', 'quiz-d': 'quiz.html#r=d',
+  'double': 'double.html'
+};
+var k = (new URLSearchParams(location.search).get('k') || '').trim();
+var to = M[k] || 'index.html';
+gtag('event', 'email_gift_open', {gift: k || 'none'});
+setTimeout(function(){ location.replace(to); }, 300);
+</script>
+</head>
+<body style="font-family:Rubik,Arial,sans-serif;text-align:center;padding:40px 16px;background:#FBF7F0;color:#3A3128">
+<p>רגע, מעבירה אותך...</p>
+<p><a href="index.html" id="go" style="color:#B4694E">אם לא עברת אוטומטית, לחצי כאן</a></p>
+<script>document.getElementById('go').href = to;</script>
+</body>
+</html>
