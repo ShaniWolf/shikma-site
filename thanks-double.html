@@ -60,7 +60,7 @@ gtag('config', 'G-XQ1HEQR5HK');
     <p class="lead">המדריך נבנה כדי לתת לכם דרך ברורה יותר לפעול בדיוק ברגעים שבהם שניהם צריכים אתכם. קראו אותו פעם אחת ברצף, ואחר כך חזרו לפרקים שנוגעים ברגעים שהכי חוזרים אצלכם בבית.</p>
     <div class="thanks-cover"><div class="polaroid tall r"><img src="assets/covers/double.png" alt="" loading="lazy" width="170" height="241"></div></div>
     <a class="btn" href="assets/d/d8e26f50db3d1d8f/double-full.pdf" download="הורות בדאבל - שקמה דגרי.pdf">להורדת המדריך (PDF)</a>
-    <form class="mform tform" id="mform" novalidate data-fid="" data-product="double">
+    <form class="mform tform" id="mform" novalidate data-fid="200032720931259501" data-product="double">
       <label for="mf-email">רוצים שהמדריך יחכה לכם גם במייל?</label>
       <input type="email" id="mf-email" name="email" autocomplete="email" required placeholder="הכתובת שאיתה תפתחו את המדריך">
       <button type="submit" id="mf-btn">שלחו לי אותו למייל</button>
@@ -173,7 +173,7 @@ document.addEventListener('click', function(e){
 </script>
 <script>
 (function(){
-  var f=document.getElementById('mform'); if(!f) return; if(!f.getAttribute('data-fid')){f.hidden=true;return;}
+  var f=document.getElementById('mform'); if(!f) return;
   var btn=document.getElementById('mf-btn'), err=document.getElementById('mf-err'), done=document.getElementById('mf-done');
   var EP='https://assets.mailerlite.com/jsonp/2618157/forms/'+f.getAttribute('data-fid')+'/subscribe';
   var product=f.getAttribute('data-product');

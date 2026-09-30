@@ -12,7 +12,7 @@ import pathlib, re
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 PDF = 'assets/d/d8e26f50db3d1d8f/double-full.pdf'
 COVER = 'assets/covers/double.png'
-FID = ''  # טופס MailerLite לעמוד התודה — ממלאים אחרי יצירתו
+FID = '200032720931259501'  # טופס MailerLite לעמוד התודה — ממלאים אחרי יצירתו
 COVER_TAG = '<div class="polaroid tall r"><img src="%s" alt="כריכת המדריך הורות בדאבל" loading="lazy" width="%d" height="%d"></div>'
 
 
