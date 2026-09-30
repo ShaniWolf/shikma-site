@@ -765,3 +765,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 .qz-opt:active{transform:scale(.99)}
 .qz-res h3{margin:18px 0 6px}
 @media(max-width:640px){.qz-step{padding:22px 16px}}
+/* v39: מבנה המדריך (3 חלקים) + שאלת עצירה בולטת */
+.q-stop{font-size:1.45rem;line-height:1.45;font-weight:700;color:var(--warm-deep);background:var(--warm-soft);border-inline-start:5px solid var(--warm);border-radius:18px;padding:20px 22px;margin:24px 0 6px}
+@media(max-width:640px){.q-stop{font-size:1.2rem;padding:16px 18px}}
+.learn-intro{color:var(--soft);margin:-4px 0 4px}
+.learn-parts{margin:8px 0 16px}
+.learn-part+.learn-part{margin-top:18px}
+.learn-part-title{font-family:'Varela Round','Rubik',sans-serif;color:var(--green);font-size:.95rem;margin:0 0 -6px}
+.learn-part .learn{margin:12px 0 0}
+.learn-item .ln{display:block;font-size:.78rem;color:var(--green);margin-bottom:2px}
