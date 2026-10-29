@@ -108,6 +108,7 @@ def header(home=False):
     </a>
     <nav>
       <a href="guides.html">תוכן ומדריכים</a>
+      <a href="blog.html">הבלוג</a>
       <a href="livuy.html">ליווי אישי</a>
       <a href="%s#community">הקהילה</a>
       <a href="%s#about">אודות</a>
@@ -147,6 +148,7 @@ def footer(home=False):
         <ul class="f-links">
           <li><a href="index.html">בית</a></li>
           <li><a href="guides.html">תוכן ומדריכים</a></li>
+          <li><a href="blog.html">הבלוג</a></li>
           <li><a href="livuy.html">ליווי אישי</a></li>
           <li><a href="%s#community">הקהילה</a></li>
           <li><a href="%s#about">אודות</a></li>
