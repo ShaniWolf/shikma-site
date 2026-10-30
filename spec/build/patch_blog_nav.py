@@ -14,8 +14,8 @@ F_NEW = F_OLD + '          <li><a href="blog.html">הבלוג</a></li>\n'
 # שורה שמפנה לבלוג מתוך עמוד ״תוכן ומדריכים״
 GUIDES_ANCHOR = 'מחבר את כל הרגעים האלה לדרך אחת'
 GUIDES_EXTRA = ('    <p class="lead">יש גם <a href="blog.html">בלוג עם תכנים חינמיים</a>: '
-                'ויסות רגשי, ביטחון עצמי, קנאה בין אחים, איך לדבר עם ילדים '
-                'והתנהגויות שחוזרות בבית עם צמודים.</p>\n')
+                'ויסות רגשי, ביטחון עצמי, קנאה בין אחים, איך לדבר עם ילדים, '
+                'מעברים ופרידות והתנהגויות שחוזרות בבית עם צמודים.</p>\n')
 
 nav_n = foot_n = 0
 for path in sorted(glob.glob(os.path.join(ROOT, '*.html'))):
@@ -46,7 +46,8 @@ print('תפריט עליון: %d עמודים · פוטר: %d עמודים' % (n
 
 # ───────── מפת האתר ─────────
 NEW_URLS = ['blog.html', 'kinaa-tzmudim.html', 'visut-regashi.html',
-            'bitachon-atzmi.html', 'tiyugim.html', 'hitnahaguyot-tzmudim.html']
+            'bitachon-atzmi.html', 'tiyugim.html', 'hitnahaguyot-tzmudim.html',
+            'maavarim-tzmudim.html']
 sm_path = os.path.join(ROOT, 'sitemap.xml')
 with open(sm_path, encoding='utf-8') as f:
     sm = f.read()

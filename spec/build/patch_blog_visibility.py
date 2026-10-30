@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""מתג אחד: הבלוג מוסתר או גלוי (29.10.2026).
+"""מתג אחד: הבלוג מוסתר או גלוי (29.10.2026). שקמה אישרה, גלוי מ-30.10.2026.
 
 LIVE = False  → העמודים חיים בכתובת אמיתית, אבל מוסתרים:
                 אין לינק בתפריט ובפוטר של שאר האתר, אין במפת האתר,
@@ -14,11 +14,12 @@ LIVE = True   → פותחים לציבור: לינק בתפריט ובפוטר 
 """
 import glob, os, re
 
-LIVE = False
+LIVE = True
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 BLOG_PAGES = ['blog.html', 'kinaa-tzmudim.html', 'visut-regashi.html',
-              'bitachon-atzmi.html', 'tiyugim.html', 'hitnahaguyot-tzmudim.html']
+              'bitachon-atzmi.html', 'tiyugim.html', 'hitnahaguyot-tzmudim.html',
+              'maavarim-tzmudim.html']
 
 NAV_LINK = '      <a href="blog.html">הבלוג</a>\n'
 F_LINK = '          <li><a href="blog.html">הבלוג</a></li>\n'
@@ -27,8 +28,8 @@ F_AFTER = '          <li><a href="guides.html">תוכן ומדריכים</a></li
 
 NOINDEX = '<meta name="robots" content="noindex, nofollow">\n'
 GUIDES_LINE = ('    <p class="lead">יש גם <a href="blog.html">בלוג עם תכנים חינמיים</a>: '
-               'ויסות רגשי, ביטחון עצמי, קנאה בין אחים, איך לדבר עם ילדים '
-               'והתנהגויות שחוזרות בבית עם צמודים.</p>\n')
+               'ויסות רגשי, ביטחון עצמי, קנאה בין אחים, איך לדבר עם ילדים, '
+               'מעברים ופרידות והתנהגויות שחוזרות בבית עם צמודים.</p>\n')
 GUIDES_ANCHOR = 'מחבר את כל הרגעים האלה לדרך אחת'
 
 nav_n = foot_n = idx_n = 0
