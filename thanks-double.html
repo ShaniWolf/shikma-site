@@ -168,7 +168,16 @@ document.addEventListener('click', function(e){
   var a = e.target.closest('a');
   if(!a || typeof gtag !== 'function') return;
   var h = a.href || '';
-  if(h.indexOf('double-full.pdf') > -1 && typeof gtag === 'function'){ gtag('event','guide_download',{guide:'double-full',page_path:location.pathname}); }
+  if(h.indexOf('double-full.pdf') > -1 && typeof gtag === 'function'){
+    gtag('event','guide_download',{guide:'double-full',page_path:location.pathname});
+    var k='imale_purchase_double', done=false;
+    try{ done=!!localStorage.getItem(k); }catch(err){}
+    if(!done && location.search.indexOf('test')<0){
+      var tid='dbl-'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+      gtag('event','purchase',{transaction_id:tid,value:99,currency:'ILS',items:[{item_id:'double',item_name:'הורות בדאבל',price:99,quantity:1}]});
+      try{ localStorage.setItem(k,tid); }catch(err){}
+    }
+  }
   if(h.indexOf('calendar.app.google') > -1 && typeof gtag === 'function'){ gtag('event','book_call',{page_path: location.pathname}); }
   if(h.indexOf('chat.whatsapp.com') > -1){ gtag('event', 'join_community', {page_path: location.pathname}); }
 });
