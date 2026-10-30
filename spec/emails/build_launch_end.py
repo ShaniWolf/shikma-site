@@ -22,13 +22,6 @@ def btn(text, href, color='#B4694E'):
             '<tr><td align="center" bgcolor="%s" style="border-radius:999px;background:%s">'
             '<a href="%s" target="_blank" style="display:inline-block;padding:16px 36px;font-family:%s;font-size:17px;font-weight:500;color:#ffffff;text-decoration:none;border-radius:999px">%s</a>'
             '</td></tr></table>') % (color, color, href, F, _html.escape(text))
-def quote(text, who):
-    """בועת וואטסאפ כמו ב״הורים מספרים״ באתר."""
-    return ('<table role="presentation" width="100%%" cellspacing="0" cellpadding="0" border="0" style="margin:6px 0 26px">'
-            '<tr><td bgcolor="#F6E9E1" style="background:#F6E9E1;border-radius:18px 18px 4px 18px;padding:18px 20px">'
-            '<p style="margin:0 0 10px;font-family:%s;font-size:17px;line-height:1.85;color:#3A3128">%s</p>'
-            '<p style="margin:0;font-family:%s;font-size:13px;color:#7C7062">%s</p>'
-            '</td></tr></table>') % (F, text, F, who)
 def shell(title, body, preheader=''):
     out = _shell(title, body, preheader)
     return out.replace("@media (max-width:600px){ .wrap{width:100% !important} .card{padding:26px 20px !important} }",
@@ -43,49 +36,68 @@ SITE = build_emails.SITE
 UTM = '?utm_source=mailerlite&utm_medium=email&utm_campaign=double-launch-end'
 DOUBLE = SITE + 'double.html' + UTM + '#buy'
 def blog(u): return SITE + u + UTM
+def link(u, t): return '<a href="%s" style="color:#3A3128;font-weight:500;text-decoration:underline;text-decoration-color:#B4694E">%s</a>' % (blog(u), t)
 
-SUBJECT = 'עד מוצאי שבת: ״הורות בדאבל״ ב-99 ₪, ומה חדש באתר'
-PREHEADER = 'מיום ראשון המדריך חוזר ל-149 ₪. ובינתיים: שישה מאמרים פתוחים לכולם בבלוג החדש.'
+SUBJECT = 'שישה מאמרים חדשים: קנאה, ויסות רגשי, מעברים, ואיך לדבר עם ילדים'
+PREHEADER = 'פתוחים לכולם, בלי להשאיר מייל. ורגע לפני שהמחיר של ״הורות בדאבל״ עולה ביום ראשון.'
 
-TESTIMONIAL = ('רק רציתי להגיד לך שמהרגע שקניתי את המדריך דאבל, אני שקועה בו ולא מצליחה להפסיק לקרוא.<br>'
-               'נופלים לי אסימונים ואני ממש מרגישה שזה שינה לי את קו המחשבה על ההתנהגות שלי לבנים שלי וגם איך שהם מתנהגים אחד לשני.<br>'
-               'ממש תודה זה מדריך מעולה ואני עדין לא סיימתי לקרוא ❤️')
+def wa(text, time):
+    """הודעת וואטסאפ כמו המקור: רקע צ׳אט, בועה לבנה, שעה וסימון ✓✓."""
+    return ('<table role="presentation" width="100%%" cellspacing="0" cellpadding="0" border="0" style="margin:6px 0 26px">'
+            '<tr><td bgcolor="#E5DDD5" style="background:#E5DDD5;border-radius:14px;padding:16px 14px 14px">'
+            '<table role="presentation" width="100%%" cellspacing="0" cellpadding="0" border="0"><tr>'
+            '<td width="8%%"></td>'
+            '<td bgcolor="#ffffff" style="background:#ffffff;border-radius:12px 2px 12px 12px;padding:10px 14px 8px;box-shadow:0 1px 1px rgba(0,0,0,.08)" dir="rtl">'
+            '<p style="margin:0 0 6px;font-family:%s;font-size:16px;line-height:1.7;color:#111b21">%s</p>'
+            '<p style="margin:0;text-align:left;font-family:%s;font-size:11px;color:#667781">%s <span style="color:#53bdeb">&#10003;&#10003;</span></p>'
+            '</td></tr></table></td></tr></table>') % (F, text, F, time)
+
+TESTIMONIAL = ('היי שקמה, סליחה על השעה<br>'
+               'רק רציתי להגיד לך שמהרגע שקניתי את המדריך דאבל, אני שקועה בו ולא מצליחה להפסיק לקרוא 🥱<br>'
+               'נופלים לי אסימונים ואני ממש מרגישה שזה שינה לי את קו המחשבה על ההתנהגות שלי לבנים שלי וגם איך שהם מתנהגים אחד לשני<br>'
+               'ממש תודה זה מדריך מעולה ואני עדין לא סיימתי לקרוא ❤️😅')
 
 POSTS = [
- ('kinaa-tzmudim.html', 'איך מפחיתים קנאה ותחרות בין צמודים מהרגע הראשון?'),
- ('visut-regashi.html', 'ויסות רגשי אצל ילדים: 5 דברים שאפשר ללמד כבר בגיל הרך'),
- ('bitachon-atzmi.html', 'איך מחזקים ביטחון עצמי אצל ילדים: 5 דברים להתחיל בגיל הרך'),
- ('tiyugim.html', '10 תיוגים שהורים נותנים לילדים שלהם ומה אפשר להגיד במקום'),
- ('hitnahaguyot-tzmudim.html', 'התנהגויות אצל צמודים ואיך להגיב אליהן'),
- ('maavarim-tzmudim.html', 'מעברים ופרידות אצל צמודים: מתי להתקדם ומתי לתת עוד זמן'),
+ ('kinaa-tzmudim.html', 'איך מפחיתים קנאה ותחרות בין צמודים מהרגע הראשון?',
+  'קנאה מתחילה הרבה לפני הריב הראשון על צעצוע. חמישה עקרונות שבונים את הבסיס לקשר טוב ביניהם.'),
+ ('visut-regashi.html', 'ויסות רגשי אצל ילדים: 5 דברים שאפשר ללמד כבר בגיל הרך',
+  'איך מלמדים ילד להגיד מה הוא מרגיש במקום לצעוק, להרביץ או להיסגר, ולשמוע ״לא״ בלי להתפרק.'),
+ ('bitachon-atzmi.html', 'איך מחזקים ביטחון עצמי אצל ילדים',
+  'איך עוזרים לילדה להגיד מה היא רוצה, לא לוותר רק כדי שיהיה שקט, ולבקש עזרה כשקשה לה.'),
+ ('tiyugim.html', '10 תיוגים שהורים נותנים לילדים ומה אפשר להגיד במקום',
+  '״הוא כזה עקשן״, ״היא ממש דרמטית״. עשרה משפטים שיוצאים לנו כמעט בלי לשים לב.'),
+ ('hitnahaguyot-tzmudim.html', 'התנהגויות אצל צמודים ואיך להגיב אליהן',
+  'חמש סיטואציות שחוזרות כמעט בכל בית עם צמודים, ובכל אחת מה לעשות ומה אפשר להגיד.'),
+ ('maavarim-tzmudim.html', 'מעברים ופרידות אצל צמודים',
+  'פרידה ממוצץ, מעבר חדר או כניסה לגן: מתי לחכות בין שינויים, איך להכין את הילד ולמה בודקים כל אחד בנפרד.'),
 ]
 
+def post_row(u, t, d):
+    return ('<tr><td style="padding:0 0 18px">'
+            '<p style="margin:0 0 4px;font-family:\'Varela Round\',%s;font-size:18px;line-height:1.5;color:#3A3128">%s</p>'
+            '<p style="margin:0;font-family:%s;font-size:15px;line-height:1.75;color:#5B5146">%s</p>'
+            '</td></tr>') % (F, link(u, t), F, d)
+
 body = ''.join([
-    kicker('אמאל׳ה צמודים | עדכון קצר לפני סוף השבוע'),
-    h1('מחיר ההשקה של ״הורות בדאבל״ מסתיים במוצאי שבת'),
+    kicker('אמאל׳ה צמודים | הבלוג החדש באתר'),
+    h1('מה קורה לילד, מה אפשר לעשות ומה אפשר להגיד: שישה מאמרים חדשים'),
     para('היי {$first_name|default(\'\')}'),
-    para('לפני קצת יותר מחודש השקתי את ״הורות בדאבל״, המדריך המעשי לחיים עם שני ילדים קטנים, במחיר השקה של 99 ₪ במקום 149 ₪.'),
-    para('<strong>מיום ראשון (2.11) המדריך חוזר למחירו המלא, 149 ₪.</strong> עד מוצאי שבת הוא עדיין ב-99 ₪.'),
-    polaroid(SITE + 'assets/covers/double.png', 'כריכת המדריך הורות בדאבל', 150),
-    para('אחד בוכה והשני קורא לכם. במקום לעמוד ביניהם ולא לדעת למי לגשת קודם, אתם יודעים מה לעשות עכשיו ואיך להראות גם לילד שמחכה שלא שכחתם אותו.'),
-    para('״הורות בדאבל״ יעזור לכם להבין מה כל ילד באמת צריך ולדעת מה לעשות גם כשהכול קורה יחד, עם יותר בהירות ופחות ניחושים ואשמה.'),
-    kicker('באילו רגעים המדריך יעזור לכם?'),
-    ul(['כששניהם בוכים יחד ולא ברור למי לגשת קודם.',
-        'כשהבכור זקוק לכם בדיוק בזמן האכלה או הרדמה של התינוק.',
-        'כשצריך להציב גבול ואחד הילדים מתנגד.',
-        'כשאתם לבד בערב וצריך לקלח, להאכיל ולהשכיב את שניהם.']),
-    kicker('אמא שקראה את המדריך כתבה לי השבוע'),
-    quote(TESTIMONIAL, 'אמא לשני בנים, מתוך הודעת וואטסאפ'),
-    btn('אני רוצה את המדריך ב-99 ₪', DOUBLE),
-    small('מדריך דיגיטלי בפרקים קצרים, שאפשר לעבור בהם ישר לנושא שהכי מעסיק אתכם. עד מוצאי שבת 99 ₪, מיום ראשון 149 ₪.'),
-    divider(),
-    h1('ומשהו חדש באתר: הבלוג'),
-    para('העליתי לאתר שישה מאמרים שפתוחים לכולם, בלי להשאיר מייל. בכל אחד מהם מה קורה לילד, מה אפשר לעשות ומה אפשר להגיד ברגע עצמו:'),
-    ul(['<a href="%s" style="color:#3A3128;text-decoration:underline;text-decoration-color:#B4694E">%s</a>' % (blog(u), t) for u, t in POSTS]),
+    para('בשבועות האחרונים כתבתי שישה מדריכים קצרים על הרגעים שחוזרים כמעט בכל בית עם ילדים קטנים, ובמיוחד כשיש שניים קטנטנים. העליתי אותם לבלוג החדש באתר, <strong>פתוחים לכולם, בלי להשאיר מייל.</strong> בכל אחד מהם מה קורה לילד, מה אפשר לעשות ומה אפשר להגיד ברגע עצמו.'),
+    '<table role="presentation" width="100%%" cellspacing="0" cellpadding="0" border="0" style="margin:8px 0 6px">%s</table>' % ''.join(post_row(*p) for p in POSTS),
     btn('לכל המאמרים בבלוג', blog('blog.html'), '#7A8B6F'),
+    divider(),
+    h2('וכששניהם צריכים אתכם באותו רגע?'),
+    para('המאמרים עוזרים להבין מה קורה לילד ומה אפשר להגיד לו. אבל יש רגעים שבהם זה לא ילד אחד: אחד בוכה והשני קורא לכם, אתם מציבים גבול לאחד והשני כבר דורש אתכם, ובסוף היום נשארת השאלה אם נתתם מספיק לכל אחד.'),
+    para('בשביל הרגעים האלה כתבתי את ״הורות בדאבל״, המדריך המעשי לחיים עם שני ילדים קטנים. הוא עוזר להבין מה כל ילד באמת צריך ולדעת מה לעשות גם כשהכול קורה יחד, עם יותר בהירות ופחות ניחושים ואשמה.'),
+    kicker('הודעה שקיבלתי השבוע מאמא שקנתה את המדריך'),
+    wa(TESTIMONIAL, '22:40'),
+    para('<strong>ודבר אחד שחשוב לי שתדעו לפני סוף השבוע:</strong> המדריך יצא לפני קצת יותר מחודש במחיר השקה של 99 ₪ במקום 149 ₪. מחיר ההשקה מסתיים במוצאי שבת. <strong>מיום ראשון (2.11) הוא חוזר ל-149 ₪.</strong>'),
+    para('אם חשבתם עליו ודחיתם, זה הרגע שבו שווה להחליט, לפני שההפרש של 50 ₪ נכנס.'),
+    btn('אני רוצה את המדריך ב-99 ₪, עד מוצאי שבת', DOUBLE),
+    small('מדריך דיגיטלי בפרקים קצרים, שאפשר לעבור בהם ישר לנושא שהכי מעסיק אתכם. אחרי מוצאי שבת: 149 ₪.'),
     para('מאחלת לכם סוף שבוע רגוע, גם ברגעים שבהם שניהם צריכים אתכם יחד.'),
     signature(),
-    ps('נ.ב. אם יש שאלה על מה שקורה אצלכם בבית, אפשר להשיב למייל הזה. אני קוראת הכל.'),
+    ps('נ.ב. אם יש שאלה על מה שקורה אצלכם בבית, או על המדריך, אפשר להשיב למייל הזה. אני קוראת הכל, גם בשבת.'),
 ])
 
 if __name__ == '__main__':
