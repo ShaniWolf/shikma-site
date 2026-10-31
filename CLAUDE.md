@@ -37,7 +37,7 @@
 ## מזהים
 - Google Analytics: G-XQ1HEQR5HK. Clarity: ye0z5twmdl.
   - **אירועים:** click_payment (לחיצה על כפתור התשלום, כוונת רכישה) · guide_download (הורדה מעמוד התודה) · **purchase** (מ-30.10: נורה רק בלחיצת ההורדה ב-thanks-double.html, פעם אחת למכשיר, 99 ₪, לא עם ?test; `patch_purchase_event.py`). ב-11.9 הורדנו purchase שנורה בכניסה לעמוד כי כל ביקור נספר כהכנסה. בלי כתובת חזרה ב-pay360 אין דרך אמינה יותר.
-- תשלום ״הורות בדאבל״: השקה 99 ₪ `SaleId=a24de58f-78ab-2ecf-dc1d-6ff250428b75`, מלא 149 ₪ `SaleId=6b5592a3-0bc0-0c74-0cf3-8144f0cda282`. הדגל LAUNCH נמצא ב-page_double.py.
+- תשלום ״הורות בדאבל״: השקה 99 ₪ `SaleId=a24de58f-78ab-2ecf-dc1d-6ff250428b75`, מלא 149 ₪ `SaleId=5d6c9b64-8529-d320-73af-26fc6fb4bff0` (קישור חדש משני, 31.10; הישן 6b5592a3-0bc0-0c74-0cf3-8144f0cda282 כבר לא בשימוש). הדגל LAUNCH נמצא ב-page_double.py.
 - טפסי MailerLite (חשבון 2618157):
   - להכין את הלב: 197954875365000600
   - צ׳קליסט: 199577369003951222

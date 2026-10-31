@@ -8,7 +8,7 @@
 import os, io, glob
 ROOT = os.environ.get('SITE_ROOT') or os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 LAUNCH_ID = 'a24de58f-78ab-2ecf-dc1d-6ff250428b75'
-FULL_ID = '6b5592a3-0bc0-0c74-0cf3-8144f0cda282'
+FULL_ID = '5d6c9b64-8529-d320-73af-26fc6fb4bff0'
 
 def patch(rel, pairs, must=True):
     p = os.path.join(ROOT, rel)
