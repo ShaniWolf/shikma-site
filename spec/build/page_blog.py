@@ -20,6 +20,7 @@ SEO_TITLES=True מפעיל את הכותרות החדשות לשני המאמר�
 אם שקמה מעדיפה את הכותרות המקוריות שלה, משנים ל-False ומריצים שוב.
 """
 from common import *
+import re
 
 SEO_TITLES = True
 TODAY = '2026-10-29'
@@ -74,6 +75,38 @@ def cta(paras, h2, kicker):
 ''' % (kicker, h2, ''.join('    <p>%s</p>\n' % x for x in paras))
 
 
+# ───────── תיבת הרשמה בסוף כל מאמר (31.10, שני אישרה את הניסוח) ─────────
+BLOG_FORM = '202841815848584844'   # טופס ML ״הבלוג: רוצים עוד כאלה״ → קבוצות ״נרשמו מהבלוג״ + ״הרשמה מהאתר״
+# הסקריפט המשותף (imaleSubmit + מפת המתנות של המשפך) נלקח מ-both-now.html כדי להישאר מסונכרן איתו.
+_BN = open(os.path.join(ROOT, 'both-now.html'), encoding='utf-8').read()
+SIGNUP_JS = re.search(r'<script>\nwindow\.imaleSubmit = function.*?</script>\n', _BN, re.S).group(0)
+SIGNUP_JS += """<script>
+document.getElementById('mf').addEventListener('submit', function(e){ e.preventDefault();
+  imaleSubmit(this, '%s', 'checklist', function(){ location.href='thanks-both-now.html'; }); });
+</script>
+""" % BLOG_FORM
+
+def signup_box():
+    form = """    <form class="mform" id="mf" novalidate>
+      <label for="mf-name">שם פרטי</label>
+      <input type="text" id="mf-name" name="name" autocomplete="given-name" required placeholder="שם פרטי">
+      <label for="mf-last">שם משפחה</label>
+      <input type="text" id="mf-last" name="last_name" autocomplete="family-name" required placeholder="שם משפחה">
+      <label for="mf-email">כתובת מייל</label>
+      <input type="email" id="mf-email" name="email" autocomplete="email" required placeholder="name@example.com">
+      <label for="mf-phone">מספר טלפון (לא חובה)</label>
+      <input type="tel" id="mf-phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="050-0000000">
+      <label class="chk"><input type="checkbox" id="mf-ok" required> אני מאשרת לקבל משקמה תכנים, כלים ועדכונים. אפשר להסיר את ההרשמה בכל עת.</label>
+      <button type="submit">שלחו לי</button>
+      <p class="err" role="alert"></p>
+      <p class="consent">פרטים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
+    </form>
+"""
+    return csec('chat', 'רוצים עוד כאלה?', p(
+        'השאירו מייל ואשלח לכם את המאמרים הבאים ישר לתיבה, וגם את הצ׳קליסט ״מה עושים כששניהם צריכים אותי עכשיו?״.') + form,
+        eyeb='בלי עלות', extra_class='signup')
+
+
 def post(url, title, desc, og_t, kicker, h1, lead, body, about, items_ld, pola,
          faq_items=None, more=None, date=None):
     date = date or TODAY
@@ -101,11 +134,12 @@ def post(url, title, desc, og_t, kicker, h1, lead, body, about, items_ld, pola,
     html += ''.join('    <p class="lead">%s</p>\n' % x for x in lead)
     html += '  </div>\n'
     html += body
+    html += signup_box()
     html += bio_box()
     if faq_items:
         html += faq(faq_items)
     html += readmore(more or [])
-    html += '</div>\n' + footer() + CLICK_JS
+    html += '</div>\n' + footer() + SIGNUP_JS + CLICK_JS
     write(url, html)
 
 
