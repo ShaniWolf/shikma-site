@@ -8,7 +8,7 @@ from common import *
 TITLE = 'הורות בדאבל: מדריך להורים לשני ילדים קטנים | שקמה דגרי'
 DESC = 'מדריך מעשי להורים לילדים צמודים: איך להבין מה כל ילד צריך, למי לגשת קודם ואיך לעזור לשניהם בזמן בכי, גבולות, קנאה ומריבות.'
 PAY_LAUNCH = 'https://pay360.isracard.co.il/CustomerPayment/GenericURL?SaleId=a24de58f-78ab-2ecf-dc1d-6ff250428b75'   # 99 ₪
-PAY_FULL = 'https://pay360.isracard.co.il/CustomerPayment/GenericURL?SaleId=6b5592a3-0bc0-0c74-0cf3-8144f0cda282'     # 149 ₪
+PAY_FULL = 'https://pay360.isracard.co.il/CustomerPayment/GenericURL?SaleId=5d6c9b64-8529-d320-73af-26fc6fb4bff0'     # 149 ₪
 LAUNCH = True
 PAY, PRICE = (PAY_LAUNCH, '99') if LAUNCH else (PAY_FULL, '149')
 PRICE_HTML = ('<s style="opacity:.55;font-size:.6em">149 ₪</s> 99 ₪' if LAUNCH else '149 ₪')
