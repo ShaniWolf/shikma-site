@@ -38,8 +38,8 @@ DOUBLE = SITE + 'double.html' + UTM + '#buy'
 def blog(u): return SITE + u + UTM
 def link(u, t): return '<a href="%s" style="color:#3A3128;font-weight:500;text-decoration:underline;text-decoration-color:#B4694E">%s</a>' % (blog(u), t)
 
-SUBJECT = 'שישה מאמרים חדשים בבלוג'
-PREHEADER = 'קנאה, ויסות רגשי, מעברים ואיך מדברים עם ילדים. ומשהו קטן לפני יום ראשון.'
+SUBJECT = '״גם אני!״, קנאה ומריבות על אותו צעצוע: מה אפשר להגיד ברגע עצמו'
+PREHEADER = 'שישה מאמרים קצרים, פתוחים לכולם. ומשהו קטן לפני יום ראשון.'
 
 def wa(text, time):
     """הודעת וואטסאפ כמו המקור: רקע צ׳אט, בועה לבנה, שעה וסימון ✓✓."""
@@ -80,7 +80,7 @@ def post_row(u, t, d):
 
 body = ''.join([
     kicker('אמאל׳ה צמודים'),
-    h1('שישה מאמרים חדשים בבלוג'),
+    h1('״גם אני!״, קנאה ומריבות על אותו צעצוע: מה אפשר להגיד ברגע עצמו'),
     para('היי {$first_name|default(\'\')}'),
     para('אני יודעת כמה הימים האלה מלאים, אז בקצרה: בשבועות האחרונים כתבתי שישה מאמרים קצרים על הרגעים שחוזרים כמעט בכל בית עם ילדים קטנים. הם בבלוג החדש באתר, פתוחים לכולם. בכל אחד מהם מה קורה לילדים ברגע הזה, מה אפשר לעשות ומה אפשר להגיד.'),
     '<table role="presentation" width="100%%" cellspacing="0" cellpadding="0" border="0" style="margin:8px 0 6px">%s</table>' % ''.join(post_row(*p) for p in POSTS),
