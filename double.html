@@ -207,7 +207,17 @@ gtag('config', 'G-XQ1HEQR5HK');
     <p>המדריך המעשי לחיים עם שני ילדים קטנים.</p>
     <span class="cprice"><s style="opacity:.55;font-size:.6em">149 ₪</s> 99 ₪</span>
     <p class="btn-note" style="margin-top:-8px">מחיר השקה</p>
-    <a class="btn" href="https://pay360.isracard.co.il/CustomerPayment/GenericURL?SaleId=a24de58f-78ab-2ecf-dc1d-6ff250428b75">אני רוצה את המדריך</a>
+    <form class="mform buyform" novalidate data-pay="https://pay360.isracard.co.il/CustomerPayment/GenericURL?SaleId=a24de58f-78ab-2ecf-dc1d-6ff250428b75">
+      <label for="b1-name">שם פרטי</label>
+      <input type="text" id="b1-name" name="name" autocomplete="given-name" required placeholder="שם פרטי">
+      <label for="b1-last">שם משפחה</label>
+      <input type="text" id="b1-last" name="last_name" autocomplete="family-name" required placeholder="שם משפחה">
+      <label for="b1-email">כתובת מייל (אליה יישלח המדריך)</label>
+      <input type="email" id="b1-email" name="email" autocomplete="email" required placeholder="name@example.com">
+      <label class="chk"><input type="checkbox" id="b1-ok" required> אני מאשרת לקבל משקמה תכנים, כלים ועדכונים. אפשר להסיר את ההרשמה בכל עת.</label>
+      <button type="submit">להמשיך לתשלום</button>
+      <p class="err" role="alert"></p>
+    </form>
     <p class="btn-note">המדריך בנוי בפרקים קצרים, כך שתוכלו לעבור ישר לנושא שהכי מעסיק אתכם בבית.</p>
     <p class="btn-note">בלחיצה על כפתור הרכישה אתם מאשרים שקראתם והסכמתם ל<a href="terms.html">תנאי השימוש, הרכישה, האספקה והביטולים</a> ול<a href="privacy.html">מדיניות הפרטיות</a>.</p>
   </div>
@@ -325,7 +335,17 @@ gtag('config', 'G-XQ1HEQR5HK');
     <p>"הורות בדאבל" יעזור לכם לפעול עם יותר בהירות, פחות ניחושים ופחות אשמה בסוף היום.</p>
     <span class="cprice"><s style="opacity:.55;font-size:.6em">149 ₪</s> 99 ₪</span>
     <p class="btn-note" style="margin-top:-8px">מחיר השקה</p>
-    <a class="btn" href="https://pay360.isracard.co.il/CustomerPayment/GenericURL?SaleId=a24de58f-78ab-2ecf-dc1d-6ff250428b75">אני רוצה את המדריך</a>
+    <form class="mform buyform" novalidate data-pay="https://pay360.isracard.co.il/CustomerPayment/GenericURL?SaleId=a24de58f-78ab-2ecf-dc1d-6ff250428b75">
+      <label for="b2-name">שם פרטי</label>
+      <input type="text" id="b2-name" name="name" autocomplete="given-name" required placeholder="שם פרטי">
+      <label for="b2-last">שם משפחה</label>
+      <input type="text" id="b2-last" name="last_name" autocomplete="family-name" required placeholder="שם משפחה">
+      <label for="b2-email">כתובת מייל (אליה יישלח המדריך)</label>
+      <input type="email" id="b2-email" name="email" autocomplete="email" required placeholder="name@example.com">
+      <label class="chk"><input type="checkbox" id="b2-ok" required> אני מאשרת לקבל משקמה תכנים, כלים ועדכונים. אפשר להסיר את ההרשמה בכל עת.</label>
+      <button type="submit">להמשיך לתשלום</button>
+      <p class="err" role="alert"></p>
+    </form>
     <p class="btn-note">כלים ברורים שאפשר לחזור אליהם בדיוק ברגעים שבהם תצטרכו אותם.</p>
     <p class="btn-note">בלחיצה על כפתור הרכישה אתם מאשרים שקראתם והסכמתם ל<a href="terms.html">תנאי השימוש, הרכישה, האספקה והביטולים</a> ול<a href="privacy.html">מדיניות הפרטיות</a>.</p>
   </div>
@@ -419,6 +439,28 @@ document.addEventListener('click', function(e){
     gtag('event', 'contact_click', {channel: (a.getAttribute('aria-label')||a.textContent||'').trim()});
   }
 });
+</script>
+
+<script>
+(function(){
+  var FORM='202841816552179432';
+  function go(f){
+    var v=function(k){ var el=f.querySelector('[name="'+k+'"]'); return el ? el.value.trim() : ''; };
+    var name=v('name'), last=v('last_name'), email=v('email');
+    var err=f.querySelector('.err'), btn=f.querySelector('button[type=submit]');
+    if(!name || !last){ err.textContent='צריך שם פרטי ושם משפחה'; return; }
+    if(!email || email.indexOf('@')<1 || email.indexOf('.')<0){ err.textContent='צריך כתובת מייל תקינה, אליה יישלח המדריך'; return; }
+    if(!f.querySelector('input[type=checkbox]').checked){ err.textContent='צריך לאשר קבלת תכנים כדי להמשיך'; return; }
+    err.textContent=''; btn.disabled=true; btn.textContent='רגע, עוברים לתשלום...';
+    var body='fields%5Bemail%5D='+encodeURIComponent(email)+'&fields%5Bname%5D='+encodeURIComponent(name)+'&fields%5Bfirst_name%5D='+encodeURIComponent(name)+'&fields%5Blast_name%5D='+encodeURIComponent(last)+'&ml-submit=1&anticsrf=true';
+    try{ fetch('https://assets.mailerlite.com/jsonp/2618157/forms/'+FORM+'/subscribe',{method:'POST',keepalive:true,headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).catch(function(){}); }catch(e){}
+    try{ localStorage.setItem('imale_buy_email', email); }catch(e){}
+    if(typeof gtag==='function'){ gtag('event','click_payment',{product:(document.title.split('|')[0]||'').trim(),page_path:location.pathname}); }
+    setTimeout(function(){ location.href=f.getAttribute('data-pay'); }, 400);
+  }
+  var fs=document.querySelectorAll('form.buyform');
+  for(var i=0;i<fs.length;i++){ (function(f){ f.addEventListener('submit', function(e){ e.preventDefault(); go(f); }); })(fs[i]); }
+})();
 </script>
 </body>
 </html>
