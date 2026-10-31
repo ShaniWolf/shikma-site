@@ -19,7 +19,7 @@ def form(pay, i):
       <input type="text" id="b%d-name" name="name" autocomplete="given-name" required placeholder="שם פרטי">
       <label for="b%d-last">שם משפחה</label>
       <input type="text" id="b%d-last" name="last_name" autocomplete="family-name" required placeholder="שם משפחה">
-      <label for="b%d-email">כתובת מייל (אליה יישלח המדריך)</label>
+      <label for="b%d-email">כתובת מייל</label>
       <input type="email" id="b%d-email" name="email" autocomplete="email" required placeholder="name@example.com">
       <label class="chk"><input type="checkbox" id="b%d-ok" required> אני מאשרת לקבל משקמה תכנים, כלים ועדכונים. אפשר להסיר את ההרשמה בכל עת.</label>
       <button type="submit">להמשיך לתשלום</button>
@@ -43,7 +43,7 @@ JS = '''
     var name=v('name'), last=v('last_name'), email=v('email');
     var err=f.querySelector('.err'), btn=f.querySelector('button[type=submit]');
     if(!name || !last){ err.textContent='צריך שם פרטי ושם משפחה'; return; }
-    if(!email || email.indexOf('@')<1 || email.indexOf('.')<0){ err.textContent='צריך כתובת מייל תקינה, אליה יישלח המדריך'; return; }
+    if(!email || email.indexOf('@')<1 || email.indexOf('.')<0){ err.textContent='צריך כתובת מייל תקינה'; return; }
     if(!f.querySelector('input[type=checkbox]').checked){ err.textContent='צריך לאשר קבלת תכנים כדי להמשיך'; return; }
     err.textContent=''; btn.disabled=true; btn.textContent='רגע, עוברים לתשלום...';
     var body='fields%%5Bemail%%5D='+encodeURIComponent(email)+'&fields%%5Bname%%5D='+encodeURIComponent(name)+'&fields%%5Bfirst_name%%5D='+encodeURIComponent(name)+'&fields%%5Blast_name%%5D='+encodeURIComponent(last)+'&ml-submit=1&anticsrf=true';
