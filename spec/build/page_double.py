@@ -9,7 +9,7 @@ TITLE = 'הורות בדאבל: מדריך להורים לשני ילדים קט
 DESC = 'מדריך מעשי להורים לילדים צמודים: איך להבין מה כל ילד צריך, למי לגשת קודם ואיך לעזור לשניהם בזמן בכי, גבולות, קנאה ומריבות.'
 PAY_LAUNCH = 'https://pay360.isracard.co.il/CustomerPayment/GenericURL?SaleId=a24de58f-78ab-2ecf-dc1d-6ff250428b75'   # 99 ₪
 PAY_FULL = 'https://pay360.isracard.co.il/CustomerPayment/GenericURL?SaleId=5d6c9b64-8529-d320-73af-26fc6fb4bff0'     # 149 ₪
-LAUNCH = True
+LAUNCH = False
 PAY, PRICE = (PAY_LAUNCH, '99') if LAUNCH else (PAY_FULL, '149')
 PRICE_HTML = ('<s style="opacity:.55;font-size:.6em">149 ₪</s> 99 ₪' if LAUNCH else '149 ₪')
 TERMS = '<p class="btn-note">בלחיצה על כפתור הרכישה אתם מאשרים שקראתם והסכמתם ל<a href="terms.html">תנאי השימוש, הרכישה, האספקה והביטולים</a> ול<a href="privacy.html">מדיניות הפרטיות</a>.</p>'

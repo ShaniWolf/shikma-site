@@ -174,7 +174,7 @@ document.addEventListener('click', function(e){
     try{ done=!!localStorage.getItem(k); }catch(err){}
     if(!done && location.search.indexOf('test')<0){
       var tid='dbl-'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
-      gtag('event','purchase',{transaction_id:tid,value:99,currency:'ILS',items:[{item_id:'double',item_name:'הורות בדאבל',price:99,quantity:1}]});
+      gtag('event','purchase',{transaction_id:tid,value:149,currency:'ILS',items:[{item_id:'double',item_name:'הורות בדאבל',price:149,quantity:1}]});
       try{ localStorage.setItem(k,tid); }catch(err){}
     }
   }
