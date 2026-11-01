@@ -14,7 +14,7 @@
 """
 import pathlib
 P = pathlib.Path(__file__).resolve().parents[2] / 'thanks-double.html'
-PRICE = 99
+PRICE = 149
 OLD = "  if(h.indexOf('double-full.pdf') > -1 && typeof gtag === 'function'){ gtag('event','guide_download',{guide:'double-full',page_path:location.pathname}); }\n"
 NEW = """  if(h.indexOf('double-full.pdf') > -1 && typeof gtag === 'function'){
     gtag('event','guide_download',{guide:'double-full',page_path:location.pathname});

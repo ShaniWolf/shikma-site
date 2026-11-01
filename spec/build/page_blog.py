@@ -70,7 +70,6 @@ def cta(paras, h2, kicker):
     <span class="kicker">%s</span>
     <h2>%s</h2>
 %s    <a class="btn" href="double.html">להכיר את ״הורות בדאבל״</a>
-    <p class="btn-note">כרגע המדריך במחיר השקה לזמן מוגבל.</p>
   </div>
 ''' % (kicker, h2, ''.join('    <p>%s</p>\n' % x for x in paras))
 
